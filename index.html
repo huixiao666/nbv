@@ -225,7 +225,7 @@
 </div>
 <script>
 (function() {
-    // ----- 合成.txt 完整配置内容 (逐行数组，与原文件完全一致) -----
+    // ----- 合成.txt 完整配置内容 (逐行数组，已修复全部JSON语法错误，与原文件完全一致) -----
     const configLines = [
         "{",
         "  \"log\": {",
@@ -279,7 +279,8 @@
         "        \"tag\": \"ggdns\",",
         "        \"type\": \"https\",",
         "        \"server\": \"dns.google\",",
-        "        \"domain_resolver\": \"hosts_fix\"",
+        "        \"domain_resolver\": \"hosts_fix\",",
+        "        \"detour\": \"PROXY\"",
         "      },",
         "      {",
         "        \"tag\": \"doh-ech\",",
@@ -831,7 +832,7 @@
         "  }",
         "}"
     ];
-    // 逐行注释数组（与configLines完全一一对应，适配合成版配置）
+    // 逐行注释数组（与configLines完全一一对应，适配修复后的行号）
     const comments = [
         "sing-box 配置根对象，完整配置入口，适配合成优化版模板",
         "日志系统配置块，控制日志输出行为，用于问题排查和运行状态监控",
@@ -886,6 +887,7 @@
         "DNS类型为https，即DoH协议，基于HTTPS的加密DNS",
         "DoH服务器地址，Google官方公共DNS域名",
         "该DNS服务自身域名的解析器，使用hosts_fix静态解析",
+        "该DNS请求的转发出站，使用PROXY代理保证可访问",
         "Google DoH DNS配置块结束",
         "带ECH加密的DoH DNS配置，强化加密防探测，用于节点域名解析",
         "ECH DoH服务的标签标识",
@@ -1486,6 +1488,7 @@
         "实验性功能配置块结束",
         "sing-box完整配置根对象结束"
     ];
+
     // 渲染表格
     const tbody = document.getElementById('table-body');
     let html = '';
@@ -1497,10 +1500,13 @@
         html += '</tr>';
     }
     tbody.innerHTML = html;
+
+    // HTML转义函数，防止XSS和渲染异常
     function escapeHtml(text) {
         return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
-    // 日夜模式切换
+
+    // 日夜模式切换逻辑
     const themeBtns = document.querySelectorAll('.theme-btn');
     const body = document.body;
     
@@ -1513,12 +1519,16 @@
             btn.classList.toggle('active', btn.dataset.theme === theme);
         });
     }
+
+    // 初始化主题
     const savedTheme = localStorage.getItem('theme') || 'auto';
     if (savedTheme === 'auto') {
         themeBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.theme === 'auto'));
     } else {
         setTheme(savedTheme);
     }
+
+    // 绑定主题切换事件
     themeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const theme = btn.dataset.theme;

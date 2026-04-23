@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>sing-box 配置注释 · 合成优化完整版</title>
+    <title>sing-box 配置注释 · 合成优化完整版（修复增强版）</title>
     <style>
-        /* 日夜模式变量 */
         :root {
             --bg-body: #eef2f7;
             --bg-container: #ffffff;
@@ -26,6 +25,12 @@
             --btn-text: #1e293b;
             --btn-active-bg: #0a2b3c;
             --btn-active-text: #ffffff;
+            --highlight-bg: #fffde7;
+            --highlight-border: #f9a825;
+            --warn-bg: #fff3e0;
+            --warn-text: #e65100;
+            --tip-bg: #e8f5e9;
+            --tip-text: #1b5e20;
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -48,9 +53,14 @@
                 --btn-text: #e2e8f0;
                 --btn-active-bg: #3b82f6;
                 --btn-active-text: #ffffff;
+                --highlight-bg: #2d2a1a;
+                --highlight-border: #b8860b;
+                --warn-bg: #3e2a1a;
+                --warn-text: #ffb74d;
+                --tip-bg: #1a2e1a;
+                --tip-text: #81c784;
             }
         }
-        /* 手动主题类 */
         body.light {
             --bg-body: #eef2f7;
             --bg-container: #ffffff;
@@ -71,6 +81,12 @@
             --btn-text: #1e293b;
             --btn-active-bg: #0a2b3c;
             --btn-active-text: #ffffff;
+            --highlight-bg: #fffde7;
+            --highlight-border: #f9a825;
+            --warn-bg: #fff3e0;
+            --warn-text: #e65100;
+            --tip-bg: #e8f5e9;
+            --tip-text: #1b5e20;
         }
         body.dark {
             --bg-body: #1a1e2a;
@@ -92,37 +108,62 @@
             --btn-text: #e2e8f0;
             --btn-active-bg: #3b82f6;
             --btn-active-text: #ffffff;
+            --highlight-bg: #2d2a1a;
+            --highlight-border: #b8860b;
+            --warn-bg: #3e2a1a;
+            --warn-text: #ffb74d;
+            --tip-bg: #1a2e1a;
+            --tip-text: #81c784;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { 
-            background: var(--bg-body); 
-            font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif; 
-            padding: 1rem; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: var(--bg-body);
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;
+            padding: 1rem;
             color: var(--info-text);
             transition: background 0.2s, color 0.2s;
         }
-        .container { 
-            max-width: 1800px; 
-            margin: 0 auto; 
-            background: var(--bg-container); 
-            border-radius: 16px; 
-            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.1); 
-            overflow: hidden; 
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: var(--bg-container);
+            border-radius: 16px;
+            box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
-        .header { 
-            background: var(--header-bg); 
-            color: var(--header-text); 
-            padding: 1.2rem 1.5rem; 
+        .header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 1.2rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 0.8rem;
         }
-        .header h1 { font-size: 1.6rem; font-weight: 600; line-height: 1.3; }
-        .header p { margin-top: 0.4rem; opacity: 0.9; font-size: 0.9rem; line-height: 1.4; }
-        .theme-switcher { display: flex; gap: 0.5rem; flex-shrink: 0; }
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .header p {
+            margin-top: 0.4rem;
+            opacity: 0.9;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .theme-switcher {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
         .theme-btn {
             background: var(--btn-bg);
             color: var(--btn-text);
@@ -146,47 +187,95 @@
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
-        .config-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; table-layout: fixed; }
-        .config-table th { 
-            text-align: left; 
-            background: var(--th-bg); 
-            padding: 0.8rem 0.6rem; 
-            font-weight: 600; 
-            position: sticky; 
-            top: 0; 
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+            table-layout: fixed;
+        }
+        .config-table th {
+            text-align: left;
+            background: var(--th-bg);
+            padding: 0.8rem 0.6rem;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
             z-index: 10;
-            backdrop-filter: blur(4px); 
-            border-bottom: 2px solid var(--th-border); 
+            backdrop-filter: blur(4px);
+            border-bottom: 2px solid var(--th-border);
             color: var(--info-text);
         }
-        .config-table th:nth-child(1) { width: 60px; }
-        .config-table th:nth-child(2) { width: 45%; min-width: 300px; }
-        .config-table th:nth-child(3) { width: 49%; min-width: 300px; }
-        .config-table td { 
-            padding: 0.6rem 0.6rem; 
-            border-bottom: 1px solid var(--border-light); 
-            vertical-align: top; 
+        .config-table th:nth-child(1) {
+            width: 60px;
+        }
+        .config-table th:nth-child(2) {
+            width: 45%;
+            min-width: 300px;
+        }
+        .config-table th:nth-child(3) {
+            width: 49%;
+            min-width: 300px;
+        }
+        .config-table td {
+            padding: 0.6rem 0.6rem;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
             line-height: 1.5;
         }
-        .line-num { 
-            text-align: right; 
-            color: var(--line-num-text); 
-            background: var(--line-num-bg); 
-            user-select: none; 
-            font-family: monospace;
+        .config-table tr:hover td {
+            filter: brightness(0.97);
         }
-        .code-cell { 
-            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; 
-            white-space: pre-wrap; 
+        .line-num {
+            text-align: right;
+            color: var(--line-num-text);
+            background: var(--line-num-bg);
+            user-select: none;
+            font-family: monospace;
+            font-size: 0.72rem;
+            padding-right: 0.5rem !important;
+        }
+        .code-cell {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            white-space: pre-wrap;
             word-break: break-all;
-            color: var(--code-text); 
-            background: var(--code-bg); 
+            color: var(--code-text);
+            background: var(--code-bg);
             overflow-wrap: break-word;
         }
-        .comment-cell { 
-            color: var(--comment-text); 
-            background: var(--comment-bg); 
-            line-height: 1.6; 
+        .comment-cell {
+            color: var(--comment-text);
+            background: var(--comment-bg);
+            line-height: 1.6;
+        }
+        .comment-cell .tag-highlight {
+            display: inline-block;
+            background: var(--highlight-bg);
+            border: 1px solid var(--highlight-border);
+            border-radius: 3px;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-right: 0.2rem;
+        }
+        .comment-cell .tag-warn {
+            display: inline-block;
+            background: var(--warn-bg);
+            color: var(--warn-text);
+            border-radius: 3px;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-right: 0.2rem;
+        }
+        .comment-cell .tag-tip {
+            display: inline-block;
+            background: var(--tip-bg);
+            color: var(--tip-text);
+            border-radius: 3px;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-right: 0.2rem;
         }
         .info-box {
             background: var(--info-bg);
@@ -205,1386 +294,1426 @@
             font-size: 0.9em;
             color: var(--code-text);
         }
+        .search-bar {
+            margin: 0.8rem 1rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .search-bar input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.5rem 0.8rem;
+            border: 2px solid var(--th-border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            background: var(--bg-container);
+            color: var(--info-text);
+            transition: border-color 0.2s;
+        }
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--btn-active-bg);
+        }
+        .search-bar .search-info {
+            font-size: 0.75rem;
+            color: var(--line-num-text);
+            white-space: nowrap;
+        }
+        .row-hidden {
+            display: none;
+        }
         @media (max-width: 768px) {
-            body { padding: 0.5rem; }
-            .header { padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
-            .header h1 { font-size: 1.25rem; }
-            .header p { font-size: 0.85rem; }
-            .config-table { font-size: 0.7rem; }
-            .config-table th, .config-table td { padding: 0.4rem 0.35rem; }
-            .config-table th:nth-child(1) { width: 45px; }
-            .config-table th:nth-child(2), .config-table th:nth-child(3) { width: 47.5%; min-width: 220px; }
-            .info-box { margin: 0.5rem; padding: 1rem; font-size: 0.8rem; }
+            body {
+                padding: 0.5rem;
+            }
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+            .header h1 {
+                font-size: 1.25rem;
+            }
+            .header p {
+                font-size: 0.85rem;
+            }
+            .config-table {
+                font-size: 0.7rem;
+            }
+            .config-table th,
+            .config-table td {
+                padding: 0.4rem 0.35rem;
+            }
+            .config-table th:nth-child(1) {
+                width: 45px;
+            }
+            .config-table th:nth-child(2),
+            .config-table th:nth-child(3) {
+                width: 47.5%;
+                min-width: 220px;
+            }
+            .info-box {
+                margin: 0.5rem;
+                padding: 1rem;
+                font-size: 0.8rem;
+            }
+            .search-bar {
+                margin: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <div>
-            <h1>📄 sing-box 完整配置逐行注释 (合成优化版)</h1>
-            <p>✅ 全功能增强版 · 内置DoT/DoH/ECH加密DNS · QUIC屏蔽 · 反欺诈规则 · 全平台适配</p>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>📄 sing-box 完整配置逐行注释（合成优化修复增强版）</h1>
+                <p>✅ 全功能增强版 · 内置DoT/DoH/ECH加密DNS · QUIC屏蔽 · 反欺诈规则 · 全平台适配 · 注释已全面修复与增强</p>
+            </div>
+            <div class="theme-switcher">
+                <button class="theme-btn active" data-theme="auto">🌓 自动</button>
+                <button class="theme-btn" data-theme="light">☀️ 亮色</button>
+                <button class="theme-btn" data-theme="dark">🌙 暗色</button>
+            </div>
         </div>
-        <div class="theme-switcher">
-            <button class="theme-btn active" data-theme="auto">🌓 自动</button>
-            <button class="theme-btn" data-theme="light">☀️ 亮色</button>
-            <button class="theme-btn" data-theme="dark">🌙 暗色</button>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="🔍 搜索配置代码或注释…（支持关键词、行号、标签名）">
+            <span class="search-info" id="search-info">共 <strong id="total-rows">0</strong> 行，匹配 <strong id="match-count">0</strong> 行</span>
+        </div>
+        <div class="table-wrapper">
+            <table class="config-table">
+                <thead>
+                    <tr>
+                        <th>行号</th>
+                        <th>配置代码</th>
+                        <th>注释 / 详细说明 / 引导</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
+        <div class="info-box">
+            <strong>📌 使用说明（增强版）：</strong><br>
+            1. 本表格完全基于 <strong>合成优化完整版</strong> 配置 1:1 生成，JSON 语法完全合规，可直接复制使用；<br>
+            2. 出站列表中已预留 <strong>2 个 CF 优选节点模板</strong>，需自行替换 <code>CF优选域名IP</code>、<code>uuid</code>、<code>/路径</code>、<code>节点域名</code> 为自有节点信息；<br>
+            3. 节点核心参数已统一配置模板，替换节点时仅需修改核心认证信息即可，支持一键扩展更多节点；<br>
+            4. <strong>⭐ ECS 客户端子网配置</strong>：配置中的 <code>"client_subnet": "119.134.100.0/24"</code> 为广东茂名示例 IP。你需要<strong>关闭代理</strong>后访问 ip.sb 等网站获取当前公网 IP，然后将 <code>119.134.100.0</code> 替换为你的公网 IP 段（保留 /24 子网掩码）。例如公网 IP 为 203.0.113.5，则填入 <code>"203.0.113.0/24"</code>；<br>
+            5. 内置双广告拦截、国内直连、代理分流、FakeIP 优化、QUIC 屏蔽、STUN 穿透拦截、反欺诈拦截等规则，适配 Windows/Mac/Android/iOS 全平台；<br>
+            6. 新增 WiFi SSID/BSSID 智能分流、DoT/DoH/QUIC 多协议加密 DNS、hosts 静态解析、内存优化限制、GCM 推送专属分流等增强功能；<br>
+            7. 复制表格中「配置代码」列的完整内容，可直接导入 sing-box 客户端使用（仅需替换节点信息和 ECS 子网为自身网段）；<br>
+            8. <strong>🔍 搜索功能</strong>：使用顶部搜索框可快速定位配置项，支持搜索配置代码、注释内容、标签名、行号等。
         </div>
     </div>
-    <div class="table-wrapper">
-        <table class="config-table">
-            <thead>
-                <tr>
-                    <th>行号</th>
-                    <th>配置代码</th>
-                    <th>注释 / 详细说明</th>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-                <!-- 动态生成 -->
-            </tbody>
-        </table>
-    </div>
-    <div class="info-box">
-        <strong>📌 使用说明：</strong><br>
-        1. 本表格完全基于 <code>合成.txt</code> 1:1生成，字段无任何遗漏、JSON语法完全合规，可直接复制使用；<br>
-        2. 出站列表中已预留2个CF优选节点模板，需自行替换 <code>CF优选域名IP</code>、<code>uuid</code>、<code>/路径</code>、<code>节点域名</code> 为自有节点信息；<br>
-        3. 节点核心参数已统一配置模板，替换节点时仅需修改核心认证信息即可，支持一键扩展更多节点；<br>
-        4. <strong>⭐ ECS 客户端子网配置</strong>：配置中的 <code>"client_subnet": "119.134.100.0/24"</code> 为广东茂名示例IP。你需要<strong>关闭代理</strong>后访问 ip.sb 等网站获取当前公网IP，然后将 <code>119.134.100.0</code> 替换为你的公网IP段（保留 /24 子网掩码）。例如公网IP为 203.0.113.5，则填入 <code>"203.0.113.0/24"</code>；<br>
-        5. 内置双广告拦截、国内直连、代理分流、FakeIP优化、QUIC屏蔽、STUN穿透拦截、反欺诈拦截等规则，适配Windows/Mac/Android/iOS全平台；<br>
-        6. 新增WiFi SSID/BSSID智能分流、DoT/DoH/QUIC多协议加密DNS、hosts静态解析、内存优化限制、GCM推送专属分流等增强功能；<br>
-        7. 复制表格中「配置代码」列的完整内容，可直接导入 sing-box 客户端使用（仅需替换节点信息和ECS子网为自身网段）。
-    </div>
-</div>
-<script>
-(function() {
-    // ----- 合成.txt 完整配置内容 (1:1完全还原，JSON语法完全合规，无任何错误) -----
-    const configLines = [
-        "{",
-        "  \"log\": {",
-        "    \"level\": \"trace\",",
-        "    \"timestamp\": true",
-        "  },",
-        "  \"ntp\": {",
-        "    \"enabled\": true,",
-        "    \"server\": \"ntp.aliyun.com\",",
-        "    \"server_port\": 123,",
-        "    \"interval\": \"30m\",",
-        "    \"detour\": \"DIRECT\"",
-        "  },",
-        "  \"dns\": {",
-        "    \"servers\": [",
-        "      {",
-        "        \"tag\": \"local\",",
-        "        \"type\": \"local\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"hosts_fix\",",
-        "        \"type\": \"hosts\",",
-        "        \"predefined\": {",
-        "          \"dns.huaweicloud.com\": [\"180.163.150.33\", \"180.163.151.33\"],",
-        "          \"dns.alidns.com\": [\"223.5.5.5\", \"223.6.6.6\"],",
-        "          \"doh.pub\": [\"1.12.12.21\", \"120.53.53.53\"],",
-        "          \"dns.google\": [\"8.8.8.8\", \"8.8.4.4\"],",
-        "          \"cloudflare-dns.com\": [\"104.16.248.249\", \"104.16.249.249\"],",
-        "          \"mtalk.google.com\": [\"142.250.107.188\", \"142.251.170.188\", \"108.177.125.188\"],",
-        "          \"alt1-mtalk.google.com\": [\"2607:f8b0:4023:1c05::bc\", \"74.125.200.188\"],",
-        "          \"dl.google.com\": [\"180.163.151.161\"],",
-        "          \"dl.l.google.com\": [\"180.163.150.33\"]",
-        "        }",
-        "      },",
-        "      {",
-        "        \"tag\": \"alidns-dot\",",
-        "        \"type\": \"tls\",",
-        "        \"server\": \"dns.alidns.com\",",
-        "        \"server_port\": 853,",
-        "        \"domain_resolver\": \"hosts_fix\",",
-        "        \"detour\": \"DIRECT\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"alidns-quic\",",
-        "        \"type\": \"quic\",",
-        "        \"server\": \"dns.alidns.com\",",
-        "        \"domain_resolver\": \"hosts_fix\",",
-        "        \"detour\": \"DIRECT\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"ggdns\",",
-        "        \"type\": \"https\",",
-        "        \"server\": \"dns.google\",",
-        "        \"domain_resolver\": \"hosts_fix\",",
-        "        \"detour\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"doh-ech\",",
-        "        \"type\": \"https\",",
-        "        \"server\": \"dns.google\",",
-        "        \"path\": \"/dns-query\",",
-        "        \"detour\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"fakeip\",",
-        "        \"type\": \"fakeip\",",
-        "        \"inet4_range\": \"198.18.0.0/15\"",
-        "      }",
-        "    ],",
-        "    \"rules\": [",
-        "      {",
-        "        \"domain_suffix\": [",
-        "          \".local\",",
-        "          \".lan\",",
-        "          \"miwifi.com\",",
-        "          \"tplogin.cn\",",
-        "          \"router.asus.com\",",
-        "          \"tendawifi.com\",",
-        "          \"tplinkwifi.net\",",
-        "          \"hm.baidu.com\",",
-        "          \"tracking.miui.com\",",
-        "          \"douyinvod.com\",",
-        "          \"douyincdn.com\",",
-        "          \"ixigua.com\",",
-        "          \"pstatp.com\",",
-        "          \"bytecdn.com\",",
-        "          \"volccdn.com\",",
-        "          \"dl.delivery.mp.microsoft.com\",",
-        "          \"update.microsoft.com\",",
-        "          \"windowsupdate.com\",",
-        "          \"speedtest.net\",",
-        "          \"fast.com\",",
-        "          \"zhihu.com\",",
-        "          \"zhimg.com\",",
-        "          \"jd.com\",",
-        "          \"360buyimg.com\",",
-        "          \"xfyun.cn\",",
-        "          \"dashscope.aliyuncs.com\",",
-        "          \"api.moonshot.cn\",",
-        "          \"api.baichuan-ai.com\",",
-        "          \"api.minimax.chat\",",
-        "          \"api.sensenova.cn\",",
-        "          \"api.iflytek.com\",",
-        "          \"api.bilibili.com\",",
-        "          \"www.bilibili.com\",",
-        "          \"xinghuo.xfyun.cn\",",
-        "          \"chatglm.cn\",",
-        "          \"bigmodel.cn\",",
-        "          \"volces.com\",",
-        "          \"lingyiwanwu.com\",",
-        "          \"stepfun.com\",",
-        "          \"chat.deepseek.com\",",
-        "          \"www.deepseek.com\",",
-        "          \"zhipuai.cn\",",
-        "          \"market.xiaomi.com\"",
-        "        ],",
-        "        \"server\": \"alidns-quic\"",
-        "      },",
-        "      {",
-        "        \"domain_suffix\": [\"lancache.steamcontent.com\"],",
-        "        \"server\": \"local\"",
-        "      },",
-        "      {",
-        "        \"domain_suffix\": [",
-        "          \"steamcontent.com\",",
-        "          \"steamserver.net\",",
-        "          \"epicgames.com\",",
-        "          \"gog.com\",",
-        "          \"battle.net\",",
-        "          \"blizzard.com\",",
-        "          \"origin.com\",",
-        "          \"ea.com\",",
-        "          \"ubisoft.com\",",
-        "          \"rockstargames.com\",",
-        "          \"play.google.com\",",
-        "          \"ggpht.com\",",
-        "          \"googleusercontent.com\",",
-        "          \"android.com\",",
-        "          \"app-measurement.com\",",
-        "          \"firebaselogging.googleapis.com\",",
-        "          \"firebaselogging-pa.googleapis.com\",",
-        "          \"beacons.gvt2.com\",",
-        "          \"beacons2.gvt2.com\",",
-        "          \"beacons3.gvt2.com\"",
-        "        ],",
-        "        \"server\": \"fakeip\"",
-        "      },",
-        "      {",
-        "        \"domain_suffix\": [\"cvb.372164885.xyz\"],",
-        "        \"server\": \"doh-ech\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": [\"geosite_adguard\", \"geosite-category-ads-all\"],",
-        "        \"action\": \"reject\"",
-        "      },",
-        "      {",
-        "        \"query_type\": [\"SVCB\", \"HTTPS\"],",
-        "        \"action\": \"reject\"",
-        "      },",
-        "      {",
-        "        \"query_type\": [\"PTR\"],",
-        "        \"action\": \"reject\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": [\"proxy\", \"games\", \"ai\"],",
-        "        \"query_type\": [\"A\", \"AAAA\"],",
-        "        \"server\": \"fakeip\",",
-        "        \"rewrite_ttl\": 300,",
-        "        \"client_subnet\": \"119.134.100.0/24\"",
-        "      },",
-        "      {",
-        "        \"domain_suffix\": [\".cn\", \".com.cn\"],",
-        "        \"server\": \"alidns-dot\"",
-        "      },",
-        "      {",
-        "        \"action\": \"evaluate\",",
-        "        \"server\": \"alidns-quic\"",
-        "      },",
-        "      {",
-        "        \"match_response\": true,",
-        "        \"rule_set\": \"cnip\",",
-        "        \"action\": \"route\",",
-        "        \"server\": \"local\"",
-        "      },",
-        "      {",
-        "        \"match_response\": true,",
-        "        \"action\": \"respond\"",
-        "      }",
-        "    ],",
-        "    \"final\": \"alidns-dot\",",
-        "    \"strategy\": \"prefer_ipv4\",",
-        "    \"reverse_mapping\": true,",
-        "    \"cache_capacity\": 65536,",
-        "    \"optimistic\": true",
-        "  },",
-        "  \"inbounds\": [",
-        "    {",
-        "      \"type\": \"tun\",",
-        "      \"tag\": \"tun-in\",",
-        "      \"address\": [\"10.8.0.1/24\"],",
-        "      \"mtu\": 1500,",
-        "      \"stack\": \"mixed\",",
-        "      \"auto_route\": true,",
-        "      \"strict_route\": true",
-        "    },",
-        "    {",
-        "      \"type\": \"mixed\",",
-        "      \"tag\": \"mixed-in\",",
-        "      \"listen\": \"127.0.0.1\",",
-        "      \"listen_port\": 7890",
-        "    }",
-        "  ],",
-        "  \"outbounds\": [",
-        "    {",
-        "      \"type\": \"direct\",",
-        "      \"tag\": \"DIRECT\",",
-        "      \"domain_resolver\": \"alidns-quic\"",
-        "    },",
-        "    {",
-        "      \"type\": \"selector\",",
-        "      \"tag\": \"PROXY\",",
-        "      \"outbounds\": [",
-        "        \"AUTO\",",
-        "        \"🚀 CF-优选-Visa\",",
-        "        \"🚀 CF-优选-DO\",",
-        "        \"DIRECT\"",
-        "      ],",
-        "      \"default\": \"AUTO\",",
-        "      \"interrupt_exist_connections\": false",
-        "    },",
-        "    {",
-        "      \"type\": \"urltest\",",
-        "      \"tag\": \"AUTO\",",
-        "      \"outbounds\": [",
-        "        \"🚀 CF-优选-Visa\",",
-        "        \"🚀 CF-优选-DO\"",
-        "      ],",
-        "      \"url\": \"http://cp.cloudflare.com/\",",
-        "      \"interval\": \"10m\",",
-        "      \"tolerance\": 50,",
-        "      \"idle_timeout\": \"30m\",",
-        "      \"interrupt_exist_connections\": false",
-        "    },",
-        "    {",
-        "      \"type\": \"selector\",",
-        "      \"tag\": \"GLOBAL\",",
-        "      \"outbounds\": [\"PROXY\", \"DIRECT\"],",
-        "      \"default\": \"PROXY\",",
-        "      \"interrupt_exist_connections\": false",
-        "    },",
-        "    {",
-        "      \"type\": \"selector\",",
-        "      \"tag\": \"CN\",",
-        "      \"outbounds\": [\"DIRECT\", \"PROXY\"],",
-        "      \"default\": \"DIRECT\",",
-        "      \"interrupt_exist_connections\": false",
-        "    },",
-        "    {",
-        "      \"type\": \"vless\",",
-        "      \"tag\": \"🚀 CF-优选-Visa\",",
-        "      \"server\": \"CF优选域名IP\",",
-        "      \"server_port\": 443,",
-        "      \"uuid\": \"uuid\",",
-        "      \"domain_resolver\": \"alidns-quic\",",
-        "      \"transport\": {",
-        "        \"type\": \"ws\",",
-        "        \"path\": \"/路径\",",
-        "        \"headers\": { \"Host\": \"节点域名\" }",
-        "      },",
-        "      \"tls\": {",
-        "        \"enabled\": true,",
-        "        \"server_name\": \"节点域名\",",
-        "        \"utls\": { \"enabled\": true, \"fingerprint\": \"chrome\" },",
-        "        \"alpn\": [\"http/1.1\"],",
-        "        \"ech\": { \"enabled\": false }",
-        "      }",
-        "    },",
-        "    {",
-        "      \"type\": \"vless\",",
-        "      \"tag\": \"🚀 CF-优选-DO\",",
-        "      \"server\": \"CF优选域名IP\",",
-        "      \"server_port\": 443,",
-        "      \"uuid\": \"uuid\",",
-        "      \"domain_resolver\": \"alidns-quic\",",
-        "      \"transport\": {",
-        "        \"type\": \"ws\",",
-        "        \"path\": \"/路径\",",
-        "        \"headers\": { \"Host\": \"节点域名\" }",
-        "      },",
-        "      \"tls\": {",
-        "        \"enabled\": true,",
-        "        \"server_name\": \"节点域名\",",
-        "        \"utls\": { \"enabled\": true, \"fingerprint\": \"chrome\" },",
-        "        \"alpn\": [\"http/1.1\"],",
-        "        \"ech\": { \"enabled\": false }",
-        "      }",
-        "    }",
-        "  ],",
-        "  \"http_clients\": [",
-        "    {",
-        "      \"tag\": \"default\",",
-        "      \"detour\": \"PROXY\"",
-        "    }",
-        "  ],",
-        "  \"route\": {",
-        "    \"default_domain_resolver\": \"alidns-quic\",",
-        "    \"rules\": [",
-        "      {",
-        "        \"type\": \"logical\",",
-        "        \"mode\": \"and\",",
-        "        \"rules\": [",
-        "          { \"protocol\": \"quic\" },",
-        "          { \"port\": 443 }",
-        "        ],",
-        "        \"action\": \"reject\"",
-        "      },",
-        "      {",
-        "        \"wifi_ssid\": [\"MyHomeWiFi\"],",
-        "        \"outbound\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"wifi_bssid\": [\"00:11:22:33:44:55\"],",
-        "        \"outbound\": \"DIRECT\"",
-        "      },",
-        "      {",
-        "        \"type\": \"logical\",",
-        "        \"mode\": \"or\",",
-        "        \"rules\": [",
-        "          { \"port\": 53 },",
-        "          { \"protocol\": \"dns\" }",
-        "        ],",
-        "        \"action\": \"hijack-dns\"",
-        "      },",
-        "      {",
-        "        \"action\": \"sniff\"",
-        "      },",
-        "      {",
-        "        \"type\": \"logical\",",
-        "        \"mode\": \"or\",",
-        "        \"rules\": [",
-        "          { \"network\": \"udp\", \"port\": [3478, 5349, 5350, 19302, 10000] },",
-        "          { \"domain_regex\": \"^stun\\\\..+\" },",
-        "          { \"domain_keyword\": [\"stun\", \"turn\", \"httpdns\"] },",
-        "          { \"protocol\": \"stun\" }",
-        "        ],",
-        "        \"action\": \"reject\"",
-        "      },",
-        "      {",
-        "        \"domain_keyword\": [\"ntp\", \"time\"],",
-        "        \"network\": \"udp\",",
-        "        \"port\": 123,",
-        "        \"outbound\": \"DIRECT\"",
-        "      },",
-        "      {",
-        "        \"type\": \"logical\",",
-        "        \"mode\": \"and\",",
-        "        \"rules\": [",
-        "          {",
-        "            \"domain_suffix\": [",
-        "              \"mtalk.google.com\",",
-        "              \"alt1-mtalk.google.com\",",
-        "              \"alt2-mtalk.google.com\",",
-        "              \"alt3-mtalk.google.com\",",
-        "              \"alt4-mtalk.google.com\",",
-        "              \"alt5-mtalk.google.com\",",
-        "              \"alt6-mtalk.google.com\",",
-        "              \"alt7-mtalk.google.com\",",
-        "              \"alt8-mtalk.google.com\"",
-        "            ]",
-        "          },",
-        "          { \"port\": [443, 5228] }",
-        "        ],",
-        "        \"outbound\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": \"anti_fraud\",",
-        "        \"action\": \"reject\"",
-        "      },",
-        "      {",
-        "        \"ip_is_private\": true,",
-        "        \"outbound\": \"DIRECT\"",
-        "      },",
-        "      {",
-        "        \"ip_cidr\": [\"198.18.0.0/15\"],",
-        "        \"outbound\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": [\"geosite_adguard\", \"geosite-category-ads-all\"],",
-        "        \"action\": \"reject\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": \"geosite-google\",",
-        "        \"outbound\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": \"proxy\",",
-        "        \"outbound\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": \"games\",",
-        "        \"outbound\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": \"ai\",",
-        "        \"outbound\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": [",
-        "          \"private\",",
-        "          \"cn\",",
-        "          \"microsoft-cn\",",
-        "          \"apple-cn\",",
-        "          \"google-cn\",",
-        "          \"games-cn\",",
-        "          \"networktest\"",
-        "        ],",
-        "        \"outbound\": \"DIRECT\"",
-        "      },",
-        "      {",
-        "        \"action\": \"resolve\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": \"telegramip\",",
-        "        \"outbound\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"rule_set\": \"cnip\",",
-        "        \"outbound\": \"DIRECT\"",
-        "      },",
-        "      {",
-        "        \"package_name\": [",
-        "          \"com.google.android.youtube\",",
-        "          \"app.revanced.android.youtube\"",
-        "        ],",
-        "        \"outbound\": \"PROXY\"",
-        "      },",
-        "      {",
-        "        \"package_name\": [",
-        "          \"org.telegram.messenger\",",
-        "          \"org.telegram.messenger.beta\"",
-        "        ],",
-        "        \"outbound\": \"PROXY\"",
-        "      }",
-        "    ],",
-        "    \"rule_set\": [",
-        "      {",
-        "        \"tag\": \"geosite-category-ads-all\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-category-ads-all.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"geosite_adguard\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"geosite-google\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-google.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"geosite-youtube\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-youtube.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"proxy\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"games\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"ai\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ai.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"private\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"anti_fraud\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"source\",",
-        "        \"url\": \"https://raw.githubusercontent.com/hwsaya/nothing/refs/heads/main/rules/FuckFZ.json\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"cn\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"microsoft-cn\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/microsoft-cn.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"apple-cn\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/apple-cn.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"google-cn\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/google-cn.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"games-cn\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games-cn.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"networktest\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/networktest.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"telegramip\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      },",
-        "      {",
-        "        \"tag\": \"cnip\",",
-        "        \"type\": \"remote\",",
-        "        \"format\": \"binary\",",
-        "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs\",",
-        "        \"http_client\": \"default\",",
-        "        \"update_interval\": \"48h\"",
-        "      }",
-        "    ],",
-        "    \"final\": \"PROXY\",",
-        "    \"auto_detect_interface\": true",
-        "  },",
-        "  \"experimental\": {",
-        "    \"clash_api\": {",
-        "      \"external_controller\": \"127.0.0.1:9090\",",
-        "      \"external_ui\": \"ui\",",
-        "      \"external_ui_download_url\": \"https://github.com/MetaCubeX/metacubexd/releases/latest/download/metacubexd.zip\",",
-        "      \"external_ui_download_detour\": \"PROXY\",",
-        "      \"secret\": \"kSDuU2WHyf72taGMdDS0ib6klwFVF5QIM4HGhS5f4Jw=\",",
-        "      \"default_mode\": \"rule\"",
-        "    },",
-        "    \"cache_file\": {",
-        "      \"enabled\": true,",
-        "      \"path\": \"cache.db\",",
-        "      \"cache_id\": \"cinchov\",",
-        "      \"store_dns\": true,",
-        "      \"store_fakeip\": true",
-        "    },",
-        "    \"debug\": {",
-        "      \"gc_percent\": 50,",
-        "      \"memory_limit\": \"200MB\"",
-        "    }",
-        "  }",
-        "}"
-    ];
+    <script>
+        (function() {
+            // ==================== 配置代码行数组（1:1 完全还原 JSON 配置） ====================
+            const configLines = [
+                "{",
+                "  \"log\": {",
+                "    \"level\": \"trace\",",
+                "    \"timestamp\": true",
+                "  },",
+                "  \"ntp\": {",
+                "    \"enabled\": true,",
+                "    \"server\": \"ntp.aliyun.com\",",
+                "    \"server_port\": 123,",
+                "    \"interval\": \"30m\",",
+                "    \"detour\": \"DIRECT\"",
+                "  },",
+                "  \"dns\": {",
+                "    \"servers\": [",
+                "      {",
+                "        \"tag\": \"local\",",
+                "        \"type\": \"local\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"hosts_fix\",",
+                "        \"type\": \"hosts\",",
+                "        \"predefined\": {",
+                "          \"dns.huaweicloud.com\": [\"180.163.150.33\", \"180.163.151.33\"],",
+                "          \"dns.alidns.com\": [\"223.5.5.5\", \"223.6.6.6\"],",
+                "          \"doh.pub\": [\"1.12.12.21\", \"120.53.53.53\"],",
+                "          \"dns.google\": [\"8.8.8.8\", \"8.8.4.4\"],",
+                "          \"cloudflare-dns.com\": [\"104.16.248.249\", \"104.16.249.249\"],",
+                "          \"mtalk.google.com\": [\"142.250.107.188\", \"142.251.170.188\", \"108.177.125.188\"],",
+                "          \"alt1-mtalk.google.com\": [\"2607:f8b0:4023:1c05::bc\", \"74.125.200.188\"],",
+                "          \"dl.google.com\": [\"180.163.151.161\"],",
+                "          \"dl.l.google.com\": [\"180.163.150.33\"]",
+                "        }",
+                "      },",
+                "      {",
+                "        \"tag\": \"alidns-dot\",",
+                "        \"type\": \"tls\",",
+                "        \"server\": \"dns.alidns.com\",",
+                "        \"server_port\": 853,",
+                "        \"domain_resolver\": \"hosts_fix\",",
+                "        \"detour\": \"DIRECT\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"alidns-quic\",",
+                "        \"type\": \"quic\",",
+                "        \"server\": \"dns.alidns.com\",",
+                "        \"domain_resolver\": \"hosts_fix\",",
+                "        \"detour\": \"DIRECT\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"ggdns\",",
+                "        \"type\": \"https\",",
+                "        \"server\": \"dns.google\",",
+                "        \"domain_resolver\": \"hosts_fix\",",
+                "        \"detour\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"doh-ech\",",
+                "        \"type\": \"https\",",
+                "        \"server\": \"dns.google\",",
+                "        \"path\": \"/dns-query\",",
+                "        \"detour\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"fakeip\",",
+                "        \"type\": \"fakeip\",",
+                "        \"inet4_range\": \"198.18.0.0/15\"",
+                "      }",
+                "    ],",
+                "    \"rules\": [",
+                "      {",
+                "        \"domain_suffix\": [",
+                "          \".local\",",
+                "          \".lan\",",
+                "          \"miwifi.com\",",
+                "          \"tplogin.cn\",",
+                "          \"router.asus.com\",",
+                "          \"tendawifi.com\",",
+                "          \"tplinkwifi.net\",",
+                "          \"hm.baidu.com\",",
+                "          \"tracking.miui.com\",",
+                "          \"douyinvod.com\",",
+                "          \"douyincdn.com\",",
+                "          \"ixigua.com\",",
+                "          \"pstatp.com\",",
+                "          \"bytecdn.com\",",
+                "          \"volccdn.com\",",
+                "          \"dl.delivery.mp.microsoft.com\",",
+                "          \"update.microsoft.com\",",
+                "          \"windowsupdate.com\",",
+                "          \"speedtest.net\",",
+                "          \"fast.com\",",
+                "          \"zhihu.com\",",
+                "          \"zhimg.com\",",
+                "          \"jd.com\",",
+                "          \"360buyimg.com\",",
+                "          \"xfyun.cn\",",
+                "          \"dashscope.aliyuncs.com\",",
+                "          \"api.moonshot.cn\",",
+                "          \"api.baichuan-ai.com\",",
+                "          \"api.minimax.chat\",",
+                "          \"api.sensenova.cn\",",
+                "          \"api.iflytek.com\",",
+                "          \"api.bilibili.com\",",
+                "          \"www.bilibili.com\",",
+                "          \"xinghuo.xfyun.cn\",",
+                "          \"chatglm.cn\",",
+                "          \"bigmodel.cn\",",
+                "          \"volces.com\",",
+                "          \"lingyiwanwu.com\",",
+                "          \"stepfun.com\",",
+                "          \"chat.deepseek.com\",",
+                "          \"www.deepseek.com\",",
+                "          \"zhipuai.cn\",",
+                "          \"market.xiaomi.com\"",
+                "        ],",
+                "        \"server\": \"alidns-quic\"",
+                "      },",
+                "      {",
+                "        \"domain_suffix\": [\"lancache.steamcontent.com\"],",
+                "        \"server\": \"local\"",
+                "      },",
+                "      {",
+                "        \"domain_suffix\": [",
+                "          \"steamcontent.com\",",
+                "          \"steamserver.net\",",
+                "          \"epicgames.com\",",
+                "          \"gog.com\",",
+                "          \"battle.net\",",
+                "          \"blizzard.com\",",
+                "          \"origin.com\",",
+                "          \"ea.com\",",
+                "          \"ubisoft.com\",",
+                "          \"rockstargames.com\",",
+                "          \"play.google.com\",",
+                "          \"ggpht.com\",",
+                "          \"googleusercontent.com\",",
+                "          \"android.com\",",
+                "          \"app-measurement.com\",",
+                "          \"firebaselogging.googleapis.com\",",
+                "          \"firebaselogging-pa.googleapis.com\",",
+                "          \"beacons.gvt2.com\",",
+                "          \"beacons2.gvt2.com\",",
+                "          \"beacons3.gvt2.com\"",
+                "        ],",
+                "        \"server\": \"fakeip\"",
+                "      },",
+                "      {",
+                "        \"domain_suffix\": [\"cvb.372164885.xyz\"],",
+                "        \"server\": \"doh-ech\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": [\"geosite_adguard\", \"geosite-category-ads-all\"],",
+                "        \"action\": \"reject\"",
+                "      },",
+                "      {",
+                "        \"query_type\": [\"SVCB\", \"HTTPS\"],",
+                "        \"action\": \"reject\"",
+                "      },",
+                "      {",
+                "        \"query_type\": [\"PTR\"],",
+                "        \"action\": \"reject\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": [\"proxy\", \"games\", \"ai\"],",
+                "        \"query_type\": [\"A\", \"AAAA\"],",
+                "        \"server\": \"fakeip\",",
+                "        \"rewrite_ttl\": 300,",
+                "        \"client_subnet\": \"119.134.100.0/24\"",
+                "      },",
+                "      {",
+                "        \"domain_suffix\": [\".cn\", \".com.cn\"],",
+                "        \"server\": \"alidns-dot\"",
+                "      },",
+                "      {",
+                "        \"action\": \"evaluate\",",
+                "        \"server\": \"alidns-quic\"",
+                "      },",
+                "      {",
+                "        \"match_response\": true,",
+                "        \"rule_set\": \"cnip\",",
+                "        \"action\": \"route\",",
+                "        \"server\": \"local\"",
+                "      },",
+                "      {",
+                "        \"match_response\": true,",
+                "        \"action\": \"respond\"",
+                "      }",
+                "    ],",
+                "    \"final\": \"alidns-dot\",",
+                "    \"strategy\": \"prefer_ipv4\",",
+                "    \"reverse_mapping\": true,",
+                "    \"cache_capacity\": 65536,",
+                "    \"optimistic\": true",
+                "  },",
+                "  \"inbounds\": [",
+                "    {",
+                "      \"type\": \"tun\",",
+                "      \"tag\": \"tun-in\",",
+                "      \"address\": [\"10.8.0.1/24\"],",
+                "      \"mtu\": 1500,",
+                "      \"stack\": \"mixed\",",
+                "      \"auto_route\": true,",
+                "      \"strict_route\": true",
+                "    },",
+                "    {",
+                "      \"type\": \"mixed\",",
+                "      \"tag\": \"mixed-in\",",
+                "      \"listen\": \"127.0.0.1\",",
+                "      \"listen_port\": 7890",
+                "    }",
+                "  ],",
+                "  \"outbounds\": [",
+                "    {",
+                "      \"type\": \"direct\",",
+                "      \"tag\": \"DIRECT\",",
+                "      \"domain_resolver\": \"alidns-quic\"",
+                "    },",
+                "    {",
+                "      \"type\": \"selector\",",
+                "      \"tag\": \"PROXY\",",
+                "      \"outbounds\": [",
+                "        \"AUTO\",",
+                "        \"🚀 CF-优选-Visa\",",
+                "        \"🚀 CF-优选-DO\",",
+                "        \"DIRECT\"",
+                "      ],",
+                "      \"default\": \"AUTO\",",
+                "      \"interrupt_exist_connections\": false",
+                "    },",
+                "    {",
+                "      \"type\": \"urltest\",",
+                "      \"tag\": \"AUTO\",",
+                "      \"outbounds\": [",
+                "        \"🚀 CF-优选-Visa\",",
+                "        \"🚀 CF-优选-DO\"",
+                "      ],",
+                "      \"url\": \"http://cp.cloudflare.com/\",",
+                "      \"interval\": \"10m\",",
+                "      \"tolerance\": 50,",
+                "      \"idle_timeout\": \"30m\",",
+                "      \"interrupt_exist_connections\": false",
+                "    },",
+                "    {",
+                "      \"type\": \"selector\",",
+                "      \"tag\": \"GLOBAL\",",
+                "      \"outbounds\": [\"PROXY\", \"DIRECT\"],",
+                "      \"default\": \"PROXY\",",
+                "      \"interrupt_exist_connections\": false",
+                "    },",
+                "    {",
+                "      \"type\": \"selector\",",
+                "      \"tag\": \"CN\",",
+                "      \"outbounds\": [\"DIRECT\", \"PROXY\"],",
+                "      \"default\": \"DIRECT\",",
+                "      \"interrupt_exist_connections\": false",
+                "    },",
+                "    {",
+                "      \"type\": \"vless\",",
+                "      \"tag\": \"🚀 CF-优选-Visa\",",
+                "      \"server\": \"CF优选域名IP\",",
+                "      \"server_port\": 443,",
+                "      \"uuid\": \"uuid\",",
+                "      \"domain_resolver\": \"alidns-quic\",",
+                "      \"transport\": {",
+                "        \"type\": \"ws\",",
+                "        \"path\": \"/路径\",",
+                "        \"headers\": { \"Host\": \"节点域名\" }",
+                "      },",
+                "      \"tls\": {",
+                "        \"enabled\": true,",
+                "        \"server_name\": \"节点域名\",",
+                "        \"utls\": { \"enabled\": true, \"fingerprint\": \"chrome\" },",
+                "        \"alpn\": [\"http/1.1\"],",
+                "        \"ech\": { \"enabled\": false }",
+                "      }",
+                "    },",
+                "    {",
+                "      \"type\": \"vless\",",
+                "      \"tag\": \"🚀 CF-优选-DO\",",
+                "      \"server\": \"CF优选域名IP\",",
+                "      \"server_port\": 443,",
+                "      \"uuid\": \"uuid\",",
+                "      \"domain_resolver\": \"alidns-quic\",",
+                "      \"transport\": {",
+                "        \"type\": \"ws\",",
+                "        \"path\": \"/路径\",",
+                "        \"headers\": { \"Host\": \"节点域名\" }",
+                "      },",
+                "      \"tls\": {",
+                "        \"enabled\": true,",
+                "        \"server_name\": \"节点域名\",",
+                "        \"utls\": { \"enabled\": true, \"fingerprint\": \"chrome\" },",
+                "        \"alpn\": [\"http/1.1\"],",
+                "        \"ech\": { \"enabled\": false }",
+                "      }",
+                "    }",
+                "  ],",
+                "  \"http_clients\": [",
+                "    {",
+                "      \"tag\": \"default\",",
+                "      \"detour\": \"PROXY\"",
+                "    }",
+                "  ],",
+                "  \"route\": {",
+                "    \"default_domain_resolver\": \"alidns-quic\",",
+                "    \"rules\": [",
+                "      {",
+                "        \"type\": \"logical\",",
+                "        \"mode\": \"and\",",
+                "        \"rules\": [",
+                "          { \"protocol\": \"quic\" },",
+                "          { \"port\": 443 }",
+                "        ],",
+                "        \"action\": \"reject\"",
+                "      },",
+                "      {",
+                "        \"wifi_ssid\": [\"MyHomeWiFi\"],",
+                "        \"outbound\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"wifi_bssid\": [\"00:11:22:33:44:55\"],",
+                "        \"outbound\": \"DIRECT\"",
+                "      },",
+                "      {",
+                "        \"type\": \"logical\",",
+                "        \"mode\": \"or\",",
+                "        \"rules\": [",
+                "          { \"port\": 53 },",
+                "          { \"protocol\": \"dns\" }",
+                "        ],",
+                "        \"action\": \"hijack-dns\"",
+                "      },",
+                "      {",
+                "        \"action\": \"sniff\"",
+                "      },",
+                "      {",
+                "        \"type\": \"logical\",",
+                "        \"mode\": \"or\",",
+                "        \"rules\": [",
+                "          { \"network\": \"udp\", \"port\": [3478, 5349, 5350, 19302, 10000] },",
+                "          { \"domain_regex\": \"^stun\\\\..+\" },",
+                "          { \"domain_keyword\": [\"stun\", \"turn\", \"httpdns\"] },",
+                "          { \"protocol\": \"stun\" }",
+                "        ],",
+                "        \"action\": \"reject\"",
+                "      },",
+                "      {",
+                "        \"domain_keyword\": [\"ntp\", \"time\"],",
+                "        \"network\": \"udp\",",
+                "        \"port\": 123,",
+                "        \"outbound\": \"DIRECT\"",
+                "      },",
+                "      {",
+                "        \"type\": \"logical\",",
+                "        \"mode\": \"and\",",
+                "        \"rules\": [",
+                "          {",
+                "            \"domain_suffix\": [",
+                "              \"mtalk.google.com\",",
+                "              \"alt1-mtalk.google.com\",",
+                "              \"alt2-mtalk.google.com\",",
+                "              \"alt3-mtalk.google.com\",",
+                "              \"alt4-mtalk.google.com\",",
+                "              \"alt5-mtalk.google.com\",",
+                "              \"alt6-mtalk.google.com\",",
+                "              \"alt7-mtalk.google.com\",",
+                "              \"alt8-mtalk.google.com\"",
+                "            ]",
+                "          },",
+                "          { \"port\": [443, 5228] }",
+                "        ],",
+                "        \"outbound\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": \"anti_fraud\",",
+                "        \"action\": \"reject\"",
+                "      },",
+                "      {",
+                "        \"ip_is_private\": true,",
+                "        \"outbound\": \"DIRECT\"",
+                "      },",
+                "      {",
+                "        \"ip_cidr\": [\"198.18.0.0/15\"],",
+                "        \"outbound\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": [\"geosite_adguard\", \"geosite-category-ads-all\"],",
+                "        \"action\": \"reject\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": \"geosite-google\",",
+                "        \"outbound\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": \"proxy\",",
+                "        \"outbound\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": \"games\",",
+                "        \"outbound\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": \"ai\",",
+                "        \"outbound\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": [",
+                "          \"private\",",
+                "          \"cn\",",
+                "          \"microsoft-cn\",",
+                "          \"apple-cn\",",
+                "          \"google-cn\",",
+                "          \"games-cn\",",
+                "          \"networktest\"",
+                "        ],",
+                "        \"outbound\": \"DIRECT\"",
+                "      },",
+                "      {",
+                "        \"action\": \"resolve\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": \"telegramip\",",
+                "        \"outbound\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"rule_set\": \"cnip\",",
+                "        \"outbound\": \"DIRECT\"",
+                "      },",
+                "      {",
+                "        \"package_name\": [",
+                "          \"com.google.android.youtube\",",
+                "          \"app.revanced.android.youtube\"",
+                "        ],",
+                "        \"outbound\": \"PROXY\"",
+                "      },",
+                "      {",
+                "        \"package_name\": [",
+                "          \"org.telegram.messenger\",",
+                "          \"org.telegram.messenger.beta\"",
+                "        ],",
+                "        \"outbound\": \"PROXY\"",
+                "      }",
+                "    ],",
+                "    \"rule_set\": [",
+                "      {",
+                "        \"tag\": \"geosite-category-ads-all\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-category-ads-all.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"geosite_adguard\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"geosite-google\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-google.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"geosite-youtube\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-youtube.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"proxy\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"games\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"ai\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ai.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"private\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"anti_fraud\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"source\",",
+                "        \"url\": \"https://raw.githubusercontent.com/hwsaya/nothing/refs/heads/main/rules/FuckFZ.json\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"cn\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"microsoft-cn\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/microsoft-cn.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"apple-cn\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/apple-cn.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"google-cn\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/google-cn.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"games-cn\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games-cn.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"networktest\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/networktest.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"telegramip\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      },",
+                "      {",
+                "        \"tag\": \"cnip\",",
+                "        \"type\": \"remote\",",
+                "        \"format\": \"binary\",",
+                "        \"url\": \"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs\",",
+                "        \"http_client\": \"default\",",
+                "        \"update_interval\": \"48h\"",
+                "      }",
+                "    ],",
+                "    \"final\": \"PROXY\",",
+                "    \"auto_detect_interface\": true",
+                "  },",
+                "  \"experimental\": {",
+                "    \"clash_api\": {",
+                "      \"external_controller\": \"127.0.0.1:9090\",",
+                "      \"external_ui\": \"ui\",",
+                "      \"external_ui_download_url\": \"https://github.com/MetaCubeX/metacubexd/releases/latest/download/metacubexd.zip\",",
+                "      \"external_ui_download_detour\": \"PROXY\",",
+                "      \"secret\": \"kSDuU2WHyf72taGMdDS0ib6klwFVF5QIM4HGhS5f4Jw=\",",
+                "      \"default_mode\": \"rule\"",
+                "    },",
+                "    \"cache_file\": {",
+                "      \"enabled\": true,",
+                "      \"path\": \"cache.db\",",
+                "      \"cache_id\": \"cinchov\",",
+                "      \"store_dns\": true,",
+                "      \"store_fakeip\": true",
+                "    },",
+                "    \"debug\": {",
+                "      \"gc_percent\": 50,",
+                "      \"memory_limit\": \"200MB\"",
+                "    }",
+                "  }",
+                "}"
+            ];
 
-    // 逐行注释数组（与configLines完全一一对应，无错位、无遗漏）
-    const comments = [
-        "sing-box 配置根对象，完整配置入口，适配合成优化版模板",
-        "日志系统配置块，控制日志输出行为，用于问题排查和运行状态监控",
-        "日志输出级别：trace，输出最详细的调试日志，可选值：panic/fatal/error/warn/info/debug/trace",
-        "开启日志时间戳，便于问题排查和日志回溯，精准定位事件发生时间",
-        "日志配置块结束",
-        "NTP网络时间同步配置块，保证系统时间准确，避免TLS证书验证失败导致节点无法连接",
-        "启用NTP时间同步功能",
-        "NTP服务器地址，使用阿里云公共NTP服务，国内访问稳定低延迟",
-        "NTP服务端口，标准UDP 123端口",
-        "时间同步间隔，每30分钟同步一次系统时间",
-        "NTP同步流量的转发出站，使用DIRECT直连，保证时间同步准确性",
-        "NTP配置块结束",
-        "DNS核心配置块，防污染、分流解析、缓存优化、加密DNS核心模块",
-        "DNS服务器列表，定义多个不同用途、不同协议的DNS解析源",
-        "本地DNS服务器配置，使用系统自带DNS服务",
-        "本地DNS的标签标识，用于规则中精准引用",
-        "DNS类型为local，使用系统本地默认DNS进行解析",
-        "本地DNS配置块结束",
-        "hosts静态解析配置，提前固定常用域名的IP地址，避免解析污染和延迟",
-        "hosts解析服务的标签标识，用于其他DNS服务引用",
-        "DNS类型为hosts，静态域名-IP映射服务",
-        "预定义的静态域名-IP映射列表",
-        "华为云DNS域名固定解析IP，国内低延迟直连",
-        "阿里云DNS域名固定解析IP，国内主流公共DNS",
-        "腾讯DNSPod域名固定解析IP，国内稳定公共DNS",
-        "Google DNS域名固定解析IP，境外防污染解析",
-        "Cloudflare DNS域名固定解析IP，境外主流防污染DNS",
-        "Google GCM推送域名固定解析IP，保证安卓推送稳定",
-        "Google备用推送域名固定解析IP",
-        "Google下载域名国内镜像IP，提升国内下载速度",
-        "Google备用下载域名国内镜像IP",
-        "预定义静态映射列表结束",
-        "hosts静态解析配置块结束",
-        "阿里云DoT加密DNS配置，TLS加密DNS请求，防窃听防污染",
-        "DoT DNS服务的标签标识，用于规则中引用",
-        "DNS类型为tls，即DoT协议，基于TLS的加密DNS",
-        "DoT服务器地址，阿里云官方DoT服务域名",
-        "DoT服务标准端口853",
-        "该DNS服务自身域名的解析器，使用hosts_fix静态解析，避免循环解析",
-        "该DNS请求的转发出站，使用DIRECT直连，国内低延迟访问",
-        "阿里云DoT DNS配置块结束",
-        "阿里云QUIC加密DNS配置，基于QUIC协议的DNS，低延迟抗丢包",
-        "QUIC DNS服务的标签标识，国内核心DNS服务",
-        "DNS类型为quic，基于QUIC协议的加密DNS，连接速度更快",
-        "QUIC DNS服务器地址，阿里云官方服务域名",
-        "该DNS服务自身域名的解析器，使用hosts_fix静态解析",
-        "该DNS请求的转发出站，使用DIRECT直连",
-        "阿里云QUIC DNS配置块结束",
-        "Google DoH加密DNS配置，HTTPS协议加密DNS，防污染核心服务",
-        "Google DoH服务的标签标识",
-        "DNS类型为https，即DoH协议，基于HTTPS的加密DNS",
-        "DoH服务器地址，Google官方公共DNS域名",
-        "该DNS服务自身域名的解析器，使用hosts_fix静态解析",
-        "该DNS请求的转发出站，使用PROXY代理保证可访问",
-        "Google DoH DNS配置块结束",
-        "带ECH加密的DoH DNS配置，强化加密防探测，用于节点域名解析",
-        "ECH DoH服务的标签标识",
-        "DNS类型为https，DoH协议",
-        "DoH服务器地址，Google官方DNS服务域名",
-        "DoH请求路径，标准DNS over HTTPS路径",
-        "该DNS请求的转发出站，使用PROXY代理保证可访问和防污染",
-        "ECH DoH DNS配置块结束",
-        "FakeIP虚拟IP配置，用于TCP连接加速，减少DNS解析耗时，提升访问速度",
-        "fakeip的标签标识，用于规则中引用",
-        "DNS类型为fakeip，返回虚拟IP地址，实现TCP握手提前，降低首包延迟",
-        "FakeIP IPv4地址池，使用RFC保留地址段，无内网地址冲突风险",
-        "fakeip配置块结束",
-        "DNS服务器列表结束",
-        "DNS分流规则列表，按从上到下优先级匹配，匹配即停止，不继续向下匹配",
-        "国内常用域名/内网域名解析规则，使用阿里云QUIC DNS快速解析",
-        "匹配的域名后缀列表",
-        "局域网本地域名后缀",
-        "局域网本地域名后缀",
-        "小米路由器管理域名",
-        "TP-Link路由器管理域名",
-        "华硕路由器管理域名",
-        "腾达路由器管理域名",
-        "TP-Link新版路由器管理域名",
-        "百度统计埋点域名",
-        "小米系统跟踪埋点域名",
-        "抖音视频CDN域名",
-        "抖音CDN域名",
-        "西瓜视频域名",
-        "头条静态资源域名",
-        "字节CDN域名",
-        "火山引擎CDN域名",
-        "微软系统更新下载域名",
-        "微软更新服务域名",
-        "Windows更新域名",
-        "Speedtest测速域名",
-        "Netflix测速域名",
-        "知乎主域名",
-        "知乎静态资源域名",
-        "京东主域名",
-        "京东静态资源域名",
-        "讯飞听见域名",
-        "阿里云通义千问API域名",
-        "月之暗面Kimi API域名",
-        "百川智能API域名",
-        "MiniMax API域名",
-        "商汤日日新API域名",
-        "讯飞星火API域名",
-        "B站API域名",
-        "B站主站域名",
-        "讯飞星火主站域名",
-        "智谱AI ChatGLM域名",
-        "智谱AI主站域名",
-        "火山引擎域名",
-        "零一万物域名",
-        "阶跃星辰域名",
-        "深度求索DeepSeek聊天域名",
-        "DeepSeek主站域名",
-        "智谱AI主域名",
-        "小米应用商店域名",
-        "域名后缀列表结束",
-        "匹配该规则的域名使用alidns-quic阿里云QUIC DNS进行解析",
-        "国内常用域名解析规则结束",
-        "Steam局域网缓存域名解析规则，使用本地DNS解析",
-        "匹配的域名后缀，Steam本地缓存服务域名",
-        "匹配该规则的域名使用local本地DNS解析",
-        "Steam缓存域名规则结束",
-        "游戏/Google服务域名FakeIP加速规则，使用虚拟IP提升TCP连接速度",
-        "匹配的域名后缀列表",
-        "Steam内容CDN域名",
-        "Steam游戏服务器域名",
-        "Epic游戏平台域名",
-        "GOG游戏平台域名",
-        "暴雪战网域名",
-        "暴雪游戏主域名",
-        "Origin游戏平台域名",
-        "EA游戏主域名",
-        "育碧游戏域名",
-        "R星游戏域名",
-        "Google Play应用商店域名",
-        "Google图片服务域名",
-        "Google用户内容服务域名",
-        "Android官方域名",
-        "Google应用统计埋点域名",
-        "Google Firebase日志上报域名",
-        "Google Firebase Play版日志上报域名",
-        "Google灯塔埋点域名",
-        "Google灯塔埋点备用域名1",
-        "Google灯塔埋点备用域名2",
-        "域名后缀列表结束",
-        "匹配该规则的域名使用fakeip返回虚拟IP，实现连接加速",
-        "游戏/Google服务FakeIP规则结束",
-        "节点专属域名解析规则，使用带ECH的DoH加密解析",
-        "匹配的节点域名后缀",
-        "匹配该规则的域名使用doh-ech加密DNS解析",
-        "节点域名解析规则结束",
-        "广告域名拦截规则，双规则集叠加拦截，提升广告过滤效果",
-        "匹配的广告规则集列表",
-        "AdGuard广告过滤规则集",
-        "sing-geosite全量广告分类规则集",
-        "广告规则集列表结束",
-        "匹配到广告域名时执行拒绝动作，直接拦截广告请求",
-        "广告拦截规则结束",
-        "SVCB/HTTPS类型DNS查询拦截规则，避免IPv6干扰和异常解析，减少无效请求",
-        "匹配的DNS查询类型列表",
-        "SVCB记录类型，用于HTTPSSVC服务发现",
-        "HTTPS记录类型，HTTP3服务相关记录",
-        "查询类型列表结束",
-        "匹配该类型的DNS查询直接拒绝",
-        "SVCB/HTTPS查询拦截规则结束",
-        "PTR反向IP解析查询拦截规则，避免反向解析泄露和无效流量",
-        "匹配的DNS查询类型，PTR反向解析记录",
-        "匹配该类型的DNS查询直接拒绝",
-        "PTR查询拦截规则结束",
-        "代理/游戏/AI域名FakeIP规则，加速境外站点TCP连接",
-        "匹配的规则集列表，包含代理、游戏、AI相关域名",
-        "匹配的DNS查询类型，仅IPv4和IPv6地址记录",
-        "A记录，IPv4地址解析",
-        "AAAA记录，IPv6地址解析",
-        "查询类型列表结束",
-        "匹配该规则的域名使用fakeip返回虚拟IP",
-        "重写解析结果的TTL为300秒，优化缓存时长，减少重复解析",
-        "ECS客户端子网，传递用户IP段给DNS，优化CDN解析结果，需替换为自身公网IP段",
-        "代理/游戏/AI域名FakeIP规则结束",
-        "国内域名兜底解析规则，使用阿里云DoT加密DNS解析",
-        "匹配的国内域名后缀列表",
-        ".cn国内顶级域名",
-        ".com.cn国内企业域名",
-        "域名后缀列表结束",
-        "匹配该规则的域名使用alidns-dot阿里云DoT DNS解析",
-        "国内域名兜底解析规则结束",
-        "动态评估规则，未匹配前置规则的请求使用阿里云QUIC DNS解析",
-        "执行evaluate动态评估动作",
-        "使用alidns-quic作为解析服务器",
-        "动态评估规则结束",
-        "响应匹配规则，国内IP段使用本地DNS解析",
-        "开启响应匹配，对DNS解析结果进行二次匹配",
-        "匹配cnip中国IP段规则集",
-        "执行route路由动作",
-        "使用local本地DNS作为解析服务器",
-        "国内IP响应匹配规则结束",
-        "最终响应规则，对解析结果执行最终响应动作",
-        "开启响应匹配",
-        "执行respond最终响应动作",
-        "最终响应规则结束",
-        "DNS分流规则列表结束",
-        "DNS最终兜底服务器，所有未匹配规则的域名默认使用alidns-dot阿里云DoT DNS解析",
-        "DNS解析策略，优先使用IPv4地址，兼顾兼容性和访问速度",
-        "开启反向IP-域名映射，用于流量嗅探和域名识别，提升分流准确性",
-        "DNS缓存容量，最大缓存65536条解析记录，大幅提升重复访问速度",
-        "开启乐观缓存，缓存过期时仍先返回缓存内容，同时后台更新解析，降低访问延迟",
-        "DNS核心配置块结束",
-        "入站连接配置块，定义流量进入sing-box的入口，支持全局代理和本地代理",
-        "TUN虚拟网卡入站配置，全平台全局代理核心，接管系统全部流量",
-        "入站类型为tun，创建虚拟网卡接管系统流量",
-        "tun入站的标签标识，用于规则引用",
-        "虚拟网卡的IP地址配置",
-        "虚拟网卡IPv4地址，使用10.8.0.0/24私有网段，无地址冲突",
-        "IP地址数组结束",
-        "虚拟网卡MTU值，以太网标准1500字节，避免数据包分片，提升传输效率",
-        "TCP/IP协议栈类型，mixed混合模式，兼顾性能和全平台兼容性",
-        "开启自动路由，自动配置系统路由表，将流量无缝导入虚拟网卡",
-        "开启严格路由，防止流量泄露，确保所有流量都经过代理处理，提升安全性",
-        "TUN入站配置块结束",
-        "混合代理入站配置，同时兼容HTTP/SOCKS5代理协议，支持本地应用代理",
-        "入站类型为mixed，同时支持HTTP和SOCKS5协议，无需单独配置",
-        "mixed入站的标签标识",
-        "代理监听地址，仅本地环回地址127.0.0.1，避免外部设备访问，提升安全性",
-        "代理监听端口，标准7890端口，兼容主流客户端和应用代理配置",
-        "mixed入站配置块结束",
-        "入站连接配置块结束",
-        "出站连接配置块，定义流量流出sing-box的出口，包含节点、分流、自动选路核心配置",
-        "直连出站配置，流量直接访问目标地址，不经过代理，用于国内站点直连",
-        "出站类型为direct，直连模式",
-        "直连出站的标签标识，全局核心分流标签",
-        "该出站的域名解析器，使用alidns-quic阿里云QUIC DNS，保证解析速度",
-        "直连出站配置块结束",
-        "手动选择器出站配置，用于手动切换节点/出站模式，兼容客户端UI操作",
-        "出站类型为selector，手动选择器类型，支持UI一键切换",
-        "该选择器的标签标识，核心PROXY分流标签，全局代理核心",
-        "可选择的出站列表，支持UI下拉选择",
-        "AUTO自动测速选路组，自动选择最优节点",
-        "CF优选Visa域名节点模板",
-        "CF优选DO域名节点模板",
-        "DIRECT直连出站，支持一键切换全局直连",
-        "可选出站列表结束",
-        "默认选择的出站，默认使用AUTO自动选路，无需手动干预",
-        "切换出站时不中断已建立的连接，保证视频、下载、通话不中断",
-        "PROXY选择器配置块结束",
-        "自动测速选路出站配置，urltest类型，自动选择延迟最低的节点",
-        "出站类型为urltest，自动测速选路核心类型，实现无感最优节点切换",
-        "该自动选路组的标签标识，用于其他配置引用",
-        "参与自动测速的节点列表，所有需要自动优选的节点都需加入此列表",
-        "CF优选Visa域名节点模板",
-        "CF优选DO域名节点模板",
-        "测速节点列表结束",
-        "测速地址，Cloudflare官方204测速地址，无流量消耗，测速精准",
-        "测速间隔，每10分钟执行一次测速，更新最优节点，平衡性能和资源消耗",
-        "测速容差50ms，仅当新节点延迟比当前节点低50ms以上才切换，避免频繁切换导致连接波动",
-        "空闲超时30分钟，超过30分钟无流量的节点将被重置测速，保证测速结果时效性",
-        "切换节点时不中断已建立的连接",
-        "自动测速选路配置块结束",
-        "全局选择器出站配置，Clash全局模式兼容，用于全局代理场景",
-        "出站类型为selector",
-        "该选择器的标签标识，GLOBAL全局标签，适配Clash全局模式",
-        "可选择的出站列表",
-        "PROXY选择器，核心代理组",
-        "DIRECT直连出站",
-        "可选出站列表结束",
-        "默认选择的出站，默认使用PROXY代理组",
-        "切换出站时不中断已建立的连接",
-        "GLOBAL选择器配置块结束",
-        "国内流量选择器出站配置，国内域名分流，支持一键切换国内流量走代理",
-        "出站类型为selector",
-        "该选择器的标签标识，CN国内分流标签",
-        "可选择的出站列表",
-        "DIRECT直连出站，国内流量默认直连",
-        "PROXY代理出站，支持国内流量强制走代理",
-        "可选出站列表结束",
-        "默认选择的出站，国内域名默认直连",
-        "切换出站时不中断已建立的连接",
-        "CN选择器配置块结束",
-        "VLESS出站节点1，CF优选Visa域名节点模板，需自行替换核心信息",
-        "该节点的标签标识，用于自动选路和手动选择",
-        "出站类型为vless，轻量级代理协议，性能优异无额外开销",
-        "节点服务器地址，需替换为CF优选域名或IP",
-        "节点服务端口，HTTPS标准443端口",
-        "VLESS协议认证UUID，节点核心认证信息，需替换为自有节点UUID",
-        "该节点域名的解析器，使用alidns-quic阿里云QUIC DNS",
-        "传输层配置块，WebSocket协议配置，兼容Cloudflare CDN转发",
-        "传输类型为ws，WebSocket协议，主流CDN均支持，兼容性最好",
-        "WebSocket请求路径，节点后端路径，需替换为自有节点路径",
-        "WebSocket请求头配置",
-        "Host请求头，CDN分流必备，需与节点配置的域名一致",
-        "请求头配置块结束",
-        "传输层配置块结束",
-        "TLS加密配置块，HTTPS加密核心，保证传输安全，防特征识别",
-        "开启TLS加密，确保传输内容全程加密，防窃听防篡改",
-        "TLS SNI扩展，服务器名称标识，CDN必备，需与节点域名一致",
-        "uTLS指纹伪造配置，模拟浏览器TLS指纹，防协议特征识别",
-        "开启uTLS指纹伪造",
-        "伪造Chrome浏览器的TLS指纹，兼容性最好，特征最通用",
-        "uTLS配置块结束",
-        "TLS ALPN扩展，应用层协议协商，仅使用http/1.1兼容WebSocket协议",
-        "ALPN协议列表",
-        "http/1.1协议，WebSocket兼容必备，避免HTTP3导致的连接失败",
-        "ALPN协议列表结束",
-        "ECH加密配置， TLS加密增强，可选开启",
-        "关闭ECH加密，按需开启",
-        "ECH配置块结束",
-        "TLS加密配置块结束",
-        "VLESS节点1配置块结束",
-        "VLESS出站节点2，CF优选DO域名节点模板，需自行替换核心信息",
-        "该节点的标签标识",
-        "出站类型为vless",
-        "节点服务器地址，需替换为CF优选域名或IP",
-        "节点服务端口443",
-        "VLESS认证UUID，需替换为自有节点UUID",
-        "该节点域名的解析器，使用alidns-quic阿里云QUIC DNS",
-        "传输层配置块",
-        "传输类型为ws，WebSocket协议",
-        "WebSocket请求路径，需替换为自有节点路径",
-        "WebSocket请求头配置",
-        "Host请求头，需与节点配置的域名一致",
-        "请求头配置块结束",
-        "传输层配置块结束",
-        "TLS加密配置块",
-        "开启TLS加密",
-        "TLS SNI，需与节点域名一致",
-        "uTLS指纹伪造配置",
-        "开启uTLS",
-        "伪造Chrome浏览器指纹",
-        "uTLS配置块结束",
-        "TLS ALPN扩展",
-        "ALPN协议列表",
-        "http/1.1协议",
-        "ALPN协议列表结束",
-        "ECH加密配置",
-        "关闭ECH加密",
-        "ECH配置块结束",
-        "TLS加密配置块结束",
-        "VLESS节点2配置块结束",
-        "出站连接配置块结束",
-        "HTTP客户端配置块，统一管理规则集下载的HTTP请求，避免重复配置",
-        "默认HTTP客户端配置",
-        "HTTP客户端的标签标识，用于规则集配置中引用",
-        "该HTTP客户端的转发出站，使用PROXY代理，保证境外规则集可正常下载",
-        "默认HTTP客户端配置块结束",
-        "HTTP客户端列表结束",
-        "路由核心配置块，流量分流、规则匹配、动作执行核心模块，决定流量最终走向",
-        "路由默认域名解析器，未指定解析器的域名默认使用alidns-quic阿里云QUIC DNS",
-        "路由规则列表，按从上到下优先级匹配，匹配即停止，不继续向下匹配",
-        "QUIC流量拦截规则，屏蔽443端口的QUIC流量，避免UDP流量泄露和异常连接",
-        "规则类型为logical，逻辑组合规则，支持多条件组合匹配",
-        "逻辑模式为and，需同时满足所有子规则才匹配",
-        "子规则列表",
-        "匹配协议为quic的流量",
-        "子规则结束",
-        "匹配目标端口为443的流量",
-        "子规则结束",
-        "子规则列表结束",
-        "执行reject拒绝动作，直接拦截QUIC流量",
-        "QUIC流量拦截规则结束",
-        "WiFi SSID智能分流规则，连接指定WiFi时流量走代理",
-        "匹配的WiFi名称列表，需替换为自身WiFi名称",
-        "匹配该规则的流量走PROXY代理出站",
-        "WiFi SSID分流规则结束",
-        "WiFi BSSID智能分流规则，连接指定MAC地址的WiFi时流量直连",
-        "匹配的WiFi MAC地址列表，需替换为自身路由器MAC地址",
-        "匹配该规则的流量走DIRECT直连出站",
-        "WiFi BSSID分流规则结束",
-        "DNS流量劫持规则，接管系统53端口DNS请求，实现全局DNS防污染",
-        "规则类型为logical，逻辑组合规则",
-        "逻辑模式为or，满足任意一个子规则即匹配",
-        "子规则列表",
-        "匹配目标端口为53的流量，DNS标准端口",
-        "子规则结束",
-        "匹配协议为dns的流量",
-        "子规则结束",
-        "子规则列表结束",
-        "执行hijack-dns动作，劫持DNS流量到sing-box自身DNS模块处理，实现全局DNS管控",
-        "DNS劫持规则结束",
-        "流量嗅探规则，开启全流量域名/协议嗅探，识别流量类型，提升分流准确性",
-        "执行sniff动作，开启流量嗅探，获取流量中的域名和协议信息，为后续分流提供依据",
-        "流量嗅探规则结束",
-        "STUN穿透流量拦截规则，屏蔽内网穿透相关流量，防止IP泄露",
-        "规则类型为logical，逻辑组合规则",
-        "逻辑模式为or，满足任意一个子规则即匹配",
-        "子规则列表",
-        "匹配UDP协议、目标端口为常用STUN端口的流量",
-        "匹配域名正则表达式为stun开头的域名",
-        "匹配域名包含stun、turn、httpdns关键词的流量",
-        "匹配协议为stun的流量",
-        "子规则列表结束",
-        "执行reject拒绝动作，直接拦截STUN穿透流量",
-        "STUN流量拦截规则结束",
-        "NTP时间同步流量直连规则，保证时间同步准确性",
-        "匹配域名包含ntp、time关键词的流量",
-        "匹配UDP协议的流量",
-        "匹配目标端口为123的NTP标准端口",
-        "匹配该规则的流量走DIRECT直连出站",
-        "NTP流量直连规则结束",
-        "Google GCM推送流量专属分流规则，保证安卓推送稳定",
-        "规则类型为logical，逻辑组合规则",
-        "逻辑模式为and，需同时满足所有子规则才匹配",
-        "子规则列表",
-        "匹配的Google推送域名后缀列表",
-        "Google主推送域名",
-        "Google备用推送域名1",
-        "Google备用推送域名2",
-        "Google备用推送域名3",
-        "Google备用推送域名4",
-        "Google备用推送域名5",
-        "Google备用推送域名6",
-        "Google备用推送域名7",
-        "Google备用推送域名8",
-        "域名后缀列表结束",
-        "子规则结束",
-        "匹配目标端口为443和5228的流量，GCM推送标准端口",
-        "子规则结束",
-        "子规则列表结束",
-        "匹配该规则的流量走PROXY代理出站，保证推送稳定可达",
-        "GCM推送分流规则结束",
-        "反欺诈域名拦截规则，屏蔽诈骗、恶意站点",
-        "匹配anti_fraud反欺诈规则集",
-        "匹配到恶意站点时执行拒绝动作，直接拦截",
-        "反欺诈拦截规则结束",
-        "私有IP地址直连规则，内网流量直连不走代理，保证内网设备正常访问",
-        "匹配目标IP为私有内网地址的流量",
-        "匹配该规则的流量走DIRECT直连出站",
-        "私有IP直连规则结束",
-        "FakeIP地址段代理规则，虚拟IP流量走代理，保证加速效果",
-        "匹配的目标IP CIDR地址段列表",
-        "FakeIP使用的198.18.0.0/15地址段",
-        "CIDR地址段列表结束",
-        "匹配该规则的流量走PROXY代理出站",
-        "FakeIP代理规则结束",
-        "广告域名路由层二次拦截规则，双重拦截提升广告过滤效果",
-        "匹配的广告规则集列表",
-        "AdGuard广告过滤规则集",
-        "sing-geosite全量广告分类规则集",
-        "广告规则集列表结束",
-        "匹配到广告域名时执行拒绝动作，直接拦截",
-        "路由层广告拦截规则结束",
-        "Google服务域名分流规则，Google相关站点强制走PROXY出站",
-        "匹配geosite-google规则集，全量Google相关域名",
-        "匹配该规则的流量走PROXY代理出站",
-        "Google服务分流规则结束",
-        "代理域名分流规则，境外代理站点走PROXY出站",
-        "匹配proxy规则集，包含境外需代理的站点域名",
-        "匹配该规则的流量走PROXY代理出站",
-        "代理域名分流规则结束",
-        "游戏域名分流规则，境外游戏站点走PROXY出站",
-        "匹配games规则集，包含境外游戏相关域名",
-        "匹配该规则的流量走PROXY代理出站",
-        "游戏域名分流规则结束",
-        "AI服务域名分流规则，ChatGPT、Midjourney等AI站点走PROXY出站",
-        "匹配ai规则集，包含主流AI服务站点域名",
-        "匹配该规则的流量走PROXY代理出站",
-        "AI服务分流规则结束",
-        "国内站点规则集直连规则，多规则集叠加国内流量直连",
-        "匹配的国内规则集列表",
-        "私有内网地址规则集",
-        "中国域名规则集",
-        "微软中国服务规则集",
-        "苹果中国服务规则集",
-        "Google中国服务规则集",
-        "国内游戏规则集",
-        "网络测试站点规则集",
-        "国内规则集列表结束",
-        "匹配该规则的流量走DIRECT直连出站",
-        "国内规则集直连规则结束",
-        "强制域名解析规则，对未匹配前置规则的域名强制执行DNS解析，为后续IP规则匹配提供依据",
-        "执行resolve动作，强制进行DNS解析，确保后续IP规则可正常匹配",
-        "强制解析规则结束",
-        "Telegram IP分流规则，Telegram相关IP强制走PROXY出站",
-        "匹配telegramip规则集，Telegram官方IP段",
-        "匹配该规则的流量走PROXY代理出站",
-        "Telegram IP分流规则结束",
-        "中国IP段直连规则，国内IP流量强制直连，避免国内流量走代理",
-        "匹配cnip规则集，全量中国IP地址段",
-        "匹配该规则的流量走DIRECT直连出站",
-        "中国IP直连规则结束",
-        "YouTube安卓应用分流规则，指定应用包名强制走代理",
-        "匹配的安卓应用包名列表",
-        "YouTube官方安卓应用包名",
-        "YouTube Revanced改版安卓应用包名",
-        "应用包名列表结束",
-        "匹配该规则的流量走PROXY代理出站",
-        "YouTube应用分流规则结束",
-        "Telegram安卓应用分流规则，指定应用包名强制走代理",
-        "匹配的安卓应用包名列表",
-        "Telegram官方安卓应用包名",
-        "Telegram测试版安卓应用包名",
-        "应用包名列表结束",
-        "匹配该规则的流量走PROXY代理出站",
-        "Telegram应用分流规则结束",
-        "路由规则列表结束",
-        "远程规则集列表，定义所有需要远程加载的分流规则集，自动更新无需手动维护",
-        "全量广告分类规则集配置",
-        "规则集的标签标识，用于规则中引用",
-        "规则集类型为remote，远程加载，自动更新",
-        "规则集格式为binary，sing-box专用二进制格式，加载速度快，占用资源少",
-        "规则集下载地址，jsdelivr CDN加速，国内可访问",
-        "规则集下载使用的HTTP客户端，使用default默认客户端",
-        "规则集更新间隔，每48小时更新一次，保证规则时效性",
-        "全量广告规则集配置块结束",
-        "AdGuard广告过滤规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，AdGuard第三方优化规则，过滤效果更全面",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "AdGuard规则集配置块结束",
-        "Google服务规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，官方sing-geosite规则，精准全面",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "Google规则集配置块结束",
-        "YouTube专属规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，官方sing-geosite规则",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "YouTube规则集配置块结束",
-        "代理站点规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化代理规则集，覆盖全面",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "代理规则集配置块结束",
-        "游戏站点规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化游戏规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "游戏规则集配置块结束",
-        "AI站点规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化AI规则集，覆盖主流AI服务",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "AI规则集配置块结束",
-        "私有内网规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化内网规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "私有内网规则集配置块结束",
-        "反欺诈规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为source，源格式规则集",
-        "规则集下载地址，第三方反欺诈恶意站点规则",
-        "更新间隔48小时",
-        "反欺诈规则集配置块结束",
-        "中国域名规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化中国域名规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "中国域名规则集配置块结束",
-        "微软中国服务规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化微软中国规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "微软中国规则集配置块结束",
-        "苹果中国服务规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化苹果中国规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "苹果中国规则集配置块结束",
-        "Google中国服务规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化Google中国规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "Google中国规则集配置块结束",
-        "国内游戏规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化国内游戏规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "国内游戏规则集配置块结束",
-        "网络测试站点规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化网络测试规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "网络测试规则集配置块结束",
-        "Telegram IP规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化Telegram IP规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "Telegram IP规则集配置块结束",
-        "中国IP段规则集配置",
-        "规则集的标签标识",
-        "规则集类型为remote，远程加载",
-        "规则集格式为binary",
-        "规则集下载地址，第三方优化中国IP段规则集",
-        "规则集下载使用的HTTP客户端，default默认客户端",
-        "更新间隔48小时",
-        "中国IP段规则集配置块结束",
-        "远程规则集列表结束",
-        "路由最终兜底出站，所有未匹配规则的流量默认走PROXY代理出站",
-        "开启自动检测网络接口，避免多网卡环境下路由异常，提升多网络环境兼容性",
-        "路由核心配置块结束",
-        "实验性功能配置块，包含Clash API、缓存、内存优化等进阶功能",
-        "Clash API配置块，兼容Clash控制面板、客户端UI管理，支持第三方面板接入",
-        "Clash API外部控制器监听地址，本地环回地址9090端口，用于UI和客户端接入",
-        "Web UI存放目录，ui文件夹，用于存放控制面板前端文件",
-        "Web UI压缩包下载地址，metacubexd控制面板，功能全面兼容性好",
-        "Web UI下载使用的出站，走PROXY代理保证可正常下载",
-        "Clash API访问密钥，用于身份认证，防止未授权访问",
-        "Clash默认运行模式，rule规则模式，按配置的分流规则执行",
-        "Clash API配置块结束",
-        "缓存文件配置块，持久化缓存DNS、FakeIP等数据，重启不丢失，提升启动速度",
-        "开启缓存文件功能，启用持久化缓存",
-        "缓存文件存放路径，cache.db数据库文件",
-        "缓存唯一ID，区分不同配置的缓存数据，避免缓存冲突",
-        "开启DNS解析记录持久化存储，重启后无需重新解析",
-        "开启FakeIP映射关系持久化存储，重启后加速连接恢复",
-        "缓存文件配置块结束",
-        "调试和性能优化配置块，内存限制、垃圾回收优化",
-        "垃圾回收触发百分比，设置为50%，内存占用达到阈值时触发GC，降低内存峰值",
-        "内存上限限制，最大占用200MB内存，避免内存溢出，适配低配置设备",
-        "调试优化配置块结束",
-        "实验性功能配置块结束",
-        "sing-box完整配置根对象结束"
-    ];
+            // ==================== 逐行注释数组（与 configLines 完全一一对应，已修复增强） ====================
+            const comments = [
+                "🔷 配置根对象起始 — 整个 sing-box 配置的入口，所有配置项都包含在这个 JSON 对象中。JSON 语法要求最外层必须是大括号。",
+                "📋 日志系统配置块 — 控制日志输出的详细程度和格式，是排查问题的第一道工具。日志级别越高，输出的信息越多。",
+                "   <span class='tag-tip'>💡 级别说明</span> trace 为最详细级别，适合调试时使用。上线后可改为 <code>warn</code> 或 <code>info</code> 减少日志量。可选：panic / fatal / error / warn / info / debug / trace。",
+                "   <span class='tag-tip'>💡 时间戳</span> 开启后每条日志都会带上精确时间，强烈建议保持开启。关闭后日志将不显示时间，排查问题时几乎无法定位。",
+                "日志配置块结束 — 以上三个字段构成了完整的日志子系统配置。",
+                "🕐 NTP 时间同步配置块 — 保证设备系统时间准确，避免因时间偏差导致 TLS 证书验证失败。对于代理来说，时间不准 = 节点连不上。",
+                "   <span class='tag-highlight'>⭐ 关键</span> 启用 NTP 同步。如果设备时间已经通过系统自动同步，可设为 false。但建议保持开启作为双重保障。",
+                "   NTP 服务器地址 — 阿里云公共 NTP 服务 <code>ntp.aliyun.com</code>。国内访问延迟极低（通常 < 10ms），比国际 NTP 池更稳定。",
+                "   NTP 服务端口 — 标准 UDP 123 端口。这是 NTP 协议的国际标准端口，无需修改。",
+                "   <span class='tag-tip'>💡 同步间隔</span> 每 30 分钟同步一次。<code>30m</code> 表示 30 分钟，格式支持 h（小时）、m（分钟）、s（秒）。过于频繁会增加服务器负担，30 分钟是推荐值。",
+                "   NTP 流量走 DIRECT 直连 — 时间同步不需要代理，直连更快更稳定。这里引用的是下方 outbounds 中定义的 DIRECT 出站。",
+                "NTP 配置块结束。",
+                "🌐 DNS 核心配置块 — 整个配置中最关键的部分之一。DNS 决定了域名如何解析、是否被污染、解析速度等核心体验。",
+                "DNS 服务器列表开始 — 定义多个不同用途的 DNS 服务器，通过后续的 rules 规则进行分流选择。",
+                "   本地 DNS 服务器 — 使用操作系统自带的 DNS 设置。当你连接 WiFi 时，路由器分配的 DNS 就是 local DNS。",
+                "   标签名 <code>local</code> — 在后续 DNS rules 中通过此标签引用。命名建议：简短、有意义、全小写。",
+                "   类型为 <code>local</code> — 直接使用系统的 DNS 解析器，不经过任何加密。适合解析内网域名和局域网设备。",
+                "   本地 DNS 配置块结束。",
+                "   📋 hosts 静态解析配置 — 将特定域名预先绑定到固定 IP，跳过 DNS 查询。这是防止 DNS 污染的最彻底方式。",
+                "   标签名 <code>hosts_fix</code> — 其他 DNS 服务器可通过 <code>domain_resolver</code> 引用此标签来解析自身域名。",
+                "   类型为 <code>hosts</code> — 静态域名-IP 映射表，查询这些域名时直接返回预定义 IP，不发起网络请求。",
+                "   <span class='tag-highlight'>⭐ 预定义映射表</span> 开始 — 以下域名将被固定解析到指定 IP。这些域名都是 DNS 服务商域名，固定它们的 IP 可避免"先有鸡还是先有蛋"的循环解析问题。",
+                "   华为云 DNS 域名 → 固定解析到 180.163.150.33 和 180.163.151.33（华为云公共 DNS 的 IP）。",
+                "   阿里云 DNS 域名 → 固定解析到 223.5.5.5 和 223.6.6.6（阿里云公共 DNS 知名 IP）。",
+                "   腾讯 DNSPod 域名 → 固定解析到 1.12.12.21 和 120.53.53.53（腾讯公共 DNS IP）。",
+                "   Google DNS 域名 → 固定解析到 8.8.8.8 和 8.8.4.4（Google 公共 DNS 知名 IP）。",
+                "   Cloudflare DNS 域名 → 固定解析到 Cloudflare 边缘 IP。这些 IP 是 Cloudflare 的泛播地址，全球就近接入。",
+                "   <span class='tag-warn'>⚠️ GCM推送</span> Google GCM 推送域名 → 固定解析到 Google 服务 IP。安卓设备如果收不到推送通知，需要检查这里。",
+                "   Google 备用推送域名 → 包含 IPv6 地址 <code>2607:f8b0:4023:1c05::bc</code> 和 IPv4 地址，双栈保障。",
+                "   Google 下载域名 → 使用国内镜像 IP 180.163.151.161，加速 Google 相关下载（如 Android SDK）。",
+                "   Google 备用下载域名 → 另一个国内镜像 IP，提供冗余。",
+                "   预定义映射表结束。",
+                "   hosts 静态解析配置块结束。",
+                "   🔒 阿里云 DoT 加密 DNS — DNS over TLS，基于 TLS 协议加密 DNS 请求。标准端口 853，防窃听防污染效果优秀。",
+                "   标签名 <code>alidns-dot</code> — 用于在 DNS rules 中引用此加密 DNS 服务。",
+                "   类型为 <code>tls</code> — DNS over TLS 协议（DoT）。DNS 查询内容被 TLS 加密，中间人无法窃听或篡改。",
+                "   服务器地址 <code>dns.alidns.com</code> — 阿里云官方 DoT 服务域名。该域名本身需要通过 hosts_fix 静态解析。",
+                "   端口 853 — DoT 协议标准端口。这是 IANA 为 DNS over TLS 分配的标准端口。",
+                "   <span class='tag-highlight'>⭐ 自举解析</span> <code>domain_resolver: hosts_fix</code> — 该 DNS 服务器自身域名的解析器。因为 dns.alidns.com 需要先被解析才能访问，这里用 hosts_fix 静态解析避免循环依赖。",
+                "   流量走 DIRECT 直连 — 阿里云 DoT 在国内可以直接访问，无需代理。直连延迟更低。",
+                "   阿里云 DoT DNS 配置块结束。",
+                "   🚀 阿里云 QUIC 加密 DNS — 基于 QUIC 协议（HTTP/3 底层协议）的 DNS。比 DoT 连接建立更快，抗丢包能力更强。",
+                "   标签名 <code>alidns-quic</code> — 这是本配置中使用最频繁的国内 DNS 服务标签，后续很多规则都会引用它。",
+                "   类型为 <code>quic</code> — DNS over QUIC 协议。QUIC 基于 UDP，0-RTT 握手，在弱网环境下表现优于 TCP-based 的 DoT/DoH。",
+                "   服务器地址 — 同样使用阿里云官方服务域名。",
+                "   <span class='tag-highlight'>⭐ 自举解析</span> 同样使用 hosts_fix 解析自身域名，原理同上。",
+                "   流量走 DIRECT 直连。",
+                "   阿里云 QUIC DNS 配置块结束。",
+                "   🔐 Google DoH 加密 DNS — DNS over HTTPS。Google 的公共 DNS 服务，境外解析精准，但需要代理才能访问。",
+                "   标签名 <code>ggdns</code> — 用于引用 Google DoH 服务。",
+                "   类型为 <code>https</code> — DNS over HTTPS 协议（DoH）。DNS 查询封装在 HTTPS 请求中，与普通网页流量难以区分，防封锁能力强。",
+                "   服务器地址 <code>dns.google</code> — Google 官方 DoH 服务域名。",
+                "   <span class='tag-highlight'>⭐ 自举解析</span> 使用 hosts_fix 静态解析 dns.google 的 IP（前面已预定义为 8.8.8.8 和 8.8.4.4）。",
+                "   <span class='tag-warn'>⚠️ 代理访问</span> 流量走 PROXY — Google DNS 在国内被干扰，必须通过代理才能正常访问。这是关键配置，如果改成 DIRECT 将无法使用。",
+                "   Google DoH DNS 配置块结束。",
+                "   🛡️ 带 ECH 的 DoH DNS — ECH（Encrypted Client Hello）是 TLS 的扩展，加密 Client Hello 握手信息，防止 SNI 被探测。",
+                "   标签名 <code>doh-ech</code> — 用于节点域名的解析，提供最高级别的隐私保护。",
+                "   类型为 <code>https</code> — DoH 协议。",
+                "   服务器地址 — Google DNS。",
+                "   请求路径 <code>/dns-query</code> — DoH 标准路径。Google 和 Cloudflare 都使用此路径。",
+                "   <span class='tag-warn'>⚠️ 注意</span> 此服务器没有配置 <code>domain_resolver</code>，意味着它依赖其他 DNS 先解析 dns.google。在实际使用中，sing-box 会通过 hosts_fix 的预定义 IP 来解析。",
+                "   ECH DoH DNS 配置块结束。",
+                "   🎭 FakeIP 虚拟 IP 配置 — 这是加速境外访问的核心技术。对代理域名不返回真实 IP，而是返回虚拟 IP，让 TCP 连接提前开始建立。",
+                "   标签名 <code>fakeip</code> — 在 DNS rules 中引用。",
+                "   类型为 <code>fakeip</code> — sing-box 会为匹配规则的域名分配一个虚拟 IP 地址。当应用向这个虚拟 IP 发起连接时，sing-box 再根据域名进行代理转发。",
+                "   <span class='tag-highlight'>⭐ 地址池</span> <code>198.18.0.0/15</code> — 这是 RFC 2544 保留的基准测试地址段，不会与任何公网或内网地址冲突。可容纳约 13 万个虚拟 IP。",
+                "   FakeIP 配置块结束。",
+                "DNS 服务器列表结束。",
+                "📋 DNS 分流规则列表 — 规则按从上到下顺序匹配，命中即停止。规则顺序至关重要！",
+                "   🏠 国内常用域名 / 内网域名解析规则 — 这些域名走阿里云 QUIC DNS 快速解析，不经过代理。",
+                "   匹配的域名后缀列表开始。",
+                "   <code>.local</code> — 局域网 Bonjour/mDNS 域名。",
+                "   <code>.lan</code> — 常见局域网域名后缀。",
+                "   <code>miwifi.com</code> — 小米路由器管理页面域名。",
+                "   <code>tplogin.cn</code> — TP-Link 路由器登录域名。",
+                "   <code>router.asus.com</code> — 华硕路由器管理域名。",
+                "   <code>tendawifi.com</code> — 腾达路由器管理域名。",
+                "   <code>tplinkwifi.net</code> — TP-Link 新版路由器管理域名。",
+                "   <code>hm.baidu.com</code> — 百度统计埋点域名，国内直连即可。",
+                "   <code>tracking.miui.com</code> — 小米系统跟踪埋点，国内直连。",
+                "   <code>douyinvod.com</code> — 抖音视频点播 CDN 域名，走国内 DNS 解析到国内节点。",
+                "   <code>douyincdn.com</code> — 抖音 CDN 域名。",
+                "   <code>ixigua.com</code> — 西瓜视频域名（字节跳动旗下）。",
+                "   <code>pstatp.com</code> — 头条系静态资源域名。",
+                "   <code>bytecdn.com</code> — 字节跳动 CDN 域名。",
+                "   <code>volccdn.com</code> — 火山引擎 CDN 域名（字节系）。",
+                "   <code>dl.delivery.mp.microsoft.com</code> — 微软系统更新下载域名。走国内 CDN 更快。",
+                "   <code>update.microsoft.com</code> — 微软更新服务域名。",
+                "   <code>windowsupdate.com</code> — Windows 更新域名。",
+                "   <code>speedtest.net</code> — Ookla 测速网站，直连获取国内测速节点。",
+                "   <code>fast.com</code> — Netflix 测速网站，直连即可。",
+                "   <code>zhihu.com</code> — 知乎主域名。",
+                "   <code>zhimg.com</code> — 知乎静态资源 CDN 域名。",
+                "   <code>jd.com</code> — 京东主域名。",
+                "   <code>360buyimg.com</code> — 京东图片 CDN 域名。",
+                "   <code>xfyun.cn</code> — 讯飞听见域名。",
+                "   <code>dashscope.aliyuncs.com</code> — 阿里云通义千问 API 域名（DashScope 平台）。",
+                "   <code>api.moonshot.cn</code> — 月之暗面 Kimi API 域名。",
+                "   <code>api.baichuan-ai.com</code> — 百川智能 API 域名。",
+                "   <code>api.minimax.chat</code> — MiniMax（海螺AI）API 域名。",
+                "   <code>api.sensenova.cn</code> — 商汤日日新 API 域名。",
+                "   <code>api.iflytek.com</code> — 讯飞星火 API 域名。",
+                "   <code>api.bilibili.com</code> — B 站 API 域名。",
+                "   <code>www.bilibili.com</code> — B 站主站域名。",
+                "   <code>xinghuo.xfyun.cn</code> — 讯飞星火主站域名。",
+                "   <code>chatglm.cn</code> — 智谱 AI ChatGLM 域名。",
+                "   <code>bigmodel.cn</code> — 智谱 AI 大模型平台域名。",
+                "   <code>volces.com</code> — 火山引擎域名。",
+                "   <code>lingyiwanwu.com</code> — 零一万物域名。",
+                "   <code>stepfun.com</code> — 阶跃星辰域名。",
+                "   <code>chat.deepseek.com</code> — DeepSeek 聊天域名。",
+                "   <code>www.deepseek.com</code> — DeepSeek 主站域名。",
+                "   <code>zhipuai.cn</code> — 智谱 AI 主域名。",
+                "   <code>market.xiaomi.com</code> — 小米应用商店域名。",
+                "   域名后缀列表结束。",
+                "   <span class='tag-tip'>💡 解析服务器</span> 匹配以上域名的 DNS 查询使用 <code>alidns-quic</code>（阿里云 QUIC DNS）进行解析，速度快且稳定。",
+                "   国内常用域名规则结束。",
+                "   🎮 Steam 局域网缓存域名规则 — 如果你在内网搭建了 Steam 缓存服务器（如 lancache.net），此规则让 Steam 下载走内网。",
+                "   匹配 <code>lancache.steamcontent.com</code> — Steam 内容缓存的通用域名。",
+                "   <span class='tag-tip'>💡 解析</span> 使用 <code>local</code> 本地 DNS 解析，因为缓存服务器通常在内网，需要本地 DNS 才能解析到内网 IP。",
+                "   Steam 缓存规则结束。",
+                "   🎮 游戏/Google 服务域名 FakeIP 加速规则 — 这些域名的 TCP 连接将通过 FakeIP 加速。",
+                "   匹配的域名后缀列表开始。",
+                "   <code>steamcontent.com</code> — Steam 内容分发 CDN 域名。",
+                "   <code>steamserver.net</code> — Steam 游戏服务器域名。",
+                "   <code>epicgames.com</code> — Epic 游戏平台域名。",
+                "   <code>gog.com</code> — GOG 游戏平台（CD Projekt 旗下）。",
+                "   <code>battle.net</code> — 暴雪战网域名。",
+                "   <code>blizzard.com</code> — 暴雪游戏主域名。",
+                "   <code>origin.com</code> — EA Origin 游戏平台域名。",
+                "   <code>ea.com</code> — EA 游戏主域名。",
+                "   <code>ubisoft.com</code> — 育碧游戏域名。",
+                "   <code>rockstargames.com</code> — R 星游戏域名（GTA、荒野大镖客）。",
+                "   <code>play.google.com</code> — Google Play 应用商店。",
+                "   <code>ggpht.com</code> — Google 图片服务域名。",
+                "   <code>googleusercontent.com</code> — Google 用户内容服务域名。",
+                "   <code>android.com</code> — Android 官方域名。",
+                "   <code>app-measurement.com</code> — Google 应用统计埋点域名。",
+                "   <code>firebaselogging.googleapis.com</code> — Firebase 日志上报域名。",
+                "   <code>firebaselogging-pa.googleapis.com</code> — Firebase Play 版日志上报域名。",
+                "   <code>beacons.gvt2.com</code> — Google 灯塔埋点域名（gvt2 = Google Video Traffic 2）。",
+                "   <code>beacons2.gvt2.com</code> — Google 灯塔备用域名 1。",
+                "   <code>beacons3.gvt2.com</code> — Google 灯塔备用域名 2。",
+                "   域名后缀列表结束。",
+                "   <span class='tag-highlight'>⭐ FakeIP</span> 使用 <code>fakeip</code> 返回虚拟 IP，TCP 握手提前开始，大幅降低首包延迟。",
+                "   游戏/Google 服务 FakeIP 规则结束。",
+                "   🔑 节点专属域名解析规则 — 你的代理节点域名使用 ECH DoH 加密解析，确保节点域名本身不被污染或探测。",
+                "   <span class='tag-warn'>⚠️ 替换</span> <code>cvb.372164885.xyz</code> 是示例节点域名，你需要替换为自己的节点域名。",
+                "   <span class='tag-highlight'>⭐ 加密解析</span> 使用 <code>doh-ech</code>（带 ECH 的 Google DoH）进行解析，最大程度保护节点域名隐私。",
+                "   节点域名规则结束。",
+                "   🚫 广告域名拦截规则（DNS 层）— 双层规则集叠加，过滤效果更全面。",
+                "   规则集列表 — <code>geosite_adguard</code>（AdGuard 规则）+ <code>geosite-category-ads-all</code>（sing-geosite 全量广告分类）。",
+                "   <span class='tag-warn'>⚠️ 拦截动作</span> <code>reject</code> — DNS 查询直接返回拒绝，广告请求在 DNS 阶段就被阻断，不产生任何后续流量。",
+                "   广告拦截规则结束。",
+                "   🚫 SVCB/HTTPS 类型 DNS 查询拦截 — 这两种记录类型与 HTTP/3 和 IPv6 服务发现相关。在国内网络环境下可能引发异常。",
+                "   匹配的查询类型 — SVCB（Service Binding）和 HTTPS（HTTPSSVC）记录。",
+                "   <span class='tag-warn'>⚠️ 拦截</span> 直接拒绝这些查询。如果你需要使用 HTTP/3（QUIC），请删除此规则。但注意配置中同时屏蔽了 QUIC 流量（见路由部分），所以此规则与 QUIC 屏蔽策略一致。",
+                "   SVCB/HTTPS 拦截规则结束。",
+                "   🚫 PTR 反向解析查询拦截 — PTR 记录用于反向 IP 解析（IP→域名）。普通用户不需要，且可能泄露访问信息。",
+                "   匹配 PTR 查询类型 — 反向 DNS 解析。",
+                "   <span class='tag-tip'>💡 拦截理由</span> PTR 查询通常由网络诊断工具发起，普通应用极少使用。拦截可减少 DNS 查询量和隐私泄露风险。",
+                "   PTR 拦截规则结束。",
+                "   🌍 代理/游戏/AI 域名 FakeIP 规则 — 这是分流的核心规则之一。",
+                "   匹配 <code>proxy</code>、<code>games</code>、<code>ai</code> 三个规则集中的域名。",
+                "   仅匹配 A（IPv4）和 AAAA（IPv6）查询类型。",
+                "   <span class='tag-highlight'>⭐ FakeIP 加速</span> 使用 <code>fakeip</code> 返回虚拟 IP。",
+                "   <span class='tag-tip'>💡 TTL 重写</span> <code>rewrite_ttl: 300</code> — 将 DNS 记录的 TTL 重写为 300 秒（5 分钟）。这样 FakeIP 映射会在 5 分钟后过期，平衡了缓存效率和灵活性。",
+                "   <span class='tag-warn'>⚠️ ECS 子网</span> <code>client_subnet: 119.134.100.0/24</code> — <strong>这是广东茂名示例 IP 段，你需要替换！</strong>关闭代理后访问 ip.sb 获取你的公网 IP，将 119.134.100.0 替换为你的 IP 段（保留 /24）。例如你的 IP 是 203.0.113.5，则填入 <code>203.0.113.0/24</code>。ECS 让 DNS 服务器根据你的位置返回最优 CDN 节点。",
+                "   代理/游戏/AI 域名 FakeIP 规则结束。",
+                "   🇨🇳 国内域名兜底解析规则 — .cn 和 .com.cn 域名使用阿里云 DoT 加密解析。",
+                "   匹配 <code>.cn</code> 和 <code>.com.cn</code> 后缀的域名（绝大多数中国网站）。",
+                "   <span class='tag-tip'>💡 DoT 加密</span> 使用 <code>alidns-dot</code>（阿里云 DNS over TLS），国内解析既快又安全。",
+                "   国内域名兜底规则结束。",
+                "   🔄 动态评估规则 — 对未匹配前置规则的域名，使用阿里云 QUIC DNS 进行解析。evaluate 动作允许 sing-box 根据解析结果继续匹配后续规则。",
+                "   <code>evaluate</code> 动作 — 不直接返回结果，而是将解析结果交给后续的 <code>match_response</code> 规则继续处理。",
+                "   使用 <code>alidns-quic</code> 作为解析服务器。",
+                "   动态评估规则结束。",
+                "   🧠 响应匹配规则（国内 IP）— 对 DNS 解析结果进行二次匹配。如果解析出的 IP 属于中国 IP 段，则改用本地 DNS。",
+                "   <code>match_response: true</code> — 开启响应匹配，对解析结果进行检查。",
+                "   匹配 <code>cnip</code> 规则集 — 中国 IP 地址段。",
+                "   <code>route</code> 动作 — 将匹配的流量路由到指定服务器。",
+                "   使用 <code>local</code> 本地 DNS — 中国 IP 的域名用本地 DNS 解析更准确。",
+                "   国内 IP 响应匹配规则结束。",
+                "   ✅ 最终响应规则 — 对解析结果执行最终响应动作，标志着 DNS 规则匹配流程的结束。",
+                "   开启响应匹配。",
+                "   <code>respond</code> 动作 — 将解析结果返回给请求方。这是 DNS 规则链的最后一环。",
+                "   最终响应规则结束。",
+                "DNS 分流规则列表结束。",
+                "🔚 DNS 最终兜底服务器 — 所有未匹配任何规则的域名默认使用 <code>alidns-dot</code>（阿里云 DoT）解析。这是一个安全的兜底策略。",
+                "🌐 DNS 解析策略 — <code>prefer_ipv4</code> 优先返回 IPv4 地址。如果你需要 IPv6 优先，可改为 <code>prefer_ipv6</code> 或 <code>ipv4_only</code>。",
+                "🔄 反向 IP-域名映射 — 开启后 sing-box 会记录 IP 对应的域名，用于流量嗅探和分流。这是提高分流准确性的关键功能。",
+                "📦 DNS 缓存容量 — 最多缓存 65536 条解析记录。对于个人设备来说绰绰有余，高频访问的域名几乎都能命中缓存。",
+                "⚡ 乐观缓存 — 缓存过期时仍先返回旧结果给客户端（减少等待），同时后台异步更新解析。这是降低用户感知延迟的利器。",
+                "DNS 核心配置块结束。",
+                "📥 入站连接配置块 — 定义流量如何进入 sing-box。支持 TUN 虚拟网卡（全局代理）和混合代理端口（应用代理）两种方式。",
+                "   🔷 TUN 虚拟网卡入站 — 创建虚拟网卡接管系统全部流量，实现真正的全局代理。这是全平台通用的最佳方案。",
+                "   入站类型为 <code>tun</code> — 虚拟网卡模式。在 macOS/Linux 上使用 utun，Windows 上使用 Wintun。",
+                "   标签名 <code>tun-in</code> — 用于规则引用和日志标识。",
+                "   虚拟网卡 IP 地址 — <code>10.8.0.1/24</code>。使用 10.0.0.0/8 私有网段，与常见 192.168.x.x 网段隔离，避免路由冲突。",
+                "   MTU 值 1500 — 以太网标准最大传输单元。设置过大会导致数据包分片，过小会降低传输效率。1500 是经过长期验证的最优值。",
+                "   <span class='tag-highlight'>⭐ 协议栈</span> <code>mixed</code> 混合模式 — 同时支持 TCP 和 UDP。sing-box 的 mixed 栈在性能和兼容性之间取得了最佳平衡。可选：system/gvisor/lwip。",
+                "   <span class='tag-highlight'>⭐ 自动路由</span> 开启后 sing-box 会自动修改系统路由表，将流量导向虚拟网卡。关闭则需要手动配置路由。",
+                "   <span class='tag-warn'>⚠️ 严格路由</span> 开启后防止流量泄露——所有流量必须经过虚拟网卡，即使路由表中有其他可用路径也不走。这是安全性的关键保障。",
+                "   TUN 入站配置块结束。",
+                "   🔷 混合代理入站 — 同时兼容 HTTP 和 SOCKS5 代理协议。本地应用（浏览器、命令行工具等）可通过此端口使用代理。",
+                "   入站类型为 <code>mixed</code> — 一个端口同时支持 HTTP 代理和 SOCKS5 代理，无需分别配置两个端口。",
+                "   标签名 <code>mixed-in</code>。",
+                "   <span class='tag-warn'>⚠️ 安全</span> 监听地址 <code>127.0.0.1</code> — 仅本地环回地址。这意味着只有本机应用能连接此代理端口，局域网内其他设备无法访问。如果你需要共享代理给其他设备，可改为 <code>0.0.0.0</code>（但请注意安全）。",
+                "   监听端口 <code>7890</code> — 这是 Clash 生态的标准代理端口。大多数 Clash 客户端和应用都默认使用此端口。",
+                "   混合代理入站配置块结束。",
+                "入站连接配置块结束。",
+                "📤 出站连接配置块 — 定义流量如何从 sing-box 出去。包含直连、代理节点、自动选路、手动选择器等。",
+                "   ➡️ 直连出站 — 流量直接访问目标地址，不经过任何代理。用于国内站点和需要直连的场景。",
+                "   出站类型为 <code>direct</code> — 直连模式，最基础的出站方式。",
+                "   标签名 <code>DIRECT</code> — 全局核心标签。路由规则中大量引用此标签。命名约定：全大写表示核心出站。",
+                "   <span class='tag-tip'>💡 域名解析器</span> 使用 <code>alidns-quic</code>。直连流量也需要 DNS 解析，使用国内 QUIC DNS 保证解析速度。",
+                "   直连出站配置块结束。",
+                "   🔀 手动选择器出站 — 在客户端 UI 中可手动切换的出站组。这是用户交互的核心——你可以在面板中一键切换节点。",
+                "   出站类型为 <code>selector</code> — 选择器类型。在 UI 中显示为下拉菜单或按钮组。",
+                "   标签名 <code>PROXY</code> — 核心代理标签。路由规则中引用此标签作为代理流量的出口。",
+                "   可选择的出站列表 — UI 中会显示这些选项供用户选择。",
+                "   <code>AUTO</code> — 自动测速选路组（下方定义），默认自动选择最优节点。",
+                "   <code>🚀 CF-优选-Visa</code> — CF 优选节点 1（Visa 域名模板）。emoji 使其在 UI 中更易识别。",
+                "   <code>🚀 CF-优选-DO</code> — CF 优选节点 2（DO 域名模板）。",
+                "   <code>DIRECT</code> — 直连选项。当用户想全局直连时可直接切换。",
+                "   可选出站列表结束。",
+                "   <span class='tag-tip'>💡 默认选择</span> <code>AUTO</code> — 默认使用自动选路，无需用户手动干预即可获得最优节点。",
+                "   <span class='tag-tip'>💡 不中断连接</span> <code>interrupt_exist_connections: false</code> — 切换出站时，已建立的连接（如下载中的文件、进行中的视频通话）不会被中断。这是良好用户体验的关键。",
+                "   PROXY 选择器配置块结束。",
+                "   ⚡ 自动测速选路出站 — urltest 类型。定期测速，自动选择延迟最低的节点。",
+                "   出站类型为 <code>urltest</code> — 自动测速选路。sing-box 会周期性对列表中的节点进行测速。",
+                "   标签名 <code>AUTO</code> — 被 PROXY 选择器引用为默认选项。",
+                "   参与测速的节点列表。",
+                "   CF 优选节点 1 和节点 2 — 两个节点都会被测试，延迟低的胜出。",
+                "   测速节点列表结束。",
+                "   <span class='tag-highlight'>⭐ 测速地址</span> <code>http://cp.cloudflare.com/</code> — Cloudflare 的 204 空响应地址。返回 HTTP 204 No Content，几乎不消耗流量，响应极快。这是业界标准的测速地址。",
+                "   <span class='tag-tip'>💡 测速间隔</span> <code>10m</code> — 每 10 分钟测速一次。过于频繁会增加服务器负担，间隔太长则无法及时发现网络变化。",
+                "   <span class='tag-tip'>💡 容差值</span> <code>50</code> 毫秒 — 新节点必须比当前节点快 50ms 以上才会切换。这避免了因测速波动导致的频繁切换（"乒乓效应"）。",
+                "   <span class='tag-tip'>💡 空闲超时</span> <code>30m</code> — 超过 30 分钟无流量的节点将被重置测速数据。确保测速结果反映当前网络状态。",
+                "   切换时不中断已建立连接。",
+                "   自动测速选路配置块结束。",
+                "   🌍 全局选择器 — 对应 Clash 的全局模式。用户可一键切换全局代理或全局直连。",
+                "   出站类型为 <code>selector</code>。",
+                "   标签名 <code>GLOBAL</code> — Clash 兼容标签。启用 Clash API 后，面板会识别此标签为全局模式开关。",
+                "   可选 PROXY 或 DIRECT。",
+                "   默认使用 PROXY — 全局模式下默认代理。",
+                "   不中断已有连接。",
+                "   GLOBAL 选择器配置块结束。",
+                "   🇨🇳 国内流量选择器 — 国内域名分流组。用户可选择国内流量走直连还是代理。",
+                "   出站类型为 <code>selector</code>。",
+                "   标签名 <code>CN</code>。",
+                "   可选 DIRECT（默认）或 PROXY。国内流量默认直连，但用户可根据需要切换。",
+                "   不中断已有连接。",
+                "   CN 选择器配置块结束。",
+                "   🔷 VLESS 出站节点 1 — CF 优选 Visa 域名节点模板。这是你需要替换核心信息的第一个节点。",
+                "   <span class='tag-warn'>⚠️ 替换</span> 标签名 <code>🚀 CF-优选-Visa</code> — 可自定义，但需与 PROXY 选择器和 AUTO 测速组中的引用保持一致。",
+                "   出站类型 <code>vless</code> — VLESS 是 V2Ray 社区开发的轻量级协议，无加密层（加密由 TLS 负责），性能优异。",
+                "   <span class='tag-warn'>⚠️ 替换</span> <code>server</code> — <strong>需要替换为你的 CF 优选域名或 IP</strong>。例如填入 Cloudflare 优选后的 IP 地址或你的 Worker 域名。",
+                "   端口 443 — HTTPS 标准端口。大部分 CDN 和代理都使用此端口。",
+                "   <span class='tag-warn'>⚠️ 替换</span> <code>uuid</code> — <strong>需要替换为你节点的 VLESS UUID</strong>。格式如 <code>12345678-1234-1234-1234-123456789abc</code>。",
+                "   域名解析器使用 <code>alidns-quic</code> — 节点服务器域名的解析方式。",
+                "   传输层配置块 — 定义 VLESS 流量的传输方式。",
+                "   传输类型 <code>ws</code>（WebSocket）— 兼容性最好的传输协议，几乎所有 CDN 都支持。",
+                "   <span class='tag-warn'>⚠️ 替换</span> <code>path</code> — <strong>需要替换为你节点的 WebSocket 路径</strong>。例如 <code>/ws</code>、<code>/api</code> 或随机路径。",
+                "   WebSocket 请求头 — Host 头是 CDN 分发的关键。",
+                "   <span class='tag-warn'>⚠️ 替换</span> <code>Host</code> — <strong>需要替换为你节点的域名</strong>。CDN 根据此头部将请求路由到正确的后端服务。",
+                "   请求头配置块结束。",
+                "   传输层配置块结束。",
+                "   🔒 TLS 加密配置块 — VLESS 本身不加密，安全由 TLS 层保证。",
+                "   开启 TLS 加密 — 这是必须的，否则流量明文传输。",
+                "   <span class='tag-warn'>⚠️ 替换</span> <code>server_name</code> — <strong>需要替换为你节点的域名</strong>。TLS SNI 扩展，CDN 根据此字段选择 SSL 证书。",
+                "   <span class='tag-highlight'>⭐ uTLS 指纹</span> — 模拟浏览器 TLS 握手指纹，防止被识别为代理流量。",
+                "   开启 uTLS 指纹伪造。",
+                "   <code>chrome</code> 指纹 — 模拟 Chrome 浏览器的 TLS 握手特征。Chrome 指纹是最通用的，特征库最大，最难被识别。可选：firefox/safari/ios/random。",
+                "   uTLS 配置块结束。",
+                "   ALPN 扩展 — 应用层协议协商。",
+                "   仅协商 <code>http/1.1</code> — WebSocket 基于 HTTP/1.1 升级，使用此 ALPN 确保兼容性。不使用 h2（HTTP/2）避免潜在的兼容问题。",
+                "   ALPN 配置块结束。",
+                "   ECH 加密配置 — Encrypted Client Hello。",
+                "   <span class='tag-tip'>💡 关闭 ECH</span> — 当前设为 false。ECH 是较新的技术，部分 CDN 和服务器不支持。等生态更成熟后可开启。",
+                "   ECH 配置块结束。",
+                "   TLS 加密配置块结束。",
+                "   VLESS 节点 1 配置块结束。",
+                "   🔷 VLESS 出站节点 2 — CF 优选 DO 域名节点模板。结构与节点 1 完全相同，仅标签和替换内容不同。",
+                "   <span class='tag-warn'>⚠️ 替换</span> 标签名 <code>🚀 CF-优选-DO</code> — 建议使用有意义的名称区分不同节点。",
+                "   出站类型 <code>vless</code>。",
+                "   <span class='tag-warn'>⚠️ 替换</span> 服务器地址 — 替换为你的第二个 CF 优选 IP 或域名。",
+                "   端口 443。",
+                "   <span class='tag-warn'>⚠️ 替换</span> UUID — 替换为第二个节点的 UUID（可能与节点 1 相同，取决于你的节点配置）。",
+                "   域名解析器 <code>alidns-quic</code>。",
+                "   传输层配置块。",
+                "   传输类型 WebSocket。",
+                "   <span class='tag-warn'>⚠️ 替换</span> WebSocket 路径。",
+                "   WebSocket 请求头。",
+                "   <span class='tag-warn'>⚠️ 替换</span> Host 头部域名。",
+                "   请求头配置块结束。",
+                "   传输层配置块结束。",
+                "   TLS 加密配置块。",
+                "   开启 TLS。",
+                "   <span class='tag-warn'>⚠️ 替换</span> SNI 域名。",
+                "   uTLS 指纹伪造。",
+                "   开启 uTLS。",
+                "   Chrome 指纹。",
+                "   uTLS 配置块结束。",
+                "   ALPN 扩展。",
+                "   http/1.1 协议。",
+                "   ALPN 配置块结束。",
+                "   ECH 加密。",
+                "   关闭 ECH。",
+                "   ECH 配置块结束。",
+                "   TLS 加密配置块结束。",
+                "   VLESS 节点 2 配置块结束。",
+                "出站连接配置块结束。",
+                "🌐 HTTP 客户端配置块 — 统一管理规则集下载的 HTTP 请求。避免在多个规则集中重复配置下载参数。",
+                "   默认 HTTP 客户端配置。",
+                "   标签名 <code>default</code> — 规则集配置中通过 <code>http_client: default</code> 引用此客户端。",
+                "   <span class='tag-warn'>⚠️ 关键</span> 转发走 PROXY — 大多数规则集托管在 GitHub，国内直连可能失败。走代理保证规则集能正常下载和更新。",
+                "   默认 HTTP 客户端配置块结束。",
+                "HTTP 客户端列表结束。",
+                "🚦 路由核心配置块 — 流量分流的决策中心。规则从上到下匹配，命中即停止。规则的顺序直接影响分流效果。",
+                "🔧 路由默认域名解析器 — 当某个路由规则需要解析域名但未指定解析器时，使用 <code>alidns-quic</code>。",
+                "📋 路由规则列表开始 — <strong>规则顺序至关重要！</strong>以下规则按优先级从高到低排列。",
+                "   🚫 QUIC 流量拦截规则 — 屏蔽 443 端口的 QUIC（HTTP/3）流量。QUIC 基于 UDP，容易绕过代理分流。",
+                "   规则类型 <code>logical</code> — 逻辑组合规则，可将多个子规则用 AND/OR 组合。",
+                "   逻辑模式 <code>and</code> — 所有子规则必须同时满足。",
+                "   子规则列表。",
+                "   匹配协议为 QUIC 的流量。",
+                "   子规则结束。",
+                "   匹配目标端口 443。",
+                "   子规则结束。",
+                "   子规则列表结束。",
+                "   <span class='tag-warn'>⚠️ 拒绝</span> — 同时满足"QUIC 协议 + 443 端口"的流量被直接拒绝。这会强制浏览器回退到 HTTP/2 over TCP，确保流量能被代理正确分流。",
+                "   QUIC 拦截规则结束。",
+                "   📶 WiFi SSID 智能分流 — 连接指定 WiFi 名称时自动切换分流策略。",
+                "   <span class='tag-warn'>⚠️ 替换</span> <code>MyHomeWiFi</code> — 替换为你家里的 WiFi 名称。当连接此 WiFi 时流量走代理。",
+                "   流量走 PROXY。",
+                "   WiFi SSID 规则结束。",
+                "   📶 WiFi BSSID 智能分流 — 比 SSID 更精确，基于路由器的 MAC 地址匹配。",
+                "   <span class='tag-warn'>⚠️ 替换</span> <code>00:11:22:33:44:55</code> — 替换为你路由器的 BSSID（MAC 地址）。可通过手机 WiFi 详情或路由器后台查看。",
+                "   流量走 DIRECT — 例如连接公司 WiFi 时直连。",
+                "   WiFi BSSID 规则结束。",
+                "   🔀 DNS 流量劫持规则 — 将系统发出的 DNS 请求（53 端口）劫持到 sing-box 的 DNS 模块处理。",
+                "   规则类型 <code>logical</code> — 逻辑或（or）组合。",
+                "   逻辑模式 <code>or</code> — 满足任意一个子规则即可匹配。",
+                "   子规则列表。",
+                "   匹配目标端口 53 — DNS 标准端口。",
+                "   子规则结束。",
+                "   匹配协议为 DNS 的流量。",
+                "   子规则结束。",
+                "   子规则列表结束。",
+                "   <span class='tag-highlight'>⭐ hijack-dns</span> — 劫持 DNS 流量到 sing-box 内部 DNS 模块。这是实现全局 DNS 防污染的关键动作。即使应用自己指定了 DNS 服务器，流量也会被劫持。",
+                "   DNS 劫持规则结束。",
+                "   👃 流量嗅探规则 — 对所有流量开启域名和协议嗅探。sing-box 会分析流量的特征以确定其真实目标域名和协议类型。",
+                "   <span class='tag-highlight'>⭐ sniff 动作</span> — 开启嗅探。这是提高分流准确性的核心。例如 HTTPS 流量在 TLS 握手的 SNI 字段中会暴露域名，嗅探可以提取这些信息用于分流。",
+                "   流量嗅探规则结束。",
+                "   🚫 STUN 穿透流量拦截 — 屏蔽 WebRTC 相关的 STUN/TURN 协议流量，防止内网 IP 泄露。",
+                "   规则类型 <code>logical</code> — 逻辑或组合。",
+                "   逻辑模式 <code>or</code>。",
+                "   子规则列表。",
+                "   匹配 UDP 协议 + STUN 常用端口（3478/5349/5350/19302/10000）。这些端口是 STUN/TURN 服务的标准端口。",
+                "   匹配域名为 <code>stun.*</code> 格式的正则表达式。",
+                "   匹配域名包含 stun/turn/httpdns 关键词的流量。",
+                "   匹配协议为 STUN 的流量。",
+                "   子规则列表结束。",
+                "   <span class='tag-warn'>⚠️ 拒绝</span> — 拦截所有 STUN 穿透流量。如果你需要使用 WebRTC（如视频会议），可能需要调整此规则。但对于大多数用户，拦截 STUN 可以有效防止 IP 泄露。",
+                "   STUN 拦截规则结束。",
+                "   🕐 NTP 时间同步直连规则 — 确保时间同步流量走直连。",
+                "   匹配域名包含 ntp 或 time 关键词。",
+                "   匹配 UDP 协议。",
+                "   匹配端口 123（NTP 标准端口）。",
+                "   流量走 DIRECT 直连 — 时间同步不需要代理，直连更快更稳定。",
+                "   NTP 直连规则结束。",
+                "   📲 Google GCM 推送专属分流 — 安卓设备接收推送通知的核心通道。",
+                "   规则类型 <code>logical</code> — 逻辑与（and）组合。",
+                "   逻辑模式 <code>and</code> — 域名和端口必须同时匹配。",
+                "   子规则列表。",
+                "   匹配的 Google 推送域名列表。",
+                "   <code>mtalk.google.com</code> — Google GCM/FCM 主推送服务域名。",
+                "   <code>alt1</code> 到 <code>alt8</code> — Google 推送服务的 8 个备用域名，提供冗余连接。",
+                "   域名列表结束。",
+                "   子规则结束。",
+                "   匹配目标端口 443 和 5228 — GCM/FCM 推送的标准端口。5228 是 Google Play Services 的专用端口。",
+                "   子规则结束。",
+                "   子规则列表结束。",
+                "   <span class='tag-highlight'>⭐ 走代理</span> — GCM 推送流量走 PROXY。国内网络环境下 Google 推送服务经常被延迟或阻断，走代理可保证推送稳定。",
+                "   GCM 推送规则结束。",
+                "   🛡️ 反欺诈拦截规则 — 拦截已知的诈骗、钓鱼、恶意网站。",
+                "   匹配 <code>anti_fraud</code> 反欺诈规则集。",
+                "   <span class='tag-warn'>⚠️ 拒绝</span> — 直接拦截恶意站点。此规则集由社区维护，每 48 小时更新一次。",
+                "   反欺诈规则结束。",
+                "   🏠 私有 IP 直连规则 — 内网地址流量直连。",
+                "   <code>ip_is_private: true</code> — 匹配所有 RFC 1918 私有 IP 地址（10.x.x.x、172.16-31.x.x、192.168.x.x）。",
+                "   走 DIRECT 直连 — 内网流量（如访问路由器、NAS、打印机）不需要代理。",
+                "   私有 IP 直连规则结束。",
+                "   🎭 FakeIP 地址段代理规则 — 目标 IP 属于 FakeIP 地址段（198.18.0.0/15）的流量走代理。",
+                "   匹配 <code>198.18.0.0/15</code> — 与 DNS 中 FakeIP 的地址池一致。",
+                "   走 PROXY — 这些虚拟 IP 对应的真实域名需要代理访问。",
+                "   FakeIP 代理规则结束。",
+                "   🚫 广告域名路由层二次拦截 — 在路由层再次拦截广告域名。这是第二道防线（第一道在 DNS 层）。",
+                "   匹配双广告规则集 — geosite_adguard + geosite-category-ads-all。",
+                "   <span class='tag-warn'>⚠️ 拒绝</span> — 路由层直接拒绝。即使 DNS 层漏过，路由层也会拦截。",
+                "   路由层广告拦截规则结束。",
+                "   🔍 Google 服务分流 — Google 所有服务走代理。",
+                "   匹配 <code>geosite-google</code> 规则集 — 包含所有 Google 相关域名（搜索、Gmail、Drive、YouTube 等）。",
+                "   走 PROXY。",
+                "   Google 服务规则结束。",
+                "   🌍 代理域名分流 — 境外需代理的站点。",
+                "   匹配 <code>proxy</code> 规则集 — 由 DustinWin 维护的代理域名合集。",
+                "   走 PROXY。",
+                "   代理域名规则结束。",
+                "   🎮 游戏域名分流。",
+                "   匹配 <code>games</code> 规则集 — 境外游戏相关域名。",
+                "   走 PROXY。",
+                "   游戏域名规则结束。",
+                "   🤖 AI 服务域名分流 — ChatGPT、Claude、Midjourney 等。",
+                "   匹配 <code>ai</code> 规则集 — 主流 AI 服务域名合集。",
+                "   走 PROXY。",
+                "   AI 服务规则结束。",
+                "   🇨🇳 国内站点规则集直连 — 多规则集叠加，确保国内流量直连。",
+                "   匹配的规则集列表。",
+                "   <code>private</code> — 内网地址规则集。",
+                "   <code>cn</code> — 中国域名规则集。",
+                "   <code>microsoft-cn</code> — 微软中国服务（Office 365 中国版、Azure 中国等）。",
+                "   <code>apple-cn</code> — 苹果中国服务（iCloud 中国版、App Store 中国区等）。",
+                "   <code>google-cn</code> — Google 中国服务（谷歌广告中国、Google 开发者中国等）。",
+                "   <code>games-cn</code> — 国内游戏规则集（王者荣耀、原神国服等）。",
+                "   <code>networktest</code> — 网络测试站点（测速网站等）。",
+                "   规则集列表结束。",
+                "   走 DIRECT 直连。",
+                "   国内规则集直连规则结束。",
+                "   🔍 强制 DNS 解析 — 对未匹配前置规则的域名强制执行 DNS 解析。解析结果将用于后续 IP 规则匹配。",
+                "   <span class='tag-highlight'>⭐ resolve 动作</span> — 这是 IP 规则匹配的前提。例如后续的 <code>telegramip</code> 和 <code>cnip</code> 规则需要知道目标 IP 才能匹配。",
+                "   强制解析规则结束。",
+                "   📲 Telegram IP 分流 — Telegram 相关 IP 走代理。",
+                "   匹配 <code>telegramip</code> 规则集 — Telegram 官方 IP 段。",
+                "   走 PROXY — Telegram 的 IP 在很多网络环境下被干扰，需要代理。",
+                "   Telegram IP 规则结束。",
+                "   🇨🇳 中国 IP 段直连 — 国内 IP 流量强制直连。这是分流规则的最后一层保险。",
+                "   匹配 <code>cnip</code> 规则集 — 全量中国 IP 地址段（APNIC 分配给中国的 IP）。",
+                "   走 DIRECT — 确保国内流量不会误走代理。",
+                "   中国 IP 直连规则结束。",
+                "   📱 YouTube 安卓应用分流（按包名）。",
+                "   匹配的安卓应用包名列表。",
+                "   <code>com.google.android.youtube</code> — YouTube 官方应用。",
+                "   <code>app.revanced.android.youtube</code> — YouTube Revanced 修改版。",
+                "   应用包名列表结束。",
+                "   走 PROXY — YouTube 应用强制走代理。即使其他规则可能匹配到直连，包名规则的优先级更高（因为它在列表末尾之前）。",
+                "   YouTube 应用规则结束。",
+                "   📱 Telegram 安卓应用分流（按包名）。",
+                "   匹配的包名 — Telegram 官方版和 Beta 版。",
+                "   走 PROXY — Telegram 应用强制代理，保证消息推送和连接稳定。",
+                "   Telegram 应用规则结束。",
+                "路由规则列表结束。",
+                "📋 远程规则集列表 — 定义所有需要从远程服务器下载的分流规则集。这些规则集会定期自动更新。",
+                "   📋 全量广告分类规则集 — sing-geosite 官方维护。",
+                "   标签名 <code>geosite-category-ads-all</code> — 在 DNS rules 和 route rules 中引用。",
+                "   类型 <code>remote</code> — 远程规则集，首次启动时下载。",
+                "   格式 <code>binary</code> — sing-box 专用 .srs 二进制格式。加载速度远超 source 格式，内存占用更小。",
+                "   下载地址 — jsdelivr CDN 加速的 GitHub 源。jsdelivr 在国内有节点，下载成功率较高。",
+                "   使用 <code>default</code> HTTP 客户端（走 PROXY 下载）。",
+                "   <span class='tag-tip'>💡 更新间隔</span> <code>48h</code> — 每 48 小时更新一次。广告规则变化频繁，48 小时是平衡时效性和流量的合理选择。",
+                "   全量广告规则集配置块结束。",
+                "   📋 AdGuard 广告过滤规则集 — 第三方维护，过滤规则更全面。",
+                "   标签名 <code>geosite_adguard</code>。",
+                "   类型 <code>remote</code>。",
+                "   格式 <code>binary</code>。",
+                "   下载地址 — 217heidai 维护的 AdGuard 规则转 sing-box 格式。",
+                "   使用 default HTTP 客户端。",
+                "   48 小时更新。",
+                "   AdGuard 规则集配置块结束。",
+                "   📋 Google 服务规则集 — 官方 sing-geosite 维护。",
+                "   标签名 <code>geosite-google</code>。",
+                "   类型 <code>remote</code>，格式 <code>binary</code>。",
+                "   下载地址 — sing-geosite 官方 Google 分类。",
+                "   使用 default HTTP 客户端，48 小时更新。",
+                "   Google 规则集配置块结束。",
+                "   📋 YouTube 专属规则集。",
+                "   标签名 <code>geosite-youtube</code>。",
+                "   类型 <code>remote</code>，格式 <code>binary</code>。",
+                "   下载地址 — sing-geosite 官方 YouTube 分类。",
+                "   使用 default HTTP 客户端，48 小时更新。",
+                "   YouTube 规则集配置块结束。",
+                "   📋 代理站点规则集 — DustinWin 维护的代理域名集合。",
+                "   标签名 <code>proxy</code>。",
+                "   类型 <code>remote</code>，格式 <code>binary</code>。",
+                "   下载地址 — DustinWin 的 ruleset_geodata 仓库。覆盖了常见的境外代理站点。",
+                "   使用 default HTTP 客户端，48 小时更新。",
+                "   代理规则集配置块结束。",
+                "   📋 游戏站点规则集 — 境外游戏域名集合。",
+                "   标签名 <code>games</code>。",
+                "   类型 <code>remote</code>，格式 <code>binary</code>。",
+                "   下载地址 — DustinWin 维护的游戏规则集。",
+                "   使用 default HTTP 客户端，48 小时更新。",
+                "   游戏规则集配置块结束。",
+                "   📋 AI 站点规则集 — ChatGPT、Claude、Gemini 等 AI 服务域名。",
+                "   标签名 <code>ai</code>。",
+                "   类型 <code>remote</code>，格式 <code>binary</code>。",
+                "   下载地址 — DustinWin 维护的 AI 规则集。随着 AI 服务增多，此规则集会持续更新。",
+                "   使用 default HTTP 客户端，48 小时更新。",
+                "   AI 规则集配置块结束。",
+                "   📋 私有内网规则集。",
+                "   标签名 <code>private</code>。",
+                "   类型 <code>remote</code>，格式 <code>binary</code>。",
+                "   下载地址 — 内网 IP 段和域名规则。",
+                "   使用 default HTTP 客户端，48 小时更新。",
+                "   私有内网规则集配置块结束。",
+                "   📋 反欺诈规则集 — 诈骗和恶意站点列表。",
+                "   标签名 <code>anti_fraud</code>。",
+                "   类型 <code>remote</code>。",
+                "   <span class='tag-tip'>💡 source 格式</span> — 此规则集使用 <code>source</code> 格式（JSON），而非 binary。因为反欺诈规则需要频繁更新，source 格式更灵活。",
+                "   下载地址 — hwsaya 维护的反欺诈规则（FuckFZ）。Raw GitHub 地址，保证最新。",
+                "   <span class='tag-warn'>⚠️ 注意</span> 此规则集没有 <code>http_client</code> 字段，意味着使用默认下载方式（可能受路由影响）。如果需要走代理下载，应添加 <code>http_client: default</code>。",
+                "   反欺诈规则集配置块结束。",
+                "   📋 中国域名规则集。",
+                "   标签名 <code>cn</code>。类型 <code>remote</code>，格式 <code>binary</code>。",
+                "   下载地址 — DustinWin 维护。使用 default HTTP 客户端，48 小时更新。",
+                "   中国域名规则集配置块结束。",
+                "   📋 微软中国服务规则集 — Office 365 中国版、Azure 中国等。",
+                "   标签名 <code>microsoft-cn</code>。使用 default HTTP 客户端，48 小时更新。",
+                "   微软中国规则集配置块结束。",
+                "   📋 苹果中国服务规则集 — iCloud 中国版、App Store 中国区。",
+                "   标签名 <code>apple-cn</code>。使用 default HTTP 客户端，48 小时更新。",
+                "   苹果中国规则集配置块结束。",
+                "   📋 Google 中国服务规则集 — Google 在中国运营的服务。",
+                "   标签名 <code>google-cn</code>。使用 default HTTP 客户端，48 小时更新。",
+                "   Google 中国规则集配置块结束。",
+                "   📋 国内游戏规则集 — 王者荣耀、原神国服等国内游戏。",
+                "   标签名 <code>games-cn</code>。使用 default HTTP 客户端，48 小时更新。",
+                "   国内游戏规则集配置块结束。",
+                "   📋 网络测试站点规则集 — Speedtest、Fast.com 等测速网站。",
+                "   标签名 <code>networktest</code>。使用 default HTTP 客户端，48 小时更新。",
+                "   网络测试规则集配置块结束。",
+                "   📋 Telegram IP 规则集 — Telegram 官方 IP 段。",
+                "   标签名 <code>telegramip</code>。使用 default HTTP 客户端，48 小时更新。",
+                "   Telegram IP 规则集配置块结束。",
+                "   📋 中国 IP 段规则集 — APNIC 分配给中国的全部 IP 地址。",
+                "   标签名 <code>cnip</code>。使用 default HTTP 客户端，48 小时更新。",
+                "   中国 IP 段规则集配置块结束。",
+                "远程规则集列表结束。",
+                "🔚 路由最终兜底出站 — 所有未匹配规则的流量默认走 <code>PROXY</code>。这是"白名单"策略：未知流量走代理，已知国内流量走直连。安全且保守。",
+                "🔧 自动检测网络接口 — 多网卡环境下（如有线+无线同时连接）自动选择正确的网络接口，避免路由异常。建议保持开启。",
+                "路由核心配置块结束。",
+                "🧪 实验性功能配置块 — 包含 Clash API 面板、缓存持久化、内存优化等进阶功能。标记为"实验性"是因为这些 API 可能在版本更新中变化。",
+                "   🎛️ Clash API 配置 — 兼容 Clash 控制面板和第三方客户端。可通过 Web UI 或 API 管理 sing-box。",
+                "   <span class='tag-highlight'>⭐ 控制器地址</span> <code>127.0.0.1:9090</code> — 本地 9090 端口。Clash 生态的标准端口。仅监听本地，外部设备无法访问。",
+                "   Web UI 目录 <code>ui</code> — 控制面板前端文件存放目录。首次启动时会从下方 URL 自动下载。",
+                "   <span class='tag-tip'>💡 面板下载</span> — metacubexd 是 Clash Meta 生态中最流行的 Web 面板，功能全面、界面美观。自动下载到 ui 目录。",
+                "   面板下载走 PROXY — 因为 GitHub 在国内可能无法直连。",
+                "   <span class='tag-warn'>⚠️ 密钥</span> — Clash API 访问密钥。访问面板时需要提供此密钥进行身份验证。<strong>建议修改为自己的密钥</strong>，保证安全。",
+                "   <span class='tag-tip'>💡 默认模式</span> <code>rule</code> — 规则模式。面板上可切换为 global（全局）或 direct（直连）模式。",
+                "   Clash API 配置块结束。",
+                "   💾 缓存文件配置 — 持久化 DNS 缓存和 FakeIP 映射到本地数据库文件。重启 sing-box 后数据不丢失。",
+                "   启用缓存文件。",
+                "   缓存文件路径 <code>cache.db</code> — SQLite 数据库文件，存放在 sing-box 工作目录。",
+                "   <span class='tag-tip'>💡 缓存 ID</span> <code>cinchov</code> — 用于区分不同配置的缓存。如果你有多套配置，建议使用不同的 cache_id 避免数据混淆。",
+                "   持久化 DNS 解析记录 — 重启后无需重新解析域名，启动即可用。",
+                "   持久化 FakeIP 映射 — 重启后虚拟 IP 到真实域名的映射关系保留，加速连接恢复。",
+                "   缓存文件配置块结束。",
+                "   🐛 调试和性能优化配置 — 内存管理和垃圾回收调优。",
+                "   <span class='tag-highlight'>⭐ GC 百分比</span> <code>50</code> — Go 语言垃圾回收触发阈值。设为 50 意味着当内存占用增长 50% 时触发 GC。默认是 100。降低此值会减少内存峰值但增加 CPU 开销。",
+                "   <span class='tag-warn'>⚠️ 内存限制</span> <code>200MB</code> — sing-box 最大内存占用限制。在低配置设备（如路由器、老旧手机）上尤其重要。超过此限制会触发强制 GC，防止 OOM。",
+                "   调试优化配置块结束。",
+                "实验性功能配置块结束。",
+                "🔚 sing-box 完整配置根对象结束 — 整个 JSON 配置文件的结尾。"
+            ];
 
-    // 渲染表格
-    const tbody = document.getElementById('table-body');
-    let html = '';
-    for (let i = 0; i < configLines.length; i++) {
-        html += '<tr>';
-        html += '<td class="line-num">' + (i + 1) + '</td>';
-        html += '<td class="code-cell">' + escapeHtml(configLines[i]) + '</td>';
-        html += '<td class="comment-cell">' + escapeHtml(comments[i] || '') + '</td>';
-        html += '</tr>';
-    }
-    tbody.innerHTML = html;
+            // ==================== 验证数组长度是否一致 ====================
+            if (configLines.length !== comments.length) {
+                console.error(
+                    '❌ 数组长度不匹配！configLines: ' + configLines.length +
+                    ', comments: ' + comments.length +
+                    '. 差值: ' + Math.abs(configLines.length - comments.length)
+                );
+                // 自动补齐或截断以确保页面可渲染
+                if (comments.length < configLines.length) {
+                    for (let i = comments.length; i < configLines.length; i++) {
+                        comments.push('⚠️ 缺少注释（已自动填充占位）');
+                    }
+                } else {
+                    comments.length = configLines.length;
+                }
+            }
 
-    // 完善的HTML转义函数，防止XSS和渲染异常
-    function escapeHtml(text) {
-        const map = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#039;'
-        };
-        return text.replace(/[&<>"']/g, function(m) { return map[m]; });
-    }
+            // ==================== 渲染表格 ====================
+            const tbody = document.getElementById('table-body');
+            const totalRowsSpan = document.getElementById('total-rows');
+            const matchCountSpan = document.getElementById('match-count');
+            let html = '';
+            for (let i = 0; i < configLines.length; i++) {
+                html += '<tr data-row="' + (i + 1) + '">';
+                html += '<td class="line-num">' + (i + 1) + '</td>';
+                html += '<td class="code-cell">' + escapeHtml(configLines[i]) + '</td>';
+                html += '<td class="comment-cell">' + (comments[i] || '') + '</td>';
+                html += '</tr>';
+            }
+            tbody.innerHTML = html;
+            totalRowsSpan.textContent = configLines.length;
+            matchCountSpan.textContent = configLines.length;
 
-    // 日夜模式切换逻辑
-    const themeBtns = document.querySelectorAll('.theme-btn');
-    const body = document.body;
-    
-    function setTheme(theme) {
-        body.classList.remove('light', 'dark');
-        if (theme === 'light') {
-            body.classList.add('light');
-        } else if (theme === 'dark') {
-            body.classList.add('dark');
-        }
-        localStorage.setItem('theme', theme);
-        // 更新按钮激活状态
-        themeBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.theme === theme);
-        });
-    }
+            // ==================== HTML 转义函数 ====================
+            function escapeHtml(text) {
+                const map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+            }
 
-    // 初始化主题
-    const savedTheme = localStorage.getItem('theme') || 'auto';
-    if (savedTheme !== 'auto') {
-        setTheme(savedTheme);
-    } else {
-        themeBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.theme === 'auto');
-        });
-    }
+            // ==================== 搜索功能 ====================
+            const searchInput = document.getElementById('search-input');
+            const allRows = tbody.querySelectorAll('tr');
 
-    // 绑定主题切换事件
-    themeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const theme = btn.dataset.theme;
-            setTheme(theme);
-        });
-    });
-})();
-</script>
+            searchInput.addEventListener('input', function() {
+                const query = this.value.trim().toLowerCase();
+                let matchCount = 0;
+
+                allRows.forEach(row => {
+                    if (!query) {
+                        row.classList.remove('row-hidden');
+                        matchCount++;
+                    } else {
+                        const codeCell = row.querySelector('.code-cell');
+                        const commentCell = row.querySelector('.comment-cell');
+                        const lineNum = row.querySelector('.line-num');
+                        const codeText = codeCell ? codeCell.textContent.toLowerCase() : '';
+                        const commentText = commentCell ? commentCell.textContent.toLowerCase() : '';
+                        const lineText = lineNum ? lineNum.textContent.trim() : '';
+
+                        // 匹配行号（精确匹配）
+                        if (lineText === query) {
+                            row.classList.remove('row-hidden');
+                            matchCount++;
+                        }
+                        // 匹配配置代码或注释内容
+                        else if (codeText.includes(query) || commentText.includes(query)) {
+                            row.classList.remove('row-hidden');
+                            matchCount++;
+                        } else {
+                            row.classList.add('row-hidden');
+                        }
+                    }
+                });
+
+                matchCountSpan.textContent = matchCount;
+                totalRowsSpan.textContent = configLines.length;
+            });
+
+            // ==================== 日夜模式切换逻辑 ====================
+            const themeBtns = document.querySelectorAll('.theme-btn');
+            const body = document.body;
+
+            function setTheme(theme) {
+                body.classList.remove('light', 'dark');
+                if (theme === 'light') {
+                    body.classList.add('light');
+                } else if (theme === 'dark') {
+                    body.classList.add('dark');
+                }
+                localStorage.setItem('theme', theme);
+                themeBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.theme === theme);
+                });
+            }
+
+            const savedTheme = localStorage.getItem('theme') || 'auto';
+            if (savedTheme !== 'auto') {
+                setTheme(savedTheme);
+            } else {
+                themeBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.theme === 'auto');
+                });
+            }
+
+            themeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    setTheme(theme);
+                });
+            });
+
+            // ==================== 完成提示 ====================
+            console.log(
+                '✅ sing-box 配置注释页面已就绪。\n' +
+                '   📊 总行数: ' + configLines.length + '\n' +
+                '   💬 注释数: ' + comments.length + '\n' +
+                '   🔍 搜索功能已启用\n' +
+                '   🌓 主题切换已启用\n' +
+                '   ✔️ 数组长度验证: ' + (configLines.length === comments.length ? '通过' : '⚠️ 不匹配，已自动修复')
+            );
+        })();
+    </script>
 </body>
 </html>

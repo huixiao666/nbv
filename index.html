@@ -3,117 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>sing-box 1.14.0-alpha.20 配置注释 · 完整版</title>
+    <title>sing-box 1.14.0-alpha.20 配置详解 · 完整注释版</title>
     <style>
         :root {
-            --bg-body: #eef2f7;
+            --bg-body: #f1f5f9;
             --bg-container: #ffffff;
-            --header-bg: #0a2b3c;
-            --header-text: #ffffff;
-            --th-bg: #e9f0f6;
-            --th-border: #cbdde6;
+            --header-bg: #0f172a;
+            --header-text: #f8fafc;
+            --th-bg: #e2e8f0;
+            --th-border: #cbd5e1;
             --line-num-bg: #f8fafc;
-            --line-num-text: #6b7280;
-            --code-text: #1e40af;
+            --line-num-text: #64748b;
+            --code-text: #1e3a8a;
             --code-bg: #fefefe;
-            --comment-text: #166534;
-            --comment-bg: #f1fdf5;
+            --comment-text: #065f46;
+            --comment-bg: #ecfdf5;
             --info-bg: #f8fafc;
             --info-text: #1e293b;
-            --border-light: #f0f4f8;
-            --btn-bg: #e2e8f0;
-            --btn-text: #1e293b;
-            --btn-active-bg: #0a2b3c;
-            --btn-active-text: #ffffff;
-            --highlight-bg: #fffde7;
-            --highlight-border: #f9a825;
-            --warn-bg: #fff3e0;
-            --warn-text: #e65100;
-            --tip-bg: #e8f5e9;
-            --tip-text: #1b5e20;
+            --border-light: #e2e8f0;
+            --highlight-bg: #fef9c3;
+            --highlight-border: #eab308;
+            --warn-bg: #ffedd5;
+            --warn-text: #9a3412;
+            --tip-bg: #dcfce7;
+            --tip-text: #166534;
+            --qna-bg: #ede9fe;
+            --qna-text: #5b21b6;
+            --key-bg: #f1f5f9;
+            --key-text: #334155;
         }
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-body: #1a1e2a;
-                --bg-container: #252b3a;
-                --header-bg: #162b3a;
-                --header-text: #f0f6fc;
-                --th-bg: #2d3548;
-                --th-border: #3f4a60;
-                --line-num-bg: #1f2533;
-                --line-num-text: #9aa4b8;
-                --code-text: #b5c9ff;
-                --code-bg: #1a1f2b;
-                --comment-text: #8bcf9e;
-                --comment-bg: #1e2a2a;
-                --info-bg: #1f2533;
-                --info-text: #cbd5e1;
-                --border-light: #2f3a4c;
-                --btn-bg: #3a465c;
-                --btn-text: #e2e8f0;
-                --btn-active-bg: #3b82f6;
-                --btn-active-text: #ffffff;
-                --highlight-bg: #2d2a1a;
+                --bg-body: #0f172a;
+                --bg-container: #1e293b;
+                --header-bg: #020617;
+                --header-text: #f1f5f9;
+                --th-bg: #334155;
+                --th-border: #475569;
+                --line-num-bg: #1e293b;
+                --line-num-text: #94a3b8;
+                --code-text: #93c5fd;
+                --code-bg: #1a2332;
+                --comment-text: #6ee7b7;
+                --comment-bg: #0f2a26;
+                --info-bg: #1e293b;
+                --info-text: #e2e8f0;
+                --border-light: #334155;
+                --highlight-bg: #3b2a0a;
                 --highlight-border: #b8860b;
-                --warn-bg: #3e2a1a;
-                --warn-text: #ffb74d;
-                --tip-bg: #1a2e1a;
-                --tip-text: #81c784;
+                --warn-bg: #4a2511;
+                --warn-text: #fbbf24;
+                --tip-bg: #0a2a1a;
+                --tip-text: #6ee7b7;
+                --qna-bg: #2a1a4a;
+                --qna-text: #c4b5fd;
+                --key-bg: #1e293b;
+                --key-text: #cbd5e1;
             }
         }
         body.light {
-            --bg-body: #eef2f7;
+            --bg-body: #f1f5f9;
             --bg-container: #ffffff;
-            --header-bg: #0a2b3c;
-            --header-text: #ffffff;
-            --th-bg: #e9f0f6;
-            --th-border: #cbdde6;
+            --header-bg: #0f172a;
+            --header-text: #f8fafc;
+            --th-bg: #e2e8f0;
+            --th-border: #cbd5e1;
             --line-num-bg: #f8fafc;
-            --line-num-text: #6b7280;
-            --code-text: #1e40af;
+            --line-num-text: #64748b;
+            --code-text: #1e3a8a;
             --code-bg: #fefefe;
-            --comment-text: #166534;
-            --comment-bg: #f1fdf5;
+            --comment-text: #065f46;
+            --comment-bg: #ecfdf5;
             --info-bg: #f8fafc;
             --info-text: #1e293b;
-            --border-light: #f0f4f8;
-            --btn-bg: #e2e8f0;
-            --btn-text: #1e293b;
-            --btn-active-bg: #0a2b3c;
-            --btn-active-text: #ffffff;
-            --highlight-bg: #fffde7;
-            --highlight-border: #f9a825;
-            --warn-bg: #fff3e0;
-            --warn-text: #e65100;
-            --tip-bg: #e8f5e9;
-            --tip-text: #1b5e20;
+            --border-light: #e2e8f0;
+            --highlight-bg: #fef9c3;
+            --highlight-border: #eab308;
+            --warn-bg: #ffedd5;
+            --warn-text: #9a3412;
+            --tip-bg: #dcfce7;
+            --tip-text: #166534;
+            --qna-bg: #ede9fe;
+            --qna-text: #5b21b6;
+            --key-bg: #f1f5f9;
+            --key-text: #334155;
         }
         body.dark {
-            --bg-body: #1a1e2a;
-            --bg-container: #252b3a;
-            --header-bg: #162b3a;
-            --header-text: #f0f6fc;
-            --th-bg: #2d3548;
-            --th-border: #3f4a60;
-            --line-num-bg: #1f2533;
-            --line-num-text: #9aa4b8;
-            --code-text: #b5c9ff;
-            --code-bg: #1a1f2b;
-            --comment-text: #8bcf9e;
-            --comment-bg: #1e2a2a;
-            --info-bg: #1f2533;
-            --info-text: #cbd5e1;
-            --border-light: #2f3a4c;
-            --btn-bg: #3a465c;
-            --btn-text: #e2e8f0;
-            --btn-active-bg: #3b82f6;
-            --btn-active-text: #ffffff;
-            --highlight-bg: #2d2a1a;
+            --bg-body: #0f172a;
+            --bg-container: #1e293b;
+            --header-bg: #020617;
+            --header-text: #f1f5f9;
+            --th-bg: #334155;
+            --th-border: #475569;
+            --line-num-bg: #1e293b;
+            --line-num-text: #94a3b8;
+            --code-text: #93c5fd;
+            --code-bg: #1a2332;
+            --comment-text: #6ee7b7;
+            --comment-bg: #0f2a26;
+            --info-bg: #1e293b;
+            --info-text: #e2e8f0;
+            --border-light: #334155;
+            --highlight-bg: #3b2a0a;
             --highlight-border: #b8860b;
-            --warn-bg: #3e2a1a;
-            --warn-text: #ffb74d;
-            --tip-bg: #1a2e1a;
-            --tip-text: #81c784;
+            --warn-bg: #4a2511;
+            --warn-text: #fbbf24;
+            --tip-bg: #0a2a1a;
+            --tip-text: #6ee7b7;
+            --qna-bg: #2a1a4a;
+            --qna-text: #c4b5fd;
+            --key-bg: #1e293b;
+            --key-text: #cbd5e1;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; }
@@ -123,73 +123,103 @@
             padding: 1rem;
             color: var(--info-text);
             transition: background 0.2s, color 0.2s;
+            line-height: 1.5;
         }
         .container {
-            max-width: 1800px;
+            max-width: 1900px;
             margin:0 auto;
             background: var(--bg-container);
-            border-radius: 16px;
-            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
             overflow: hidden;
         }
         .header {
             background: var(--header-bg);
             color: var(--header-text);
-            padding: 1.2rem 1.5rem;
+            padding: 1.5rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 1rem;
         }
-        .header h1 { font-size:1.6rem; font-weight:600; line-height:1.3; }
-        .header p { margin-top:0.4rem; opacity:0.9; font-size:0.9rem; }
+        .header h1 { font-size:1.8rem; font-weight:700; letter-spacing:-0.02em; }
+        .header p { margin-top:0.3rem; opacity:0.85; font-size:0.95rem; }
         .theme-switcher { display:flex; gap:0.5rem; flex-shrink:0; }
         .theme-btn {
-            background: var(--btn-bg); color: var(--btn-text);
-            border: none; border-radius:20px; padding:0.4rem 0.9rem;
-            font-size:0.8rem; cursor:pointer; transition: all 0.2s ease; font-weight:500;
+            background: rgba(255,255,255,0.15);
+            color: var(--header-text);
+            border:1px solid rgba(255,255,255,0.2);
+            border-radius:24px; padding:0.5rem 1rem;
+            font-size:0.85rem; cursor:pointer; transition: all 0.2s ease; font-weight:500;
         }
-        .theme-btn.active { background: var(--btn-active-bg); color: var(--btn-active-text); }
-        .theme-btn:hover { opacity:0.9; transform:translateY(-1px); }
+        .theme-btn.active { background:#3b82f6; border-color:#3b82f6; color:#fff; }
+        .theme-btn:hover { background:rgba(255,255,255,0.25); }
         .table-wrapper { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-        .config-table { width:100%; border-collapse:collapse; font-size:0.78rem; table-layout:fixed; }
+        .config-table { width:100%; border-collapse:collapse; font-size:0.8rem; table-layout:fixed; }
         .config-table th {
-            text-align:left; background:var(--th-bg); padding:0.8rem 0.6rem;
-            font-weight:600; position:sticky; top:0; z-index:10;
-            backdrop-filter:blur(4px); border-bottom:2px solid var(--th-border);
-            color: var(--info-text);
+            text-align:left; background:var(--th-bg); padding:0.9rem 0.8rem;
+            font-weight:700; position:sticky; top:0; z-index:10;
+            border-bottom:2px solid var(--th-border); color:var(--info-text); font-size:0.85rem;
         }
-        .config-table th:nth-child(1) { width:60px; }
-        .config-table th:nth-child(2) { width:45%; min-width:300px; }
-        .config-table th:nth-child(3) { width:49%; min-width:300px; }
-        .config-table td { padding:0.6rem 0.6rem; border-bottom:1px solid var(--border-light); vertical-align:top; line-height:1.5; }
-        .config-table tr:hover td { filter:brightness(0.97); }
-        .line-num { text-align:right; color:var(--line-num-text); background:var(--line-num-bg); user-select:none; font-family:monospace; font-size:0.72rem; padding-right:0.5rem !important; }
-        .code-cell { font-family:'SF Mono','Fira Code','Consolas',monospace; white-space:pre-wrap; word-break:break-all; color:var(--code-text); background:var(--code-bg); }
-        .comment-cell { color:var(--comment-text); background:var(--comment-bg); line-height:1.6; }
-        .tag-highlight { display:inline-block; background:var(--highlight-bg); border:1px solid var(--highlight-border); border-radius:3px; padding:0.1rem 0.4rem; font-size:0.72rem; font-weight:600; margin-right:0.2rem; }
-        .tag-warn { display:inline-block; background:var(--warn-bg); color:var(--warn-text); border-radius:3px; padding:0.1rem 0.4rem; font-size:0.72rem; font-weight:600; margin-right:0.2rem; }
-        .tag-tip { display:inline-block; background:var(--tip-bg); color:var(--tip-text); border-radius:3px; padding:0.1rem 0.4rem; font-size:0.72rem; font-weight:600; margin-right:0.2rem; }
+        .config-table th:nth-child(1) { width:55px; }
+        .config-table th:nth-child(2) { width:42%; min-width:300px; }
+        .config-table th:nth-child(3) { width:55%; min-width:400px; }
+        .config-table td {
+            padding:0.7rem 0.8rem; border-bottom:1px solid var(--border-light);
+            vertical-align:top; line-height:1.65;
+        }
+        .config-table tr:hover td { filter:brightness(0.96); }
+        .line-num {
+            text-align:right; color:var(--line-num-text); background:var(--line-num-bg);
+            user-select:none; font-family:'SF Mono','Consolas',monospace;
+            font-size:0.7rem; padding-right:0.6rem !important; font-weight:500;
+        }
+        .code-cell {
+            font-family:'SF Mono','Fira Code','Consolas',monospace;
+            white-space:pre-wrap; word-break:break-all;
+            color:var(--code-text); background:var(--code-bg); font-size:0.78rem;
+        }
+        .comment-cell {
+            color:var(--comment-text); background:var(--comment-bg);
+            line-height:1.7; font-size:0.82rem;
+        }
+        .badge {
+            display:inline-block; border-radius:4px; padding:0.15rem 0.5rem;
+            font-size:0.72rem; font-weight:700; margin-right:0.3rem; vertical-align:middle;
+        }
+        .badge-star { background:var(--highlight-bg); border:1px solid var(--highlight-border); color:#92400e; }
+        .badge-warn { background:var(--warn-bg); color:var(--warn-text); border:1px solid var(--warn-text); }
+        .badge-tip { background:var(--tip-bg); color:var(--tip-text); border:1px solid var(--tip-text); }
+        .badge-qna { background:var(--qna-bg); color:var(--qna-text); border:1px solid var(--qna-text); }
+        .badge-key { background:var(--key-bg); color:var(--key-text); border:1px solid var(--key-text); }
         .info-box {
-            background:var(--info-bg); padding:1.2rem 1.5rem; margin:1rem;
-            border-radius:8px; color:var(--info-text); font-size:0.85rem; line-height:1.6;
+            background:var(--info-bg); padding:1.5rem 2rem; margin:1.5rem;
+            border-radius:12px; color:var(--info-text); font-size:0.9rem;
+            line-height:1.7; border:1px solid var(--border-light);
         }
-        .info-box code { background:var(--code-bg); padding:0.15rem 0.4rem; border-radius:4px; font-family:monospace; font-size:0.9em; color:var(--code-text); }
-        .search-bar { margin:0.8rem 1rem; display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; }
-        .search-bar input { flex:1; min-width:200px; padding:0.5rem 0.8rem; border:2px solid var(--th-border); border-radius:8px; font-size:0.85rem; background:var(--bg-container); color:var(--info-text); transition:border-color 0.2s; }
-        .search-bar input:focus { outline:none; border-color:var(--btn-active-bg); }
-        .search-bar .search-info { font-size:0.75rem; color:var(--line-num-text); white-space:nowrap; }
+        .info-box code {
+            background:var(--code-bg); padding:0.2rem 0.5rem; border-radius:6px;
+            font-family:'SF Mono',monospace; font-size:0.88em; color:var(--code-text);
+        }
+        .search-bar { margin:1rem 1.5rem; display:flex; gap:0.8rem; align-items:center; flex-wrap:wrap; }
+        .search-bar input {
+            flex:1; min-width:240px; padding:0.6rem 1rem;
+            border:2px solid var(--th-border); border-radius:10px;
+            font-size:0.9rem; background:var(--bg-container); color:var(--info-text);
+            transition:border-color 0.2s;
+        }
+        .search-bar input:focus { outline:none; border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,0.15); }
+        .search-bar .search-info { font-size:0.8rem; color:var(--line-num-text); white-space:nowrap; }
         .row-hidden { display:none; }
         @media (max-width:768px) {
-            body { padding:0.5rem; }
-            .header { padding:1rem; flex-direction:column; align-items:flex-start; gap:0.6rem; }
-            .header h1 { font-size:1.25rem; }
-            .config-table { font-size:0.7rem; }
-            .config-table th, .config-table td { padding:0.4rem 0.35rem; }
-            .config-table th:nth-child(1) { width:45px; }
-            .config-table th:nth-child(2), .config-table th:nth-child(3) { width:47.5%; min-width:220px; }
-            .info-box { margin:0.5rem; padding:1rem; font-size:0.8rem; }
+            body { padding:0.3rem; }
+            .header { padding:1rem; flex-direction:column; align-items:flex-start; }
+            .header h1 { font-size:1.3rem; }
+            .config-table th, .config-table td { padding:0.4rem 0.4rem; font-size:0.68rem; }
+            .config-table th:nth-child(1) { width:40px; }
+            .config-table th:nth-child(2), .config-table th:nth-child(3) { width:48%; min-width:180px; }
+            .info-box { margin:0.6rem; padding:1rem; font-size:0.8rem; }
             .search-bar { margin:0.5rem; }
         }
     </style>
@@ -198,8 +228,8 @@
 <div class="container">
     <div class="header">
         <div>
-            <h1>📄 sing-box 1.14.0-alpha.20 完整配置注释</h1>
-            <p>✅ 基于实际运行配置 · 包含DNS/路由/出站/实验功能 · 自动生成逐行注释</p>
+            <h1>📖 sing-box 1.14.0-alpha.20 配置深度解析</h1>
+            <p>完整注释 · 原理解释 · 常见疑惑解答 · 不含出站节点详情</p>
         </div>
         <div class="theme-switcher">
             <button class="theme-btn active" data-theme="auto">🌓 自动</button>
@@ -208,26 +238,26 @@
         </div>
     </div>
     <div class="search-bar">
-        <input type="text" id="search-input" placeholder="🔍 搜索配置代码或注释…">
+        <input type="text" id="search-input" placeholder="🔍 搜索配置项、注释、标签…（支持行号精确匹配）">
         <span class="search-info" id="search-info">共 <strong id="total-rows">0</strong> 行，匹配 <strong id="match-count">0</strong> 行</span>
     </div>
     <div class="table-wrapper">
         <table class="config-table">
-            <thead><tr><th>行号</th><th>配置代码</th><th>注释 / 详细说明</th></tr></thead>
+            <thead><tr><th>行号</th><th>配置代码</th><th>📝 注释 / 说明 / 解惑</th></tr></thead>
             <tbody id="table-body"></tbody>
         </table>
     </div>
     <div class="info-box">
-        <strong>📌 说明：</strong><br>
-        1. 本表格基于 <strong>sing-box 1.14.0-alpha.20</strong> 实际运行配置生成，JSON 语法合规，可直接复制使用；<br>
-        2. 配置中包含 <strong>14 个 CF 优选节点</strong>（pkpk01‑pkpk14），你需要替换其中的 <code>server</code>、<code>uuid</code>、<code>path</code>、<code>server_name</code> 等字段为自有信息；<br>
-        3. DNS 分流、路由规则、规则集均与 1.14.0-alpha.20 完全一致，支持 FakeIP、DoT/DoH/QUIC 多DNS、广告拦截、反欺诈等多种增强功能；<br>
-        4. 使用顶部搜索框可快速定位配置项，支持搜索代码、注释、行号等。
+        <strong>📌 使用须知：</strong><br>
+        • 本配置基于 <strong>sing-box 1.14.0-alpha.20</strong>，适用于 Windows、macOS、Android、iOS 等平台；<br>
+        • <strong>出站节点部分已省略详细注释</strong>，仅保留结构框架。你需要自行配置或通过订阅转换工具生成节点信息；<br>
+        • 搜索框支持 <strong>行号</strong>（输入数字）、<strong>配置键名</strong>、<strong>注释内容</strong> 等搜索；<br>
+        • 注释中 <span class="badge badge-star">⭐ 重点</span> 表示核心配置，<span class="badge badge-warn">⚠️ 注意</span> 表示需要关注的风险点，<span class="badge badge-tip">💡 提示</span> 为优化建议，<span class="badge badge-qna">❓ 解惑</span> 为常见问题解答。
     </div>
 </div>
 <script>
 (function() {
-    // ==================== 1.14.0-alpha.20 完整配置（美化格式化） ====================
+    // ==================== 完整配置 ====================
     const rawJson = `{
   "log": {
     "level": "trace",
@@ -236,270 +266,49 @@
   "dns": {
     "timeout": "3s",
     "servers": [
-      {
-        "type": "local",
-        "tag": "local"
-      },
+      { "type": "local", "tag": "local" },
       {
         "type": "hosts",
         "tag": "hosts_fix",
         "predefined": {
-          "dns.huaweicloud.com": [
-            "180.163.150.33",
-            "180.163.151.33"
-          ],
-          "dns.alidns.com": [
-            "223.5.5.5",
-            "223.6.6.6"
-          ],
-          "dns.adguard.com": [
-            "94.140.14.15",
-            "94.140.15.16",
-            "2a10:50c0::ad1:ff",
-            "2a10:50c0::ad2:ff"
-          ],
-          "doh.pub": [
-            "1.12.12.21",
-            "120.53.53.53"
-          ],
-          "dns.google": [
-            "8.8.8.8",
-            "8.8.4.4"
-          ],
-          "cloudflare-dns.com": [
-            "104.16.248.249",
-            "104.16.249.249"
-          ],
-          "mtalk.google.com": [
-            "142.250.107.188",
-            "142.251.170.188",
-            "108.177.125.188"
-          ],
-          "alt1-mtalk.google.com": [
-            "2607:f8b0:4023:1c05::bc",
-            "74.125.200.188"
-          ],
+          "dns.huaweicloud.com": ["180.163.150.33", "180.163.151.33"],
+          "dns.alidns.com": ["223.5.5.5", "223.6.6.6"],
+          "dns.adguard.com": ["94.140.14.15", "94.140.15.16", "2a10:50c0::ad1:ff", "2a10:50c0::ad2:ff"],
+          "doh.pub": ["1.12.12.21", "120.53.53.53"],
+          "dns.google": ["8.8.8.8", "8.8.4.4"],
+          "cloudflare-dns.com": ["104.16.248.249", "104.16.249.249"],
+          "mtalk.google.com": ["142.250.107.188", "142.251.170.188", "108.177.125.188"],
+          "alt1-mtalk.google.com": ["2607:f8b0:4023:1c05::bc", "74.125.200.188"],
           "dl.google.com": "180.163.151.161",
           "dl.l.google.com": "180.163.150.33"
         }
       },
-      {
-        "type": "tls",
-        "tag": "alidns-dot",
-        "detour": "DIRECT",
-        "domain_resolver": "hosts_fix",
-        "server": "dns.alidns.com",
-        "server_port": 853
-      },
-      {
-        "type": "quic",
-        "tag": "alidns-quic",
-        "detour": "DIRECT",
-        "domain_resolver": "hosts_fix",
-        "server": "dns.alidns.com"
-      },
-      {
-        "type": "https",
-        "tag": "ggdns",
-        "detour": "PROXY",
-        "domain_resolver": "hosts_fix",
-        "server": "dns.google"
-      },
-      {
-        "type": "fakeip",
-        "tag": "fakeip",
-        "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fc00::/18"
-      },
-      {
-        "type": "tls",
-        "tag": "adguard-dns",
-        "detour": "PROXY",
-        "domain_resolver": "hosts_fix",
-        "server": "dns.adguard.com",
-        "server_port": 853
-      }
+      { "type": "tls", "tag": "alidns-dot", "detour": "DIRECT", "domain_resolver": "hosts_fix", "server": "dns.alidns.com", "server_port": 853 },
+      { "type": "quic", "tag": "alidns-quic", "detour": "DIRECT", "domain_resolver": "hosts_fix", "server": "dns.alidns.com" },
+      { "type": "https", "tag": "ggdns", "detour": "PROXY", "domain_resolver": "hosts_fix", "server": "dns.google" },
+      { "type": "fakeip", "tag": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" },
+      { "type": "tls", "tag": "adguard-dns", "detour": "PROXY", "domain_resolver": "hosts_fix", "server": "dns.adguard.com", "server_port": 853 }
     ],
     "rules": [
+      { "domain_suffix": ["beacons.gvt2.com", "beacons2.gvt2.com", "beacons3.gvt2.com"], "action": "reject" },
       {
-        "domain_suffix": [
-          "beacons.gvt2.com",
-          "beacons2.gvt2.com",
-          "beacons3.gvt2.com"
-        ],
-        "action": "reject"
-      },
-      {
-        "domain_suffix": [
-          ".local",
-          ".lan",
-          "miwifi.com",
-          "tplogin.cn",
-          "router.asus.com",
-          "tendawifi.com",
-          "tplinkwifi.net",
-          "hm.baidu.com",
-          "tracking.miui.com",
-          "douyinvod.com",
-          "douyincdn.com",
-          "ixigua.com",
-          "pstatp.com",
-          "bytecdn.com",
-          "volccdn.com",
-          "dl.delivery.mp.microsoft.com",
-          "update.microsoft.com",
-          "windowsupdate.com",
-          "speedtest.net",
-          "fast.com",
-          "zhihu.com",
-          "zhimg.com",
-          "jd.com",
-          "360buyimg.com",
-          "xfyun.cn",
-          "dashscope.aliyuncs.com",
-          "api.moonshot.cn",
-          "api.baichuan-ai.com",
-          "api.minimax.chat",
-          "api.sensenova.cn",
-          "api.iflytek.com",
-          "api.bilibili.com",
-          "www.bilibili.com",
-          "xinghuo.xfyun.cn",
-          "chatglm.cn",
-          "bigmodel.cn",
-          "volces.com",
-          "lingyiwanwu.com",
-          "stepfun.com",
-          "chat.deepseek.com",
-          "www.deepseek.com",
-          "zhipuai.cn",
-          "market.xiaomi.com"
-        ],
+        "domain_suffix": [".local", ".lan", "miwifi.com", "tplogin.cn", "router.asus.com", "tendawifi.com", "tplinkwifi.net", "hm.baidu.com", "tracking.miui.com", "douyinvod.com", "douyincdn.com", "ixigua.com", "pstatp.com", "bytecdn.com", "volccdn.com", "dl.delivery.mp.microsoft.com", "update.microsoft.com", "windowsupdate.com", "speedtest.net", "fast.com", "zhihu.com", "zhimg.com", "jd.com", "360buyimg.com", "xfyun.cn", "dashscope.aliyuncs.com", "api.moonshot.cn", "api.baichuan-ai.com", "api.minimax.chat", "api.sensenova.cn", "api.iflytek.com", "api.bilibili.com", "www.bilibili.com", "xinghuo.xfyun.cn", "chatglm.cn", "bigmodel.cn", "volces.com", "lingyiwanwu.com", "stepfun.com", "chat.deepseek.com", "www.deepseek.com", "zhipuai.cn", "market.xiaomi.com"],
         "server": "alidns-quic"
       },
-      {
-        "domain_suffix": "lancache.steamcontent.com",
-        "server": "local"
-      },
-      {
-        "domain_suffix": [
-          "steamcontent.com",
-          "steamserver.net",
-          "epicgames.com",
-          "gog.com",
-          "battle.net",
-          "blizzard.com",
-          "origin.com",
-          "ea.com",
-          "ubisoft.com",
-          "rockstargames.com",
-          "play.google.com",
-          "ggpht.com",
-          "googleusercontent.com",
-          "android.com",
-          "app-measurement.com",
-          "firebaselogging.googleapis.com",
-          "firebaselogging-pa.googleapis.com"
-        ],
-        "server": "fakeip"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "domain_suffix": "steamcontent.com",
-        "server": "fakeip"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "rule_set": [
-          "proxy",
-          "games",
-          "ai"
-        ],
-        "server": "adguard-dns"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "rule_set": [
-          "proxy",
-          "games",
-          "ai"
-        ],
-        "server": "fakeip",
-        "rewrite_ttl": 300
-      },
-      {
-        "domain_suffix": [
-          ".cn",
-          ".com.cn"
-        ],
-        "action": "evaluate",
-        "server": "alidns-dot"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "invert": true,
-        "action": "predefined",
-        "rcode": "NOERROR"
-      },
-      {
-        "rule_set": [
-          "httpDNS",
-          "DNSreject",
-          "Ads"
-        ],
-        "action": "predefined",
-        "rcode": "NOERROR"
-      },
-      {
-        "rule_set": [
-          "private",
-          "Filter"
-        ],
-        "server": "alidns-quic"
-      },
-      {
-        "domain_suffix": [
-          ".cn",
-          ".com.cn"
-        ],
-        "server": "alidns-quic"
-      },
-      {
-        "rule_set": "cnip",
-        "match_response": true,
-        "server": "local"
-      },
-      {
-        "match_response": true,
-        "action": "respond"
-      },
-      {
-        "rule_set": [
-          "geosite_adguard",
-          "geosite-category-ads-all"
-        ],
-        "action": "reject"
-      },
-      {
-        "query_type": [
-          "SVCB",
-          "HTTPS",
-          "PTR"
-        ],
-        "action": "reject"
-      }
+      { "domain_suffix": "lancache.steamcontent.com", "server": "local" },
+      { "domain_suffix": ["steamcontent.com", "steamserver.net", "epicgames.com", "gog.com", "battle.net", "blizzard.com", "origin.com", "ea.com", "ubisoft.com", "rockstargames.com", "play.google.com", "ggpht.com", "googleusercontent.com", "android.com", "app-measurement.com", "firebaselogging.googleapis.com", "firebaselogging-pa.googleapis.com"], "server": "fakeip" },
+      { "query_type": ["A", "AAAA"], "domain_suffix": "steamcontent.com", "server": "fakeip" },
+      { "query_type": ["A", "AAAA"], "rule_set": ["proxy", "games", "ai"], "server": "adguard-dns" },
+      { "query_type": ["A", "AAAA"], "rule_set": ["proxy", "games", "ai"], "server": "fakeip", "rewrite_ttl": 300 },
+      { "domain_suffix": [".cn", ".com.cn"], "action": "evaluate", "server": "alidns-dot" },
+      { "query_type": ["A", "AAAA"], "invert": true, "action": "predefined", "rcode": "NOERROR" },
+      { "rule_set": ["httpDNS", "DNSreject", "Ads"], "action": "predefined", "rcode": "NOERROR" },
+      { "rule_set": ["private", "Filter"], "server": "alidns-quic" },
+      { "domain_suffix": [".cn", ".com.cn"], "server": "alidns-quic" },
+      { "rule_set": "cnip", "match_response": true, "server": "local" },
+      { "match_response": true, "action": "respond" },
+      { "rule_set": ["geosite_adguard", "geosite-category-ads-all"], "action": "reject" },
+      { "query_type": ["SVCB", "HTTPS", "PTR"], "action": "reject" }
     ],
     "final": "ggdns",
     "reverse_mapping": true,
@@ -524,1046 +333,91 @@
     }
   ],
   "inbounds": [
-    {
-      "type": "tun",
-      "tag": "tun-in",
-      "mtu": 1500,
-      "address": "10.8.0.1/24",
-      "auto_route": true,
-      "strict_route": true,
-      "stack": "mixed"
-    },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "127.0.0.1",
-      "listen_port": 7890
-    }
+    { "type": "tun", "tag": "tun-in", "mtu": 1500, "address": "10.8.0.1/24", "auto_route": true, "strict_route": true, "stack": "mixed" },
+    { "type": "mixed", "tag": "mixed-in", "listen": "127.0.0.1", "listen_port": 7890 }
   ],
   "outbounds": [
-    {
-      "type": "direct",
-      "tag": "DIRECT",
-      "domain_resolver": "alidns-quic"
-    },
-    {
-      "type": "selector",
-      "tag": "PROXY",
-      "outbounds": [
-        "AUTO",
-        "🇺🇸 pkpk01",
-        "🇺🇸 pkpk02",
-        "🇺🇸 pkpk03",
-        "🇺🇸 pkpk04",
-        "🇺🇸 pkpk05",
-        "🇺🇸 pkpk06",
-        "🇺🇸 pkpk07",
-        "🇺🇸 pkpk08",
-        "🇺🇸 pkpk09",
-        "🇺🇸 pkpk10",
-        "🇺🇸 pkpk11",
-        "🇺🇸 pkpk12",
-        "🇺🇸 pkpk13",
-        "🇺🇸 pkpk14",
-        "DIRECT"
-      ],
-      "default": "AUTO"
-    },
-    {
-      "type": "urltest",
-      "tag": "AUTO",
-      "outbounds": [
-        "🇺🇸 pkpk01",
-        "🇺🇸 pkpk02",
-        "🇺🇸 pkpk03",
-        "🇺🇸 pkpk04",
-        "🇺🇸 pkpk05",
-        "🇺🇸 pkpk06",
-        "🇺🇸 pkpk07",
-        "🇺🇸 pkpk08",
-        "🇺🇸 pkpk09",
-        "🇺🇸 pkpk10",
-        "🇺🇸 pkpk11",
-        "🇺🇸 pkpk12",
-        "🇺🇸 pkpk13",
-        "🇺🇸 pkpk14"
-      ],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "10m0s",
-      "tolerance": 50,
-      "idle_timeout": "30m0s"
-    },
-    {
-      "type": "selector",
-      "tag": "GLOBAL",
-      "outbounds": [
-        "PROXY",
-        "DIRECT"
-      ],
-      "default": "PROXY"
-    },
-    {
-      "type": "selector",
-      "tag": "CN",
-      "outbounds": [
-        "DIRECT",
-        "PROXY"
-      ],
-      "default": "DIRECT"
-    },
-    {
-      "type": "selector",
-      "tag": "Final",
-      "outbounds": [
-        "PROXY",
-        "DIRECT",
-        "REJECT-DROP"
-      ],
-      "default": "PROXY"
-    },
-    {
-      "type": "block",
-      "tag": "REJECT-DROP"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk01",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "cf.090227.xyz",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk02",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "www.visa.com",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk03",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "www.digitalocean.com",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk04",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "www.shopify.com",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk05",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "www.gov.se",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk06",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "www.udemy.com",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk07",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "198.41.208.138",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk08",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "104.16.1.1",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk09",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "104.17.152.41",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk10",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "372164885.xyz",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk11",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "104.24.52.82",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk12",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "172.64.153.18",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk13",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "104.19.140.151",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇺🇸 pkpk14",
-      "tcp_fast_open": true,
-      "tcp_keep_alive": "30s",
-      "tcp_keep_alive_interval": "5s",
-      "udp_fragment": true,
-      "domain_resolver": "alidns-quic",
-      "server": "cloudflare.cfgo.cc",
-      "server_port": 443,
-      "uuid": "uuid",
-      "tls": {
-        "enabled": true,
-        "server_name": "节点域名",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/路径",
-        "headers": {
-          "Host": "节点域名"
-        },
-        "max_early_data": 2560,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "packet_encoding": "xudp",
-      "connect_timeout": "5s"
-    }
+    { "type": "direct", "tag": "DIRECT", "domain_resolver": "alidns-quic" },
+    { "type": "selector", "tag": "PROXY", "outbounds": ["AUTO", "…节点标签…", "DIRECT"], "default": "AUTO" },
+    { "type": "urltest", "tag": "AUTO", "outbounds": ["…节点标签列表…"], "url": "http://www.gstatic.com/generate_204", "interval": "10m0s", "tolerance": 50, "idle_timeout": "30m0s" },
+    { "type": "selector", "tag": "GLOBAL", "outbounds": ["PROXY", "DIRECT"], "default": "PROXY" },
+    { "type": "selector", "tag": "CN", "outbounds": ["DIRECT", "PROXY"], "default": "DIRECT" },
+    { "type": "selector", "tag": "Final", "outbounds": ["PROXY", "DIRECT", "REJECT-DROP"], "default": "PROXY" },
+    { "type": "block", "tag": "REJECT-DROP" }
   ],
   "route": {
     "rules": [
-      {
-        "action": "sniff"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 53
-          },
-          {
-            "protocol": "dns"
-          }
-        ],
-        "action": "hijack-dns"
-      },
-      {
-        "action": "route-options",
-        "udp_disable_domain_unmapping": true,
-        "udp_connect": true
-      },
-      {
-        "rule_set": [
-          "Ads",
-          "adobe",
-          "httpDNS",
-          "DNSreject"
-        ],
-        "action": "reject",
-        "method": "drop"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "PROXY"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "DIRECT"
-      },
-      {
-        "rule_set": "Apple",
-        "outbound": "DIRECT"
-      },
-      {
-        "rule_set": [
-          "fcm",
-          "Android"
-        ],
-        "outbound": "PROXY"
-      },
-      {
-        "domain_suffix": [
-          "google.cn",
-          "googleapis.cn"
-        ],
-        "outbound": "PROXY"
-      },
-      {
-        "rule_set": [
-          "telegram",
-          "telegram_ip",
-          "youtube",
-          "instagram",
-          "Google",
-          "ai",
-          "GlobalMedia",
-          "Proxy",
-          "gfw"
-        ],
-        "outbound": "PROXY"
-      },
-      {
-        "package_name": "com.wwwscn.yuexingbao",
-        "outbound": "DIRECT"
-      },
-      {
-        "protocol": [
-          "ntp",
-          "icmp"
-        ],
-        "outbound": "DIRECT"
-      },
-      {
-        "rule_set": [
-          "private",
-          "Applications",
-          "OnePlus"
-        ],
-        "outbound": "DIRECT"
-      },
-      {
-        "domain_suffix": [
-          "sponsor.ajay.app",
-          "ifbapp.com",
-          "allawnos.com",
-          "heytapmobi.com",
-          "steamserver.net"
-        ],
-        "outbound": "DIRECT"
-      },
-      {
-        "protocol": [
-          "stun",
-          "quic",
-          "dtls"
-        ],
-        "action": "reject"
-      },
-      {
-        "domain": [
-          "astrategy.beacon.qq.com",
-          "beacon.qq.com",
-          "abyss.cyapi.cn",
-          "ad.cyapi.cn",
-          "gather.colorfulclouds.net"
-        ],
-        "action": "reject",
-        "method": "drop"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "ip_version": 6
-          },
-          {
-            "default_interface_address": "2000::/3",
-            "invert": true
-          }
-        ],
-        "action": "reject"
-      },
-      {
-        "package_name": [
-          "com.google.android.youtube",
-          "app.revanced.android.youtube",
-          "org.telegram.messenger",
-          "org.telegram.messenger.beta"
-        ],
-        "outbound": "PROXY"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "domain_suffix": [
-              "mtalk.google.com",
-              "alt1-mtalk.google.com",
-              "alt2-mtalk.google.com",
-              "alt3-mtalk.google.com",
-              "alt4-mtalk.google.com",
-              "alt5-mtalk.google.com",
-              "alt6-mtalk.google.com",
-              "alt7-mtalk.google.com",
-              "alt8-mtalk.google.com"
-            ]
-          },
-          {
-            "port": [
-              443,
-              5228
-            ]
-          }
-        ],
-        "outbound": "PROXY"
-      },
-      {
-        "rule_set": [
-          "telegramip",
-          "geosite-google",
-          "proxy",
-          "games",
-          "ai"
-        ],
-        "outbound": "PROXY"
-      },
-      {
-        "ip_cidr": "198.18.0.0/15",
-        "outbound": "PROXY"
-      },
-      {
-        "rule_set": [
-          "private",
-          "cn",
-          "cnip",
-          "microsoft-cn",
-          "apple-cn",
-          "google-cn",
-          "games-cn",
-          "networktest"
-        ],
-        "outbound": "DIRECT"
-      },
-      {
-        "rule_set": [
-          "geosite_adguard",
-          "geosite-category-ads-all"
-        ],
-        "action": "reject"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "network": "udp",
-            "port": [
-              3478,
-              5349,
-              5350,
-              19302,
-              10000
-            ]
-          },
-          {
-            "domain_regex": "^stun\\..+"
-          },
-          {
-            "domain_keyword": [
-              "stun",
-              "turn",
-              "httpdns"
-            ]
-          },
-          {
-            "protocol": "stun"
-          }
-        ],
-        "action": "reject"
-      },
-      {
-        "rule_set": "anti_fraud",
-        "action": "reject"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "DIRECT"
-      },
-      {
-        "action": "resolve"
-      }
+      { "action": "sniff" },
+      { "type": "logical", "mode": "or", "rules": [{ "port": 53 }, { "protocol": "dns" }], "action": "hijack-dns" },
+      { "action": "route-options", "udp_disable_domain_unmapping": true, "udp_connect": true },
+      { "rule_set": ["Ads", "adobe", "httpDNS", "DNSreject"], "action": "reject", "method": "drop" },
+      { "clash_mode": "Global", "outbound": "PROXY" },
+      { "clash_mode": "Direct", "outbound": "DIRECT" },
+      { "rule_set": "Apple", "outbound": "DIRECT" },
+      { "rule_set": ["fcm", "Android"], "outbound": "PROXY" },
+      { "domain_suffix": ["google.cn", "googleapis.cn"], "outbound": "PROXY" },
+      { "rule_set": ["telegram", "telegram_ip", "youtube", "instagram", "Google", "ai", "GlobalMedia", "Proxy", "gfw"], "outbound": "PROXY" },
+      { "package_name": "com.wwwscn.yuexingbao", "outbound": "DIRECT" },
+      { "protocol": ["ntp", "icmp"], "outbound": "DIRECT" },
+      { "rule_set": ["private", "Applications", "OnePlus"], "outbound": "DIRECT" },
+      { "domain_suffix": ["sponsor.ajay.app", "ifbapp.com", "allawnos.com", "heytapmobi.com", "steamserver.net"], "outbound": "DIRECT" },
+      { "protocol": ["stun", "quic", "dtls"], "action": "reject" },
+      { "domain": ["astrategy.beacon.qq.com", "beacon.qq.com", "abyss.cyapi.cn", "ad.cyapi.cn", "gather.colorfulclouds.net"], "action": "reject", "method": "drop" },
+      { "type": "logical", "mode": "and", "rules": [{ "ip_version": 6 }, { "default_interface_address": "2000::/3", "invert": true }], "action": "reject" },
+      { "package_name": ["com.google.android.youtube", "app.revanced.android.youtube", "org.telegram.messenger", "org.telegram.messenger.beta"], "outbound": "PROXY" },
+      { "type": "logical", "mode": "and", "rules": [{ "domain_suffix": ["mtalk.google.com", "alt1-mtalk.google.com", "alt2-mtalk.google.com", "alt3-mtalk.google.com", "alt4-mtalk.google.com", "alt5-mtalk.google.com", "alt6-mtalk.google.com", "alt7-mtalk.google.com", "alt8-mtalk.google.com"] }, { "port": [443, 5228] }], "outbound": "PROXY" },
+      { "rule_set": ["telegramip", "geosite-google", "proxy", "games", "ai"], "outbound": "PROXY" },
+      { "ip_cidr": "198.18.0.0/15", "outbound": "PROXY" },
+      { "rule_set": ["private", "cn", "cnip", "microsoft-cn", "apple-cn", "google-cn", "games-cn", "networktest"], "outbound": "DIRECT" },
+      { "rule_set": ["geosite_adguard", "geosite-category-ads-all"], "action": "reject" },
+      { "type": "logical", "mode": "or", "rules": [{ "network": "udp", "port": [3478, 5349, 5350, 19302, 10000] }, { "domain_regex": "^stun\\..+" }, { "domain_keyword": ["stun", "turn", "httpdns"] }, { "protocol": "stun" }], "action": "reject" },
+      { "rule_set": "anti_fraud", "action": "reject" },
+      { "ip_is_private": true, "outbound": "DIRECT" },
+      { "action": "resolve" }
     ],
     "rule_set": [
-      {
-        "type": "remote",
-        "tag": "geosite-category-ads-all",
-        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-category-ads-all.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite_adguard",
-        "url": "https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-google",
-        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-google.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-youtube",
-        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-youtube.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "proxy",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "games",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "ai",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ai.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "private",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "anti_fraud",
-        "url": "https://raw.githubusercontent.com/hwsaya/nothing/refs/heads/main/rules/FuckFZ.json",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "cn",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "microsoft-cn",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/microsoft-cn.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "apple-cn",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/apple-cn.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "google-cn",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/google-cn.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "games-cn",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games-cn.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "networktest",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/networktest.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "telegramip",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "telegram_ip",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "Proxy",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "gfw",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/gfw.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "cnip",
-        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "Filter",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/fakeip-filter.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "DNSreject",
-        "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/AdGuardSDNSFilter/AdGuardSDNSFilter.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "httpDNS",
-        "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/BlockHttpDNS/BlockHttpDNS.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "Ads",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ads.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "adobe",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/adobe.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "Apple",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-apple.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "fcm",
-        "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/GoogleFCM/GoogleFCM.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "Android",
-        "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/Android/Android.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "telegram",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-telegram.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "youtube",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-youtube.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "instagram",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-instagram.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "Google",
-        "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/Google/Google.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "GlobalMedia",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-entertainment.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "Applications",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/applications.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "OnePlus",
-        "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/OnePlus/OnePlus.srs",
-        "http_client": "default",
-        "update_interval": "48h0m0s"
-      }
+      { "type": "remote", "tag": "geosite-category-ads-all", "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-category-ads-all.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "geosite_adguard", "url": "https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "geosite-google", "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-google.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "geosite-youtube", "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-youtube.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "proxy", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "games", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "ai", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ai.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "private", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "anti_fraud", "url": "https://raw.githubusercontent.com/hwsaya/nothing/refs/heads/main/rules/FuckFZ.json", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "cn", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "microsoft-cn", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/microsoft-cn.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "apple-cn", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/apple-cn.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "google-cn", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/google-cn.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "games-cn", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games-cn.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "networktest", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/networktest.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "telegramip", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "telegram_ip", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "Proxy", "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "gfw", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/gfw.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "cnip", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "Filter", "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/fakeip-filter.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "DNSreject", "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/AdGuardSDNSFilter/AdGuardSDNSFilter.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "httpDNS", "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/BlockHttpDNS/BlockHttpDNS.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "Ads", "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ads.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "adobe", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/adobe.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "Apple", "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-apple.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "fcm", "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/GoogleFCM/GoogleFCM.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "Android", "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/Android/Android.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "telegram", "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-telegram.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "youtube", "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-youtube.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "instagram", "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-instagram.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "Google", "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/Google/Google.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "GlobalMedia", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-entertainment.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "Applications", "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/applications.srs", "http_client": "default", "update_interval": "48h0m0s" },
+      { "type": "remote", "tag": "OnePlus", "url": "https://raw.githubusercontent.com/senshinya/singbox_ruleset/main/rule/OnePlus/OnePlus.srs", "http_client": "default", "update_interval": "48h0m0s" }
     ],
     "final": "Final",
     "auto_detect_interface": true,
     "default_domain_resolver": "alidns-quic"
   },
   "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db",
-      "cache_id": "cinchov",
-      "store_fakeip": true,
-      "store_dns": true
-    },
+    "cache_file": { "enabled": true, "path": "cache.db", "cache_id": "cinchov", "store_fakeip": true, "store_dns": true },
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
@@ -1572,227 +426,369 @@
       "secret": "kSDuU2WHyf72taGMdDS0ib6klwFVF5QIM4HGhS5f4Jw=",
       "default_mode": "rule"
     },
-    "debug": {
-      "gc_percent": 100,
-      "memory_limit": "400MB"
-    }
+    "debug": { "gc_percent": 100, "memory_limit": "400MB" }
   }
 }`;
-    // 拆分成行
+
     const configLines = rawJson.split('\n');
 
-    // ---------- 自动注释生成器：根据每行内容及上下文生成详细注释 ----------
-    const comments = [];
-    const pathStack = [];   // 当前 JSON 路径，如 ["dns","servers",0]
-    const keyStack = [];    // 当前对象的键名列表
-    let lastKey = '';
-    let parentKey = '';
-    let indent = 0;
+    // ---------- 完整注释库（每一行都有对应的详细注释）----------
+    const manualComments = {
+        // 顶层
+        '{root': '🔷 配置根对象开始 — 整个 sing-box 配置的入口。所有配置项都包含在这个顶层 JSON 对象中。JSON 语法要求最外层必须是大括号。',
+        'log': '<span class="badge badge-key">日志配置</span> 控制 sing-box 运行时的日志输出级别和格式。日志是排查问题的第一道工具。',
+        'level': '<span class="badge badge-star">⭐ 核心</span> 日志等级：<code>trace</code> 为最详细级别，会输出所有调试信息。<br><span class="badge badge-tip">💡 建议</span> 生产环境建议改为 <code>warn</code> 或 <code>info</code> 以减少日志量。<br><span class="badge badge-qna">❓ 解惑</span> 日志等级从低到高：trace < debug < info < warn < error < fatal < panic。等级越低输出信息越多。trace 会记录每一条 DNS 查询、每一个 TCP 连接的建立过程，适合深度调试。',
+        'timestamp': '<span class="badge badge-tip">💡 建议开启</span> 开启日志时间戳。每条日志都会附带精确时间（如 <code>2026-04-29T10:30:00.123Z</code>），排查问题时至关重要。关闭后无法定位事件发生顺序。',
+        '}log': '日志配置结束 — 以上三个字段构成了完整的日志子系统配置。',
 
-    // 辅助函数：获取当前路径字符串
-    function currentPath() {
-        return pathStack.join('.');
-    }
+        // DNS
+        'dns': '<span class="badge badge-star">⭐ DNS 核心配置</span> 整个配置文件中最关键的部分之一。DNS 决定了域名如何被解析、是否受污染、解析速度等核心体验。<br><span class="badge badge-qna">❓ 解惑</span> 为什么 DNS 配置如此重要？因为所有网络访问都始于 DNS 解析。一旦 DNS 被污染或解析错误，后续所有连接都会失败。sing-box 将 DNS 配置独立出来，就是为了让你能精细控制每一步解析过程。',
+        'timeout': '<span class="badge badge-tip">💡 超时设置</span> DNS 查询超时时间：<code>3s</code>。如果 3 秒内未收到响应则视为查询失败，会尝试下一个 DNS 服务器。在弱网环境（如移动蜂窝网络）下可适当调大到 5s。',
+        'servers': '<span class="badge badge-key">DNS 服务器列表</span> 定义多个不同用途的 DNS 服务器，通过后续的 rules 进行分流选择。每个服务器都有独特的标签和用途。<br><span class="badge badge-qna">❓ 解惑</span> 为什么要配置多个 DNS 服务器？因为不同域名需要用不同的 DNS 来解析：国内域名用国内 DNS 快速解析，境外域名用代理 DNS 防止污染，内网域名用本地 DNS 解析局域网设备。',
+        'local': '<span class="badge badge-tip">💡 本地 DNS</span> 类型为 <code>local</code>，直接使用操作系统自带的 DNS 设置。当你连接 WiFi 时，路由器分配的 DNS 就是 local DNS。适合解析内网域名（如 router.asus.com、NAS 的 .local 域名）和局域网设备。',
+        'hosts_fix': '<span class="badge badge-star">⭐ 静态 hosts DNS</span> 类型为 <code>hosts</code>，将特定域名预先绑定到固定 IP，完全跳过 DNS 查询过程。<strong>这是防止 DNS 污染的最彻底方式——因为根本不发起网络查询。</strong><br><span class="badge badge-qna">❓ 解惑</span> 为什么要有 hosts 类型的 DNS 服务器？因为 DNS 服务器自身的域名也需要被解析。例如要使用 dns.alidns.com 作为 DoT 服务器，就需要先知道 dns.alidns.com 的 IP。这形成了"先有鸡还是先有蛋"的循环依赖。hosts 静态绑定完美解决了这个问题。',
+        'predefined': '<span class="badge badge-star">⭐ 预定义映射表</span> 以下域名将被固定解析到指定 IP，不发起任何网络查询。这些域名都是 DNS 服务商域名，固定它们的 IP 可避免循环解析。<br><span class="badge badge-qna">❓ 解惑</span> 为什么这些 IP 是"知名 IP"？因为这些是公共 DNS 服务商的固定 IP，几乎不会变化。例如 8.8.8.8 是 Google DNS，223.5.5.5 是阿里 DNS，它们都是写入 RFC 标准或服务商官方文档的 IP。',
+        'dns.huaweicloud.com': '华为云 DNS 域名 → 固定解析到 <code>180.163.150.33</code> 和 <code>180.163.151.33</code>（华为云公共 DNS 的 IP）。备用 DNS 服务器。',
+        'dns.alidns.com': '阿里云 DNS 域名 → 固定解析到 <code>223.5.5.5</code> 和 <code>223.6.6.6</code>（阿里公共 DNS 知名 IP）。这是本配置中使用最频繁的国内 DNS 服务域名。',
+        'dns.adguard.com': 'AdGuard DNS 域名 → 固定解析到其官方 IP（含 2 个 IPv4 和 2 个 IPv6 地址）。AdGuard DNS 自带广告过滤功能，作为辅助 DNS 提供额外的广告拦截。',
+        'doh.pub': '腾讯 DNSPod 域名 → 固定解析到 <code>1.12.12.21</code> 和 <code>120.53.53.53</code>（腾讯公共 DNS IP）。备用国内加密 DNS 选项。',
+        'dns.google': 'Google DNS 域名 → 固定解析到 <code>8.8.8.8</code> 和 <code>8.8.4.4</code>（Google 公共 DNS 知名 IP，写入 RFC 标准的公共 DNS）。境外解析最精准的公共 DNS 之一。',
+        'cloudflare-dns.com': 'Cloudflare DNS 域名 → 固定解析到 Cloudflare 边缘 IP <code>104.16.248.249</code> 和 <code>104.16.249.249</code>。这些 IP 是泛播地址，全球就近接入。',
+        'mtalk.google.com': '<span class="badge badge-warn">⚠️ 推送关键</span> Google GCM/FCM 推送服务域名 → 固定解析到 Google 服务 IP。安卓设备如果收不到微信、WhatsApp 等应用的通知推送，需要检查此处是否正确配置。<br><span class="badge badge-qna">❓ 解惑</span> 为什么 GCM 需要固定 IP？因为 GCM 推送服务在国内经常被干扰或延迟，固定 IP 可以绕过 DNS 污染，保证推送通道稳定。',
+        'alt1-mtalk.google.com': 'Google 备用推送域名 → 包含一个 IPv6 地址 <code>2607:f8b0:4023:1c05::bc</code> 和一个 IPv4 地址 <code>74.125.200.188</code>，双栈保障推送连接。',
+        'dl.google.com': 'Google 下载域名 → 使用国内镜像 IP <code>180.163.151.161</code>，加速 Google 相关下载（如 Android SDK 组件、Chrome 更新等）。这是一个国内 CDN 节点。',
+        'dl.l.google.com': 'Google 备用下载域名 → 另一个国内镜像 IP <code>180.163.150.33</code>，与华为云 DNS IP 相同，提供下载冗余。',
+        '}hosts_fix': 'hosts 静态解析配置结束 — 以上预定义映射表涵盖了所有需要固定解析的 DNS 服务商域名和关键推送域名。',
+        'alidns-dot': '<span class="badge badge-star">⭐ 阿里云 DoT</span> 类型为 <code>tls</code>，DNS over TLS 加密 DNS。基于 TLS 协议加密 DNS 请求，标准端口 853，防窃听防污染效果优秀。<br><span class="badge badge-qna">❓ 解惑</span> DoT 和 DoH 有什么区别？DoT (DNS over TLS) 使用独立端口 853，流量特征明显但性能更好（没有 HTTP 头部开销）；DoH (DNS over HTTPS) 使用 443 端口，与普通网页流量难以区分，防封锁能力强，但略微增加延迟（需要 HTTP 封装）。',
+        'alidns-quic': '<span class="badge badge-star">⭐ 阿里云 QUIC DNS</span> 类型为 <code>quic</code>，DNS over QUIC 加密 DNS。基于 QUIC 协议（HTTP/3 底层协议），连接建立比 TLS 更快（0-RTT 握手），在弱网环境下抗丢包能力优于 TCP 的 DoT/DoH。<br><span class="badge badge-qna">❓ 解惑</span> 为什么国内 DNS 首选阿里云 QUIC？阿里云 DNS 在国内延迟极低（通常 <5ms），且是国内少数支持 QUIC 协议的公共 DNS 之一。QUIC 的 0-RTT 特性可以让 DNS 查询几乎无等待。',
+        'ggdns': '<span class="badge badge-warn">⚠️ 代理访问</span> 类型为 <code>https</code>，Google DoH 加密 DNS。Google 的公共 DNS 服务，境外解析精准，但<strong>在国内必须通过代理才能访问</strong>。<br><span class="badge badge-qna">❓ 解惑</span> 为什么 detour 设为 PROXY 是关键？因为 Google DNS 在国内被严重干扰（DNS 劫持、IP 阻断），直连几乎不可用。通过代理访问可以规避干扰，获得准确的境外域名解析结果。',
+        'fakeip': '<span class="badge badge-star">⭐ FakeIP 核心</span> 类型为 <code>fakeip</code>，虚拟 IP DNS 服务器。对代理域名不返回真实 IP，而是返回一个虚拟 IP（从地址池中分配）。<strong>这是加速境外访问的核心技术</strong>。<br><span class="badge badge-qna">❓ 解惑</span> FakeIP 的原理：当应用请求解析某个域名时，sing-box 不查询真实 DNS，而是直接返回一个虚拟 IP。应用向该虚拟 IP 发起 TCP 连接，sing-box 根据域名进行代理转发。这样 TCP 握手可以在 DNS 解析的同时（甚至之前）就开始，大幅减少首包等待时间。',
+        'inet4_range': '<span class="badge badge-tip">💡 IPv4 地址池</span> <code>198.18.0.0/15</code> — 这是 RFC 2544 保留的基准测试地址段，不会与任何公网或内网地址冲突。可容纳约 13 万个虚拟 IP（2^17 - 2）。<br><span class="badge badge-qna">❓ 解惑</span> 为什么选 198.18.0.0/15？这个地址段被 IETF 专门保留用于网络基准测试，永远不会出现在真实网络中。使用它作为 FakeIP 地址池可以 100% 避免与真实 IP 冲突。',
+        'inet6_range': '<span class="badge badge-tip">💡 IPv6 地址池</span> <code>fc00::/18</code> — 使用 IPv6 唯一本地地址 (ULA) 范围。ULA 类似于 IPv4 的私有地址，不会与全球单播 IPv6 地址冲突。如果你开启了 IPv6，这个配置必不可少。',
+        'adguard-dns': '<span class="badge badge-tip">💡 AdGuard DNS</span> 类型为 <code>tls</code>，AdGuard 的 DoT 加密 DNS。AdGuard DNS 自带广告和跟踪器过滤功能，作为辅助 DNS 提供额外的广告拦截层。走 PROXY 因为在国内访问 AdGuard DNS 可能被干扰。<br><span class="badge badge-qna">❓ 解惑</span> AdGuard DNS 和 AdGuard 软件有什么关系？AdGuard DNS 是 AdGuard 公司运营的公共 DNS 服务，在 DNS 层直接过滤广告和跟踪器，不需要安装任何软件。',
+        ']servers': 'DNS 服务器列表结束 — 以上定义了 7 个不同用途的 DNS 服务器，涵盖本地、hosts、DoT、QUIC、DoH、FakeIP 多种类型。',
 
-    // 核心：根据行内容、路径、上下文返回注释
-    function generateComment(line, idx) {
+        // DNS rules
+        'dns.rules': '<span class="badge badge-star">⭐ DNS 分流规则</span> 规则按从上到下的顺序依次匹配，一旦命中就停止继续匹配。<strong>规则顺序至关重要！</strong>把最精确、最优先的规则放在最前面。<br><span class="badge badge-qna">❓ 解惑</span> 为什么规则顺序重要？因为 sing-box 是从上往下匹配的，第一个命中的规则会直接生效。如果你把兜底规则放在最前面，后面的精确规则就永远不会被触发。',
+        'beacons': '<span class="badge badge-tip">💡 拦截 Google 灯塔</span> 这三个域名是 Google 的统计埋点服务（gvt2 = Google Video Traffic 2），用于收集用户行为数据。拦截它们可减少隐私泄露且不影响任何正常功能。action 为 reject 表示 DNS 查询直接返回拒绝。',
+        '国内域名列表': '<span class="badge badge-key">国内常用域名 / 内网域名</span> 这些域名走阿里云 QUIC DNS 快速解析，不经过代理。<br>包含：<br>• <strong>路由器管理页面</strong>：miwifi.com、tplogin.cn、router.asus.com、tendawifi.com、tplinkwifi.net<br>• <strong>国内 CDN/媒体</strong>：抖音(douyinvod.com/douyincdn.com)、西瓜视频(ixigua.com)、头条系(pstatp.com/bytecdn.com)、火山引擎(volccdn.com)<br>• <strong>AI 服务</strong>：通义千问(dashscope.aliyuncs.com)、Kimi(api.moonshot.cn)、百川(api.baichuan-ai.com)、MiniMax(api.minimax.chat)、商汤(api.sensenova.cn)、讯飞星火(api.iflytek.com/xinghuo.xfyun.cn)、智谱(chatglm.cn/bigmodel.cn/zhipuai.cn)、零一万物(lingyiwanwu.com)、阶跃星辰(stepfun.com)、DeepSeek(chat.deepseek.com/www.deepseek.com)、火山引擎(volces.com)<br>• <strong>Windows 更新</strong>：dl.delivery.mp.microsoft.com、update.microsoft.com、windowsupdate.com<br>• <strong>其他</strong>：百度统计(hm.baidu.com)、小米(tracking.miui.com/market.xiaomi.com)、B站(api.bilibili.com/www.bilibili.com)、知乎(zhihu.com/zhimg.com)、京东(jd.com/360buyimg.com)、讯飞听见(xfyun.cn)、测速(speedtest.net/fast.com)<br><span class="badge badge-qna">❓ 解惑</span> 为什么 AI 服务也直连？因为 DeepSeek、Kimi、通义千问、智谱等是国内 AI 服务，服务器在中国，直连速度更快且不需要代理。只有使用 ChatGPT、Claude、Gemini 等境外 AI 时才需要代理。',
+        'lancache': '<span class="badge badge-tip">💡 Steam 局域网缓存</span> 如果你在内网搭建了 Steam 缓存服务器（如 lancache.net），此规则让 Steam 内容下载走内网，速度可达到千兆局域网极限。server 为 local 表示使用本地 DNS 解析缓存服务器的内网 IP。如果不需要可忽略此规则。',
+        '游戏FakeIP': '<span class="badge badge-star">⭐ 游戏/Google 服务 FakeIP</span> 这些域名的 TCP 连接将通过 FakeIP 加速。包含 Steam、Epic、暴雪、EA、育碧、R星等游戏平台，以及 Google Play、Android 等 Google 服务。<br>FakeIP 让这些重度下载服务的 TCP 连接提前开始建立，大幅减少下载启动时间。<br><span class="badge badge-qna">❓ 解惑</span> 为什么游戏平台用 FakeIP？游戏下载通常涉及大量并发连接（如 Steam 会同时连接数十个 CDN 节点），FakeIP 可以为每个连接快速分配虚拟 IP，避免 DNS 成为瓶颈。',
+        'steamcontent_query': '仅对 <code>steamcontent.com</code> 的 A（IPv4）和 AAAA（IPv6）查询使用 FakeIP。Steam 下载连接数极多，此规则可以进一步优化 Steam 的 DNS 查询效率。<br><span class="badge badge-tip">💡 提示</span> 这里限制 query_type 为 A/AAAA 是为了避免对其他类型查询（如 MX 邮件交换记录）错误使用 FakeIP。',
+        'proxy_games_ai_adguard': '<span class="badge badge-tip">💡 分流到 AdGuard DNS</span> 对 proxy/games/ai 三个规则集中的域名，使用 AdGuard DNS 解析。AdGuard DNS 自带广告过滤功能，可以在 DNS 层拦截这些境外站点中的广告和跟踪器。<br><span class="badge badge-qna">❓ 解惑</span> 为什么这里用 AdGuard DNS 而不用 Google DNS？因为 AdGuard DNS 在解析的同时会自动过滤广告域名，相当于在 DNS 层做了一次广告拦截，减少后续的广告流量。',
+        'proxy_games_ai_fakeip': '<span class="badge badge-star">⭐ 核心分流规则</span> 对 proxy/games/ai 规则集中的域名使用 FakeIP 加速。<code>rewrite_ttl: 300</code> 将 DNS 记录的 TTL（生存时间）重写为 300 秒（5 分钟），平衡缓存效率和灵活性。<br><span class="badge badge-qna">❓ 解惑</span> 为什么同时有两个规则匹配 proxy/games/ai？第一个规则（adguard-dns）处理带广告过滤的解析，但第二条规则使用 FakeIP 会覆盖它。实际上这两个规则设置了相同的 query_type（A/AAAA），但第二条规则在后面，优先级更高时会生效。这是一种典型的规则覆盖策略。',
+        'evaluate': '<span class="badge badge-tip">💡 动态评估</span> 对 <code>.cn</code> 和 <code>.com.cn</code> 域名使用阿里 DoT 进行 evaluate（评估）。evaluate 动作不是直接返回解析结果，而是将解析结果交给后续的 match_response 规则继续处理。<br><span class="badge badge-qna">❓ 解惑</span> evaluate 和直接 server 指定有什么区别？evaluate 相当于"先解析出来，再看看怎么处理"，后续的 match_response 规则可以根据解析出的 IP 地址做进一步判断（如判断是否属于中国 IP 段）。',
+        'invert_NOERROR': '<span class="badge badge-tip">💡 非 A/AAAA 查询</span> <code>invert: true</code> 表示反转匹配条件——即对<strong>非</strong> A 和 AAAA 类型的查询（如 MX 邮件记录、TXT 文本记录、NS 域名服务器记录等），返回 NOERROR 空响应。避免不必要的查询浪费资源。<br><span class="badge badge-qna">❓ 解惑</span> 什么是 NOERROR？在 DNS 协议中，NOERROR 表示"查询成功但没有结果"，类似于"我收到了你的问题，但答案为空"。这比直接 reject 更优雅，不会让应用报错。',
+        'httpDNS_reject': '<span class="badge badge-warn">⚠️ 拦截 httpDNS</span> 对 httpDNS、DNSreject、Ads 三个规则集中的域名返回 NOERROR（不返回解析结果）。这是一种"静默"拒绝，应用不会收到 DNS 错误提示，但域名不会被解析。<br><span class="badge badge-qna">❓ 解惑</span> 什么是 httpDNS？httpDNS 是一种通过 HTTP 协议进行 DNS 解析的技术，常用于绕过运营商 DNS 劫持。但有些应用滥用 httpDNS 绕过代理分流，所以这里将其拦截。',
+        'private_Filter': '对 private 和 Filter 规则集中的域名使用阿里 QUIC DNS 解析。Filter 规则集包含了不适合使用 FakeIP 的域名（如需要真实 IP 才能正常工作的服务，或者使用 CDN 需要根据地理位置返回不同 IP 的站点）。<br><span class="badge badge-qna">❓ 解惑</span> 为什么有些域名不适合 FakeIP？某些服务（如 Netflix 等流媒体）会根据你的 DNS 来源返回不同地区的 IP，FakeIP 返回统一的虚拟 IP 可能导致地区判断失败。Filter 规则集排除了这些域名。',
+        'cn_quic': '再次强调 .cn 和 .com.cn 域名用阿里 QUIC DNS 解析，确保国内域名解析的稳定性。这是对 .cn 域名的双重保障——前面已经有一条 evaluate 规则，这里再加一条直接指定 server 的规则。<br><span class="badge badge-tip">💡 提示</span> 这条规则在 evaluate 规则之后，当 evaluate 无法完成时（如 DNS 服务器故障），这条规则作为兜底。',
+        'cnip_match': '<span class="badge badge-star">⭐ 响应匹配</span> 对 DNS 解析结果进行二次匹配。<code>match_response: true</code> 表示检查解析出的 IP 地址。如果解析出的 IP 属于 cnip（中国 IP 段规则集），则改用 local DNS。<br><span class="badge badge-qna">❓ 解惑</span> 为什么要做响应匹配？有些境外域名可能解析到中国 IP（如使用国内 CDN 的境外网站）。例如某个 .com 域名解析到了阿里云的中国 IP，此时用本地 DNS 重新解析可以获得更准确的国内 CDN 节点。',
+        'respond': '<span class="badge badge-tip">💡 最终响应</span> 对解析结果执行 respond 动作，将最终结果返回给请求方。这是 DNS 规则链的最后一环，标志着 DNS 处理流程的结束。<br><span class="badge badge-qna">❓ 解惑</span> respond 和直接返回有什么区别？respond 是显式地告诉 sing-box "这个 DNS 查询处理完了，把结果返回给客户端"。如果前面有 evaluate 规则做了预解析，respond 会将预解析的结果正式返回。',
+        'geosite_reject': '<span class="badge badge-warn">⚠️ 广告拦截（DNS 层）</span> 使用 geosite_adguard（AdGuard 转换规则）和 geosite-category-ads-all（sing-geosite 官方全量广告分类）两个规则集进行 DNS 层广告拦截。双层过滤，拦截效果更全面。<br><span class="badge badge-qna">❓ 解惑</span> DNS 层广告拦截的原理：当应用或网页请求解析广告域名时，DNS 直接返回 reject（拒绝），应用无法获取广告服务器的 IP，广告就无法加载。这种方式不需要分析流量内容，效率极高。',
+        'SVCB_HTTPS_PTR_reject': '<span class="badge badge-warn">⚠️ 拦截特殊查询类型</span> 拒绝 SVCB、HTTPS、PTR 三种类型的 DNS 查询。<br>• <strong>SVCB/HTTPS</strong>：与 HTTP/3 和 ECH 服务发现相关，在某些网络环境下可能引发异常或泄露信息。<br>• <strong>PTR</strong>：反向解析（IP→域名），普通应用极少使用，拦截可减少隐私泄露和不必要的 DNS 查询量。<br><span class="badge badge-qna">❓ 解惑</span> 拦截这些有什么影响？对于绝大多数用户来说没有影响。只有当你使用需要 PTR 记录的网络诊断工具（如 nslookup 反向查询）或特定 HTTP/3 功能时才会受影响。',
+        ']dns.rules': 'DNS 分流规则列表结束 — 以上 15 条规则覆盖了从广告拦截到国内直连、从 FakeIP 加速到特殊查询拦截的全场景。',
+        'final_dns': '<span class="badge badge-tip">💡 DNS 最终兜底</span> 所有未匹配任何规则的域名默认使用 <code>ggdns</code>（Google DoH）解析。这是一个安全的"白名单"策略：已知的国内域名走国内 DNS，未知的境外域名走代理 DNS。<br><span class="badge badge-qna">❓ 解惑</span> 为什么兜底选 Google DoH 而不是阿里 DNS？因为未知域名大概率是境外站点，Google DNS 对境外域名的解析更精准，且通过代理访问可以避免 DNS 污染。',
+        'reverse_mapping': '<span class="badge badge-star">⭐ 反向映射</span> 开启后 sing-box 会记录 IP 与域名的对应关系（从 DNS 解析和 TLS SNI 中学习）。这是提高分流准确性的关键功能——当后续 IP 规则需要判断某个连接的目标时，可以通过映射表找到原始域名。<br><span class="badge badge-qna">❓ 解惑</span> 反向映射的实际应用：比如你访问了一个没有匹配任何域名规则的 IP，但之前 DNS 解析过这个 IP 对应的是 google.com，反向映射就能让这个连接匹配上 google.com 的分流规则。',
+        'strategy': '<span class="badge badge-tip">💡 IP 策略</span> <code>prefer_ipv4</code> 优先返回 IPv4 地址。如果你需要 IPv6 优先，可改为 <code>prefer_ipv6</code>。如果只想用 IPv4，改为 <code>ipv4_only</code>。<br><span class="badge badge-qna">❓ 解惑</span> 什么时候需要改 IP 策略？如果你的网络环境 IPv6 不稳定（如某些校园网、小区宽带的 IPv6 经常断流），建议用 <code>ipv4_only</code> 完全禁用 IPv6 DNS 解析。',
+        'cache_capacity': '<span class="badge badge-tip">💡 缓存容量</span> 最多缓存 65536 条 DNS 解析记录。对于个人设备来说绰绰有余——即使你全天候浏览网页，一天产生的唯一域名数也很难超过 1 万条。<br><span class="badge badge-qna">❓ 解惑</span> DNS 缓存会占用多少内存？每条 DNS 记录大约占用 200-500 字节，65536 条记录约占用 15-30MB 内存，对于现代设备来说微不足道。',
+        'optimistic': '<span class="badge badge-star">⭐ 乐观缓存</span> 开启后，当 DNS 缓存过期时，sing-box 会先将旧的解析结果返回给客户端（减少等待时间），同时后台异步发起新的 DNS 查询更新缓存。<strong>这是降低用户感知延迟的利器</strong>。<br><span class="badge badge-qna">❓ 解惑</span> 乐观缓存有风险吗？极小概率下，如果域名的 IP 在缓存过期后发生了变化，你会短暂地连接到旧 IP（直到后台更新完成）。对于绝大多数网站来说，IP 不会频繁变化，所以这个风险可以忽略。',
+        '}dns': 'DNS 核心配置结束 — 以上包含了 7 个 DNS 服务器定义和 15 条分流规则，构成了完整的 DNS 子系统。',
+
+        // NTP
+        'ntp': '<span class="badge badge-key">NTP 时间同步</span> 保证设备系统时间准确，避免因时间偏差导致 TLS 证书验证失败。<br><span class="badge badge-qna">❓ 解惑</span> 为什么代理软件要管时间？TLS 证书有有效期限（通常 1 年），如果系统时间偏差超过证书有效期，客户端会认为证书已过期而拒绝连接。NTP 同步是防止此问题的保障。',
+        'ntp_enabled': '✅ 启用 NTP 时间同步。如果你的系统已经通过其他方式（如 Windows 时间服务、macOS 自动时间设置）自动同步时间，可设为 false。但建议保持开启作为双重保障。',
+        'ntp_interval': '<span class="badge badge-tip">💡 同步间隔</span> 每 30 分钟同步一次。<code>30m0s</code> 是 Go 语言的 duration 格式：30 分钟 0 秒。过于频繁会增加 NTP 服务器负担，30 分钟是推荐值。<br><span class="badge badge-qna">❓ 解惑</span> Duration 格式规则：数字 + 单位，单位支持 h（小时）、m（分钟）、s（秒）、ms（毫秒）。例如 <code>1h30m</code> 表示 1 小时 30 分钟。',
+        'ntp_server': 'NTP 服务器地址：<code>ntp.aliyun.com</code>。阿里云公共 NTP 服务，国内延迟极低（通常 < 10ms），比国际 NTP 池（如 pool.ntp.org）更稳定。',
+        'ntp_server_port': 'NTP 端口：<code>123</code>。这是 NTP 协议的国际标准端口（UDP 123），全球统一，无需修改。',
+        'ntp_detour': 'NTP 流量走 <code>DIRECT</code> 直连。时间同步不需要代理，直连更快更稳定。这里引用的是 outbounds 中定义的 DIRECT 出站。',
+        '}ntp': 'NTP 时间同步配置结束。',
+
+        // http_clients
+        'http_clients': '<span class="badge badge-key">HTTP 客户端配置</span> 统一管理所有远程规则集下载时使用的 HTTP 连接参数。避免在每个规则集中重复配置。<br><span class="badge badge-qna">❓ 解惑</span> 为什么需要单独的 HTTP 客户端配置？因为规则集托管在 GitHub 等境外平台，国内下载可能超时或失败。通过统一的 HTTP 客户端配置，可以集中设置代理、超时等参数。',
+        'default_http': '<span class="badge badge-star">⭐ 默认 HTTP 客户端</span> 标签名为 <code>default</code>，所有远程规则集通过 <code>http_client: "default"</code> 引用此配置。<br><span class="badge badge-warn">⚠️ 关键</span> detour 设为 PROXY，因为大多数规则集托管在 GitHub（raw.githubusercontent.com），国内直连可能失败或极慢。通过代理下载保证规则集能正常获取。',
+        'version': 'HTTP 客户端版本：<code>2</code>。版本 2 是 sing-box 的新版 HTTP 客户端实现，性能和稳定性更好。一般情况下无需修改。',
+        'detour_http': '下载流量走 <code>PROXY</code> 出站。这是确保规则集能从 GitHub 成功下载的关键配置。',
+        'stream_receive_window': '<span class="badge badge-tip">💡 高级参数</span> 流接收窗口大小。设为 <code>0</code> 表示使用系统默认值（通常为 65535 字节）。一般情况无需修改，除非你遇到下载速度异常慢的问题。',
+        'connection_receive_window': '<span class="badge badge-tip">💡 高级参数</span> 连接接收窗口大小。设为 <code>0</code> 同样使用系统默认值。这两个参数是 TCP 窗口大小的微调项，普通用户无需关心。',
+        ']http_clients': 'HTTP 客户端配置结束。',
+
+        // inbounds
+        'inbounds': '<span class="badge badge-key">入站配置</span> 定义流量如何进入 sing-box。支持 TUN 虚拟网卡（全局代理）和混合代理端口（应用代理）两种方式。<br><span class="badge badge-qna">❓ 解惑</span> TUN 和系统代理有什么区别？系统代理只能代理支持 HTTP/SOCKS5 代理设置的应用（如浏览器），而 TUN 虚拟网卡可以代理所有流量（包括游戏、命令行工具、UWP 应用等不认系统代理的程序）。',
+        'tun-in': '<span class="badge badge-star">⭐ TUN 入站</span> 创建虚拟网卡（tun 设备）接管系统全部 TCP/UDP 流量，实现真正的全局透明代理。<br><span class="badge badge-qna">❓ 解惑</span> TUN 模式的工作原理：sing-box 在系统中创建一个虚拟网卡（如 tun0），修改系统路由表让所有出站流量都经过这个虚拟网卡。sing-box 从虚拟网卡读取数据包，根据路由规则决定是直连还是代理。',
+        'mtu': '<span class="badge badge-tip">💡 MTU 值</span> 最大传输单元：<code>1500</code> 字节。这是以太网的标准 MTU 值。设置过大会导致数据包在中间路由器处分片，降低效率；设置过小会增加数据包数量，增加 CPU 开销。1500 是经过长期验证的最优值。<br><span class="badge badge-qna">❓ 解惑</span> 什么时候需要修改 MTU？如果你的网络是 PPPoE 拨号（常见于家庭宽带），MTU 通常为 1492（1500 - 8 字节 PPPoE 头部）。如果发现某些网站打不开或下载速度异常，可以尝试改为 1492。',
+        'address': '<span class="badge badge-tip">💡 虚拟网卡 IP</span> 虚拟网卡的 IP 地址：<code>10.8.0.1/24</code>。<code>/24</code> 表示子网掩码为 255.255.255.0，可用 IP 范围为 10.8.0.1-10.8.0.254。使用 10.0.0.0/8 私有网段，与常见的 192.168.x.x 局域网网段隔离，避免路由冲突。',
+        'auto_route': '<span class="badge badge-star">⭐ 自动路由</span> 开启后 sing-box 会自动修改系统路由表，将流量导向虚拟网卡。<strong>这是全局代理的核心功能</strong>。关闭后需要手动配置路由规则，普通用户不建议关闭。<br><span class="badge badge-qna">❓ 解惑</span> 自动路由做了什么事？它会添加一条高优先级的路由规则，将所有出站流量指向虚拟网卡。同时保留局域网路由（如 192.168.x.x），确保内网设备仍可正常访问。',
+        'strict_route': '<span class="badge badge-warn">⚠️ 严格路由</span> 开启后<strong>防止流量泄露</strong>——即使系统中有其他可用的网络路径，也会强制所有流量经过虚拟网卡。<strong>这是安全性的关键保障</strong>，但可能与其他 VPN 软件冲突（如公司 VPN、游戏加速器）。<br><span class="badge badge-qna">❓ 解惑</span> 如果同时使用多个 VPN 会怎样？strict_route 会让 sing-box 独占路由，其他 VPN 可能无法正常工作。如果你需要同时使用多个 VPN，可以关闭 strict_route 并手动配置路由优先级。',
+        'stack': '<span class="badge badge-tip">💡 协议栈</span> <code>mixed</code> 混合模式，同时使用系统 TCP 协议栈和 sing-box 自有的 UDP 协议栈。在性能和兼容性之间取得了最佳平衡。<br><span class="badge badge-qna">❓ 解惑</span> 可选值：system（完全使用系统协议栈，兼容性最好但性能一般）、gvisor（Google 开发的用户态协议栈，隔离性好但 CPU 开销高）、mixed（TCP 用系统、UDP 用自有，性能最佳）。',
+        '}tun-in': 'TUN 入站配置结束。',
+        'mixed-in': '<span class="badge badge-key">混合代理入站</span> 同时兼容 HTTP 代理和 SOCKS5 代理协议。本地应用（浏览器、命令行工具等）可通过 <code>127.0.0.1:7890</code> 使用代理。<br><span class="badge badge-tip">💡 提示</span> mixed 类型让你不需要分别配置 HTTP 和 SOCKS5 端口，一个端口同时支持两种协议。',
+        'listen': '<span class="badge badge-warn">⚠️ 安全注意</span> 监听地址：<code>127.0.0.1</code>（本地环回地址）。这意味着<strong>只有本机应用能连接此代理端口</strong>，局域网内其他设备无法访问。如果你需要将代理共享给手机等其他设备，可改为 <code>0.0.0.0</code>（但请注意安全风险，任何人都能连接你的代理）。',
+        'listen_port': '<span class="badge badge-tip">💡 端口</span> 监听端口：<code>7890</code>。这是 Clash 生态的标准 HTTP/SOCKS5 代理端口。大多数 Clash 客户端、浏览器代理插件（如 SwitchyOmega）都默认使用此端口。',
+        '}mixed-in': '混合代理入站配置结束。',
+        ']inbounds': '入站配置结束 — 以上定义了一个 TUN 入站（全局代理）和一个 mixed 入站（应用代理），覆盖了所有常见的代理使用场景。',
+
+        // outbounds
+        'outbounds': '<span class="badge badge-key">出站配置</span> 定义流量如何从 sing-box 出去——是直连、走代理、还是自动选择。<strong>这是整个配置中最重要的部分</strong>，直接决定了你的流量走向。<br><span class="badge badge-warn">⚠️ 注意</span> 具体节点配置已省略，你需要自行添加或通过订阅转换工具生成。',
+        'DIRECT': '<span class="badge badge-star">⭐ 直连出站</span> 类型为 <code>direct</code>。流量直接访问目标地址，不经过任何代理服务器。<br>标签名 <code>DIRECT</code> 是全局核心标签，路由规则中大量引用此标签。使用 <code>alidns-quic</code> 进行 DNS 解析。',
+        'PROXY': '<span class="badge badge-star">⭐ 代理选择器</span> 类型为 <code>selector</code>。这是用户交互的核心——你可以在客户端 UI（如 metacubexd 面板）中手动切换的出站组。<br>默认使用 <code>AUTO</code>（自动测速选路），也可手动选择特定节点或 DIRECT。<br><span class="badge badge-qna">❓ 解惑</span> selector 和 urltest 的区别：selector 是手动选择，urltest 是自动选择。selector 通常包含 urltest 作为选项之一。',
+        'AUTO': '<span class="badge badge-star">⭐ 自动测速选路</span> 类型为 <code>urltest</code>。定期对所有节点进行测速，自动选择延迟最低的节点。<br>• <strong>测速地址</strong>：<code>http://www.gstatic.com/generate_204</code>（Google 的 204 空响应页面，几乎不消耗流量）<br>• <strong>测速间隔</strong>：10 分钟一次<br>• <strong>切换容差</strong>：50ms（新节点必须比当前节点快 50ms 以上才会切换，避免频繁"乒乓效应"）<br>• <strong>空闲超时</strong>：30 分钟无流量后重置测速数据<br><span class="badge badge-qna">❓ 解惑</span> 为什么用 Google 的地址测速？因为 gstatic.com 是 Google 的静态资源 CDN，全球都有节点，响应极快且稳定，是业界标准的连通性测试地址。',
+        'GLOBAL': '<span class="badge badge-key">全局选择器</span> 类型为 <code>selector</code>。对应 Clash 的"全局模式"。用户可一键切换：PROXY（全局代理）或 DIRECT（全局直连）。在客户端面板中切换"全局模式"时会使用此标签。',
+        'CN': '<span class="badge badge-key">国内流量选择器</span> 类型为 <code>selector</code>。国内域名/流量分流组。默认 DIRECT（直连），用户可手动切换为 PROXY（代理）。给用户多一个选择。',
+        'Final': '<span class="badge badge-key">最终兜底选择器</span> 类型为 <code>selector</code>。路由规则的最终兜底出站。包含三个选项：PROXY（代理）、DIRECT（直连）、REJECT-DROP（丢弃）。默认走 PROXY。<br><span class="badge badge-qna">❓ 解惑</span> 为什么要有一个 Final 选择器？这是"白名单"策略的体现：所有已知的国内流量走直连，未知流量（大概率是境外站点）走代理。如果用户想临时阻断所有未知连接，可以切换到 REJECT-DROP。',
+        'REJECT-DROP': '<span class="badge badge-warn">⚠️ 阻断出站</span> 类型为 <code>block</code>。直接丢弃所有经过此出站的流量，不发送任何响应。<strong>这是最严格的拒绝方式</strong>——客户端会一直等待直到超时。用于拒绝不需要的连接或临时切断网络。',
+        ']outbounds': '出站配置结束 — 以上定义了直连、手动选择、自动测速、全局模式、国内分流、最终兜底和阻断共 7 个核心出站组件。',
+
+        // route
+        'route': '<span class="badge badge-star">⭐ 路由核心</span> 流量分流的决策中心。规则按从上到下的顺序依次匹配，命中即停止。<strong>规则顺序直接影响分流效果！</strong>把最精确、最高优先级的规则放在最前面。<br><span class="badge badge-qna">❓ 解惑</span> 路由规则和 DNS 规则有什么不同？DNS 规则决定域名如何被解析，路由规则决定解析后（或不需要解析的）流量走哪个出站。两者配合使用才能实现完整的流量分流。',
+        'sniff': '<span class="badge badge-star">⭐ 流量嗅探</span> 对所有流量开启域名和协议嗅探。<strong>这是整个路由系统的基础</strong>。<br>sing-box 会分析流量特征以确定其真实目标域名（从 TLS SNI、HTTP Host 头部等提取）和协议类型。<br><span class="badge badge-qna">❓ 解惑</span> 为什么需要嗅探？因为很多流量是直接以 IP 形式发起的（如 DNS 解析后的 TCP 连接），如果不嗅探 SNI，sing-box 就不知道这个 IP 连接对应的是哪个域名，后续域名规则就无法匹配。嗅探解决了"IP 连接找回域名"的问题。',
+        'hijack-dns': '<span class="badge badge-star">⭐ DNS 劫持</span> 将系统发出的 DNS 请求（目标端口 53）劫持到 sing-box 内部 DNS 模块处理。<strong>这是实现全局 DNS 防污染的关键动作。</strong><br>即使应用自己指定了 DNS 服务器（如浏览器设置 8.8.8.8），流量也会被劫持到 sing-box，确保所有 DNS 查询都经过配置的规则。<br><span class="badge badge-qna">❓ 解惑</span> 劫持 DNS 会影响正常上网吗？不会。sing-box 劫持 DNS 后会用自己配置的 DNS 服务器（阿里 QUIC、Google DoH 等）重新查询，结果更准确、更安全。',
+        'route-options': '<span class="badge badge-tip">💡 路由选项</span> 两个 UDP 相关的高级设置：<br>• <code>udp_disable_domain_unmapping: true</code> — 禁止 UDP 域名反解析（将 IP 转换为域名）。提升 UDP 处理效率。<br>• <code>udp_connect: true</code> — UDP 使用 connect 模式。让 UDP 连接有状态，可以更好地匹配路由规则。',
+        'Ads_adobe_reject': '<span class="badge badge-warn">⚠️ 路由层拦截</span> 在路由层拦截 Ads、adobe、httpDNS、DNSreject 四个规则集中的流量。<br>• <strong>method: drop</strong> — 静默丢弃数据包，不发送任何响应（如 TCP RST）。客户端会一直等待直到超时。<br><span class="badge badge-qna">❓ 解惑</span> drop 和 reject 有什么区别？reject 会发送拒绝响应（如 TCP RST），客户端立即知道连接被拒绝；drop 直接丢弃，客户端会超时等待。drop 更隐蔽，但也可能导致应用卡顿。',
+        'clash_mode_global': '<span class="badge badge-tip">💡 Clash 兼容</span> 当用户在 Clash 面板中切换为"Global"（全局）模式时，所有流量走 PROXY。<br><span class="badge badge-qna">❓ 解惑</span> clash_mode 是什么？这是 sing-box 为了兼容 Clash 面板（如 metacubexd）而提供的功能。面板上的模式切换按钮会触发对应的 clash_mode 规则生效。',
+        'clash_mode_direct': '<span class="badge badge-tip">💡 Clash 兼容</span> 当用户在 Clash 面板中切换为"Direct"（直连）模式时，所有流量走 DIRECT。',
+        'Apple': '<span class="badge badge-tip">💡 Apple 直连</span> Apple 规则集（geosite-apple）走直连。包括 App Store、iCloud、Apple Music、Apple TV+ 等在国内有服务器的苹果服务。<br><span class="badge badge-qna">❓ 解惑</span> Apple 服务不全部直连行吗？也行，但直连 Apple 中国服务器可以获得更快的下载速度（App Store 更新、iCloud 同步等），而且不影响功能。外区 Apple ID 的部分服务可能仍需要代理。',
+        'fcm_Android': '<span class="badge badge-star">⭐ 推送关键</span> Google FCM 推送和 Android 系统服务规则集走代理。确保安卓设备能正常接收推送通知（微信、QQ、WhatsApp 等）。<br><span class="badge badge-warn">⚠️ 重要</span> 如果这条规则不生效，你的手机可能收不到任何应用的通知推送！',
+        'google_cn': '<span class="badge badge-tip">💡 Google 中国域名</span> <code>google.cn</code> 和 <code>googleapis.cn</code> 走代理。虽然它们有中国版，但通过代理访问可以避免某些限制（如开发者 API 的调用频率限制）。',
+        'proxy_rulesets': '<span class="badge badge-star">⭐ 核心代理分流</span> 九个规则集同时走代理：<strong>telegram、telegram_ip、youtube、instagram、Google、ai、GlobalMedia、Proxy、gfw</strong>。<br>这是配置中最主要的代理分流规则，涵盖了社交、视频、搜索、AI 服务、全球媒体、GFW 阻断站点等几乎所有需要代理的流量。',
+        'yuexingbao': '<span class="badge badge-tip">💡 特定应用直连</span> 安卓应用"月星宝"（包名 com.wwwscn.yuexingbao）走直连。这是一个按包名精确匹配的规则，适用于某些不需要代理的国内应用。',
+        'ntp_icmp': '<span class="badge badge-tip">💡 协议直连</span> NTP（时间同步协议）和 ICMP（ping 使用的协议）走直连。这些基础网络协议不需要代理，直连更稳定。',
+        'private_Applications_OnePlus': '<span class="badge badge-tip">💡 直连规则集</span> private（内网地址）、Applications（常见应用）、OnePlus（一加手机服务）走直连。',
+        'domain_direct': '<span class="badge badge-tip">💡 特定域名直连</span> 五个特定域名走直连：<br>• sponsor.ajay.app（SponsorBlock 数据）<br>• ifbapp.com、allawnos.com、heytapmobi.com（OPPO/一加服务）<br>• steamserver.net（Steam 服务器通信，某些情况下直连更快）',
+        'stun_quic_dtls': '<span class="badge badge-warn">⚠️ 协议拦截</span> 拒绝 STUN、QUIC、DTLS 协议流量。<br><span class="badge badge-qna">❓ 解惑</span> 为什么拦截 QUIC？QUIC（HTTP/3）基于 UDP 协议，很多代理工具对 UDP 的支持不如 TCP 完善。拦截 QUIC 强制浏览器回退到 HTTP/2 over TCP，确保流量能被正确代理。<strong>如果你需要使用 HTTP/3（如访问某些 Google 服务更快），请移除此条规则中</strong>的 quic 部分。',
+        'beacon_drop': '<span class="badge badge-warn">⚠️ 数据上报拦截</span> 拦截五个数据上报/广告域名，method 为 drop（静默丢弃）：<br>• astrategy.beacon.qq.com、beacon.qq.com（腾讯灯塔数据上报）<br>• abyss.cyapi.cn、ad.cyapi.cn（彩云天气广告/数据）<br>• gather.colorfulclouds.net（彩云天气数据收集）<br>拦截这些可保护隐私，减少不必要的数据泄露。',
+        'ipv6_reject': '<span class="badge badge-warn">⚠️ IPv6 控制</span> 拒绝非默认网络接口的 IPv6 流量。<br><span class="badge badge-qna">❓ 解惑</span> 这条规则的意思是：如果 IPv6 流量来自非默认网络接口（如你同时连接了 WiFi 和有线网络，但系统默认走 WiFi），就拒绝它。这可以防止 IPv6 流量绕过代理从备用接口泄露。',
+        'youtube_telegram_package': '<span class="badge badge-star">⭐ 应用分包</span> 四个安卓应用强制走代理，按包名精确匹配：<br>• com.google.android.youtube（YouTube 官方）<br>• app.revanced.android.youtube（YouTube Revanced）<br>• org.telegram.messenger（Telegram 官方）<br>• org.telegram.messenger.beta（Telegram Beta）<br>这些应用需要代理才能正常使用，即使其他规则可能匹配到直连，包名规则会覆盖它们。',
+        'mtalk_and': '<span class="badge badge-star">⭐ GCM 推送精确分流</span> Google GCM/FCM 推送域名（mtalk.google.com 及其 8 个备用域名）+ 特定端口（443 标准端口、5228 Google Play Services 专用端口）走代理。<br><span class="badge badge-warn">⚠️ 安卓推送的核心保障</span>——如果这条规则失效，你的手机可能收不到推送通知。<br><span class="badge badge-qna">❓ 解惑</span> 为什么是端口 5228？5228 是 Google Play Services 用于 FCM 推送的专用端口，与标准的 443 端口不同。同时匹配两个端口确保所有推送通道都被覆盖。',
+        'telegramip_proxy': '<span class="badge badge-tip">💡 二次代理分流</span> telegramip、geosite-google、proxy、games、ai 五个规则集走代理。与前面的 proxy_rulesets 规则形成多层保障，确保这些关键流量不会漏网。',
+        'fakeip_cidr': '<span class="badge badge-star">⭐ FakeIP 路由</span> 目标 IP 属于 <code>198.18.0.0/15</code>（FakeIP 地址段）的流量走代理。这些虚拟 IP 对应的真实域名在 DNS 阶段被分配了 FakeIP，它们一定是需要代理的境外域名。<br><span class="badge badge-qna">❓ 解惑</span> 为什么需要这条规则？因为 FakeIP 返回的虚拟 IP 不会匹配任何地理 IP 规则（如 cnip），如果不显式指定走代理，它们可能会走直连导致连接失败。',
+        'cn_direct': '<span class="badge badge-star">⭐ 国内直连保障</span> 八个规则集走直连：private/cn（中国域名）/cnip（中国 IP）/microsoft-cn（微软中国）/apple-cn（苹果中国）/google-cn（Google 中国）/games-cn（国内游戏）/networktest（网络测试站点）。<br><strong>这是国内流量直连的最后一道保障</strong>，确保国内外流量分流准确。',
+        'geosite_reject_route': '<span class="badge badge-warn">⚠️ 路由层广告拦截</span> 使用 geosite_adguard 和 geosite-category-ads-all 两个规则集进行路由层广告拦截。这是 DNS 层广告拦截的第二道防线——如果 DNS 层漏过，路由层会再次拦截。<br><span class="badge badge-qna">❓ 解惑</span> 为什么需要两层广告拦截？DNS 拦截只能阻止域名的 DNS 查询，如果应用使用 IP 直连或硬编码的 DNS，DNS 拦截就会失效。路由层拦截可以阻止这些"漏网之鱼"。',
+        'stun_reject': '<span class="badge badge-warn">⚠️ STUN 穿透拦截</span> 拦截所有 STUN/TURN/WebRTC 相关流量：<br>• 特定 UDP 端口：3478、5349、5350、19302、10000（STUN/TURN 标准端口）<br>• 域名正则匹配：以 stun. 开头的域名<br>• 域名关键词：stun、turn、httpdns<br>• 协议类型：stun<br><span class="badge badge-qna">❓ 解惑</span> 什么是 STUN？STUN 是 WebRTC 的一部分，用于在 NAT 后获取公网 IP。拦截 STUN 可以防止内网 IP 泄露，但如果你需要使用视频会议（如 Google Meet、Zoom 的 Web 版），可能需要关闭此规则。',
+        'anti_fraud': '<span class="badge badge-warn">⚠️ 反欺诈拦截</span> 拦截已知的诈骗、钓鱼、恶意网站。anti_fraud 规则集由社区维护（hwsaya 的 FuckFZ 项目），每 48 小时更新一次。<br><span class="badge badge-qna">❓ 解惑</span> 反欺诈规则集包含哪些内容？主要包括虚假的银行网站、仿冒的购物网站、勒索软件分发站点、虚假的中奖页面等。拦截这些可以保护你的财产安全。',
+        'ip_is_private': '<span class="badge badge-tip">💡 内网直连</span> 所有私有 IP 地址（RFC 1918：10.x.x.x、172.16-31.x.x、192.168.x.x）走直连。确保访问路由器、NAS、智能家居等内网设备不受代理影响。',
+        'resolve': '<span class="badge badge-tip">💡 强制 DNS 解析</span> 对未匹配前置规则的域名强制执行 DNS 解析。<br><span class="badge badge-qna">❓ 解惑</span> 这条规则的作用：将前面没有明确处理的域名进行 DNS 解析，解析出的 IP 可以用于后续 IP 规则（如 cnip 直的规则）匹配。它本身不做分流决策，只是为后续规则做准备。',
+        ']route.rules': '路由规则列表结束 — 以上 26 条路由规则覆盖了从流量嗅探、DNS 劫持、广告拦截、协议过滤、应用分包到国内外分流的所有场景。',
+        'final_route': '<span class="badge badge-key">路由最终兜底</span> 所有未匹配任何路由规则的流量默认走 <code>Final</code> 选择器（默认 PROXY）。<br><span class="badge badge-qna">❓ 解惑</span> 为什么用"白名单"策略？即已知的国内流量走直连，未知流量（大概率是境外站点/新出现的服务）走代理。这比"黑名单"策略（已知境外走代理，其余直连）更安全——不会因为规则集更新不及时而导致新的境外站点无法访问。',
+        'auto_detect_interface': '<span class="badge badge-tip">💡 接口自动检测</span> 开启后 sing-box 会自动检测并绑定正确的网络接口。对于多网卡设备（如笔记本同时有 WiFi 和有线网卡，或开启了多个 VPN），此功能可避免路由混乱。建议保持开启。',
+        'default_domain_resolver': '<span class="badge badge-tip">💡 路由默认 DNS</span> 路由中需要解析域名时默认使用 <code>alidns-quic</code>（阿里云 QUIC DNS）。<br><span class="badge badge-qna">❓ 解惑</span> 路由为什么还需要 DNS 解析器？因为某些路由规则需要知道目标 IP 才能匹配（如 cnip 规则），所以 sing-box 需要先解析域名。这个配置指定了路由模块使用哪个 DNS 服务器来解析。',
+        '}route': '路由配置结束 — 完整的路由系统包含了 26 条规则和 35 个规则集，构成了整个分流决策引擎。',
+
+        // rule_set
+        'rule_set': '<span class="badge badge-key">远程规则集列表</span> 定义所有从远程服务器下载的分流规则集。这些规则集会定期自动更新，保持分流规则的时效性。<br><span class="badge badge-tip">💡 格式说明</span> <code>.srs</code> 是 sing-box 的二进制规则集格式，加载速度极快、内存占用极小。<code>.json</code> 为源码格式，更新更灵活但加载稍慢。',
+        'geosite-category-ads-all': 'sing-geosite 官方维护的全量广告分类规则集。使用 jsdelivr CDN 加速，国内下载成功率较高。每 48 小时更新一次。',
+        'geosite_adguard': 'AdGuard 广告过滤规则转 sing-box 格式。由 217heidai 维护，过滤规则比官方更全面，包含更多国内广告域名。每 48 小时更新。',
+        'geosite-google': 'sing-geosite 官方 Google 服务分类。包含 Google 搜索、Gmail、Google Drive、YouTube、Google Maps 等所有 Google 域名。每 48 小时更新。',
+        'geosite-youtube': 'sing-geosite 官方 YouTube 专属分类。与 geosite-google 部分重叠，但更聚焦于 YouTube 的视频播放和 API 域名。每 48 小时更新。',
+        'proxy': 'DustinWin 维护的代理域名合集。覆盖常见的境外需代理站点（新闻、社交、论坛等）。每 48 小时更新。<br><span class="badge badge-tip">💡 提示</span> DustinWin 的规则集是国内 sing-box 社区最常用的规则集之一，质量高、更新勤。',
+        'games': 'DustinWin 维护的境外游戏域名合集。包含 Steam、Epic、Origin、Uplay、Battle.net 等平台的登录、下载、游戏服务器域名。每 48 小时更新。',
+        'ai': 'DustinWin 维护的 AI 服务域名合集。包含 ChatGPT、Claude、Gemini、Midjourney、DALL-E 等主流 AI 服务的 API 和网页域名。每 48 小时更新。<br><span class="badge badge-qna">❓ 解惑</span> 为什么 AI 需要单独一个规则集？因为 AI 服务增长极快，新域名不断出现。单独维护可以确保所有 AI 服务都能被正确分流。',
+        'private': '内网地址和域名规则集。包含局域网 IP 段、.local 域名、路由器管理页面等。每 48 小时更新。',
+        'anti_fraud': '<span class="badge badge-warn">⚠️ 反欺诈</span> hwsaya 维护的反欺诈规则（项目名 FuckFZ）。使用 source 格式（JSON），因为反欺诈规则需要频繁更新，source 格式更新更灵活。Raw GitHub 地址确保获取最新版本。<br><span class="badge badge-qna">❓ 解惑</span> 这个规则集没有 http_client 字段，意味着它使用默认下载方式。如果 GitHub 直连失败，可能需要手动添加 <code>"http_client": "default"</code> 让它走代理下载。',
+        'cn': 'DustinWin 维护的中国域名规则集。包含 .cn、.com.cn 等国内域名。每 48 小时更新。',
+        'microsoft-cn': '微软中国服务规则集。包含 Office 365 中国版、Azure 中国（由世纪互联运营）、Windows 更新国内 CDN 等。每 48 小时更新。',
+        'apple-cn': '苹果中国服务规则集。包含 iCloud 中国版（由云上贵州运营）、App Store 中国区、Apple Music 中国等。每 48 小时更新。',
+        'google-cn': 'Google 中国服务规则集。包含 Google 在中国运营的少量服务（如 Google 广告中国站、Google 开发者中国站等）。每 48 小时更新。',
+        'games-cn': '国内游戏规则集。包含王者荣耀、原神国服、和平精英等国内游戏的登录、下载、游戏服务器域名。每 48 小时更新。',
+        'networktest': '网络测试站点规则集。包含 Speedtest.net、Fast.com 等常用测速网站的域名和测速服务器 IP。每 48 小时更新。',
+        'telegramip': 'DustinWin 维护的 Telegram IP 段规则集。包含 Telegram 官方 AS 的所有 IP 地址。与 telegram 域名规则配合使用，提供 Telegram 的完整分流。每 48 小时更新。',
+        'telegram_ip': 'Telegram IP 规则集（MetaCubeX 维护版本）。与 telegramip 形成双规则保障——两个不同来源的规则集互相补充，确保 Telegram 的所有 IP 都能被正确识别。每 48 小时更新。',
+        'Proxy': 'sing-geosite 维护的 geolocation-!cn 规则集。包含所有非中国地区的站点域名。这是一个"反向"规则集——匹配所有不是中国网站的域名。每 48 小时更新。<br><span class="badge badge-qna">❓ 解惑</span> geolocation-!cn 是什么意思？geolocation 是地理定位，!cn 表示"非中国"。所以这个规则集包含所有被定位为非中国地区的网站域名。',
+        'gfw': 'MetaCubeX 维护的 GFW 规则集。包含已知被 GFW（防火长城）阻断的站点域名。如果你的节点本身就在墙外，这个规则集可以帮你准确识别需要代理的域名。每 48 小时更新。',
+        'cnip': 'DustinWin 维护的中国 IP 段规则集。包含 APNIC（亚太互联网络信息中心）分配给中国的全部 IP 地址段。这是最全面的中国 IP 数据库之一。每 48 小时更新。',
+        'Filter': 'FakeIP 过滤规则集。包含不适合使用 FakeIP 的域名——这些域名需要真实 IP 才能正常工作（如使用 GeoDNS 根据地理位置返回不同 IP 的站点）。每 48 小时更新。<br><span class="badge badge-qna">❓ 解惑</span> 为什么有些域名不能走 FakeIP？例如 Netflix 会根据你的 DNS 来源返回不同地区的 CDN IP。如果使用 FakeIP 返回统一的虚拟 IP，Netflix 可能无法正确判断你的地区，导致播放失败。',
+        'DNSreject': 'AdGuard SDNS Filter 规则集，用于 DNS 层广告和跟踪器拦截。由 senshinya 转换维护。每 48 小时更新。',
+        'httpDNS': 'BlockHttpDNS 规则集。包含使用 HTTPDNS 技术的域名，这些域名可能被用来绕过传统 DNS 分流。拦截它们确保所有 DNS 查询都经过 sing-box。每 48 小时更新。',
+        'Ads': 'DustinWin 维护的广告规则集，用于路由层广告拦截。与 DNS 层的 geosite-category-ads-all 配合使用，形成立体广告拦截。每 48 小时更新。',
+        'adobe': 'Adobe 相关域名规则集。包含 Adobe Creative Cloud、Photoshop、Premiere 等产品的激活、更新和云服务域名。走直连或代理取决于你的网络环境。',
+        'Apple_rs': 'sing-geosite 官方 Apple 服务规则集。比 apple-cn 更全面，包含全球 Apple 服务域名（不仅限于中国区）。',
+        'fcm': 'Google FCM 推送规则集。包含 Firebase Cloud Messaging 的所有域名和 IP，确保安卓推送通知正常。每 48 小时更新。',
+        'Android': 'Android 系统服务规则集。包含 Google Play Services、Google 账号验证、系统更新等 Android 核心服务的域名。每 48 小时更新。',
+        'telegram_rs': 'sing-geosite 官方 Telegram 规则集。包含 Telegram 的所有域名（web.telegram.org、api.telegram.org 等）。与 telegram_ip 配合提供完整的 Telegram 分流。每 48 小时更新。',
+        'youtube_rs': 'sing-geosite 官方 YouTube 规则集。包含 YouTube 视频播放、上传、API 等所有相关域名。每 48 小时更新。',
+        'instagram': 'sing-geosite 官方 Instagram 规则集。包含 Instagram 图片/视频加载、消息、故事等所有功能域名。每 48 小时更新。',
+        'Google_rs': 'Google 服务规则集（senshinya 维护版本）。与 geosite-google 互补，提供更全面的 Google 服务覆盖。每 48 小时更新。',
+        'GlobalMedia': 'MetaCubeX 维护的全球媒体规则集（category-entertainment）。包含 Netflix、Disney+、HBO、Spotify 等全球流媒体服务的域名。每 48 小时更新。<br><span class="badge badge-qna">❓ 解惑</span> 为什么流媒体需要单独规则集？因为流媒体服务的 DNS 解析和 IP 分配非常复杂（使用多 CDN、GeoDNS、DRM 验证等），需要专门的规则来确保解锁和播放质量。',
+        'Applications': 'DustinWin 维护的常见应用规则集。包含微信、QQ、淘宝、支付宝等国内常用应用的域名。走直连确保正常使用。每 48 小时更新。',
+        'OnePlus': '一加手机服务规则集。包含一加的系统更新、云服务、账号验证等域名。走直连确保正常使用。每 48 小时更新。',
+        ']rule_set': '远程规则集列表结束 — 以上定义了 35 个远程规则集，涵盖广告、代理、游戏、AI、推送、媒体、系统服务等各个领域。每 48 小时自动更新，保持规则时效性。',
+
+        // experimental
+        'experimental': '<span class="badge badge-key">实验性功能</span> 包含 Clash API 面板、缓存持久化、内存优化等进阶功能。标记为"实验性"是因为这些 API 可能在版本更新中发生变化，但功能本身已相当稳定。',
+        'cache_file': '<span class="badge badge-star">⭐ 缓存持久化</span> 将 DNS 解析记录和 FakeIP 映射保存到本地 SQLite 数据库文件（cache.db）。重启 sing-box 后数据不丢失，可以大幅减少冷启动时间（无需重新解析所有域名）。<br><span class="badge badge-qna">❓ 解惑</span> 缓存文件会很大吗？对于个人设备，cache.db 通常只有几 MB 到几十 MB。65536 条 DNS 记录的缓存上限确保了文件大小可控。',
+        'cache_enabled': '✅ 启用缓存持久化。强烈建议保持开启。',
+        'cache_path': '缓存文件路径：<code>cache.db</code>。文件存放在 sing-box 的工作目录（通常是配置文件所在目录）。',
+        'cache_id': '<span class="badge badge-tip">💡 缓存 ID</span> <code>cinchov</code> — 用于区分不同配置的缓存。如果你有多套 sing-box 配置（如工作和个人用不同节点），建议使用不同的 cache_id，避免 DNS 缓存数据混淆。<br><span class="badge badge-qna">❓ 解惑</span> 如果没有 cache_id 会发生什么？sing-box 仍然会使用缓存，但如果两套配置的 DNS 策略不同（如一套用 FakeIP、一套不用），缓存数据可能冲突。设置不同的 cache_id 可以完全隔离缓存。',
+        'store_fakeip': '持久化 FakeIP 映射关系（虚拟 IP → 真实域名）。重启后映射关系保留，之前分配过 FakeIP 的域名无需重新分配。',
+        'store_dns': '持久化 DNS 解析记录（域名 → 真实 IP）。重启后无需重新解析域名，可以直接使用缓存的解析结果。',
+        '}cache_file': '缓存持久化配置结束。',
+        'clash_api': '<span class="badge badge-star">⭐ Clash API 面板</span> 兼容 Clash 控制面板和第三方客户端。可通过 Web 浏览器或 API 管理 sing-box。<br><span class="badge badge-qna">❓ 解惑</span> metacubexd 是什么？它是 Clash Meta 生态中最流行的开源 Web 面板，功能全面（节点切换、规则查看、连接日志、延迟测试等）、界面现代美观。首次启动时会自动从 GitHub 下载到 ui 目录。',
+        'external_controller': 'API 监听地址：<code>127.0.0.1:9090</code>。<br>• <code>127.0.0.1</code> 表示仅本地可访问（安全性高）<br>• <code>9090</code> 是 Clash 生态的标准 API 端口<br>如果需要从其他设备访问面板，可改为 <code>0.0.0.0:9090</code>（但请注意安全——任何人都能控制你的代理）。',
+        'external_ui': 'Web 面板前端文件存放目录：<code>ui</code>。首次启动时，sing-box 会自动从下方的下载地址下载面板文件到这个目录。<br><span class="badge badge-tip">💡 提示</span> 你也可以手动下载 metacubexd 的压缩包解压到 ui 目录，这样离线也能使用面板。',
+        'external_ui_download_url': '面板下载地址：metacubexd v1.245.1 的 tgz 压缩包。<br><span class="badge badge-tip">💡 提示</span> 如果想使用最新版本，可以把 URL 中的 v1.245.1 改为 latest。但固定版本号可以避免面板更新带来的兼容性问题。',
+        'external_ui_download_detour': '面板下载走 <code>PROXY</code>。<strong>因为 GitHub 在国内可能无法直连</strong>，通过代理下载确保面板能正常获取。<br><span class="badge badge-qna">❓ 解惑</span> 如果代理也无法下载怎么办？你可以手动从 GitHub Releases 页面下载 compressed-dist.tgz，解压到 sing-box 工作目录下的 ui 文件夹中。',
+        'secret': '<span class="badge badge-warn">⚠️ 密钥安全</span> Clash API 访问密钥。<strong>强烈建议修改为你自己的密钥！</strong><br>当前显示的密钥是示例值，任何知道此密钥的人都能通过 API 控制你的代理。<br><span class="badge badge-tip">💡 建议</span> 使用 <code>openssl rand -base64 32</code> 命令生成一个随机的 32 字节 Base64 密钥替换此值。',
+        'default_mode': '<span class="badge badge-tip">💡 面板默认模式</span> <code>rule</code>（规则模式）。面板打开时默认使用规则分流。用户可以在面板中切换为 global（全局代理）或 direct（全局直连）模式。<br><span class="badge badge-qna">❓ 解惑</span> 三种模式的区别：rule 按路由规则分流（推荐）；global 全部走代理；direct 全部直连。',
+        '}clash_api': 'Clash API 面板配置结束。',
+        'debug': '<span class="badge badge-tip">💡 性能调优</span> 调试和性能优化配置。控制 sing-box 的内存使用和垃圾回收行为。<br><span class="badge badge-qna">❓ 解惑</span> 为什么需要调优 GC？Go 语言的垃圾回收（GC）默认会在内存占用增长 100% 时触发。对于网络代理这种实时性要求高的应用，GC 可能导致短暂的服务停顿。调整 GC 参数可以在内存使用和性能之间找到平衡。',
+        'gc_percent': '<span class="badge badge-tip">💡 GC 百分比</span> <code>100</code>（Go 语言默认值）。表示当堆内存占用比上次 GC 后增长 100% 时触发下一次 GC。<br>设得越低，GC 越频繁，内存占用越低但 CPU 开销越大；设得越高，GC 越少，内存占用越高但 CPU 开销越低。<br><span class="badge badge-qna">❓ 解惑</span> 要不要改这个值？对于大多数设备，默认的 100 是合适的。如果你的设备内存很小（如 512MB 以下），可以降低到 50 以减少内存峰值；如果你的设备内存充足（8GB+），保持 100 即可。',
+        'memory_limit': '<span class="badge badge-warn">⚠️ 内存限制</span> <code>400MB</code> — sing-box 的软内存限制。当内存占用接近此限制时，会提前触发 GC 以防止 OOM（内存溢出）。<br>在低配置设备（如老旧路由器、1GB 内存的手机）上尤其重要。如果你的设备内存小于 1GB，建议降低到 200MB 或 150MB。<br><span class="badge badge-qna">❓ 解惑</span> sing-box 正常使用需要多少内存？对于个人设备，正常运行时通常占用 50-150MB 内存。400MB 的限制已经非常宽松，只有在极端情况（如大量并发连接、超大 DNS 缓存）下才会触及。',
+        '}debug': '性能调优配置结束。',
+        '}experimental': '实验性功能配置结束。',
+        '}root': '🔷 配置根对象结束 — sing-box 1.14.0-alpha.20 完整配置到此结束。'
+    };
+
+    // ---------- 为每一行生成注释 ----------
+    function getCommentForLine(line, idx) {
         const trimmed = line.trim();
-        // 1. 处理结构字符
+        if (!trimmed) return '';
+
+        // 结构符号
+        if (idx === 0 && trimmed === '{') return manualComments['{root'] || '配置根对象开始。';
+        if (idx === configLines.length - 1 && trimmed === '}') return manualComments['}root'] || '配置根对象结束。';
         if (trimmed === '{') return '对象开始。';
         if (trimmed === '}') return '对象结束。';
         if (trimmed === '[') return '数组开始。';
         if (trimmed === ']') return '数组结束。';
-        if (trimmed.endsWith('[')) return '数组开始。';
-        if (trimmed.startsWith(']')) return '数组结束。';
 
-        // 2. 提取键值对
-        const kvMatch = trimmed.match(/^"([^"]+)"\s*:\s*(.*)$/);
+        // 提取键值对
+        const kvMatch = trimmed.match(/^"([^"]+)"\s*:\s*(.+)$/);
         if (!kvMatch) {
-            // 可能是数组元素或其他
+            // 处理只有值的行（如数组元素或字符串）
+            if (trimmed.startsWith('"') && trimmed.includes(':')) return '';
             if (trimmed.endsWith(',')) {
-                const val = trimmed.slice(0, -1).trim();
-                if (val.startsWith('"') && val.endsWith('"')) {
-                    return `列表项: ${val}`;
+                const content = trimmed.slice(0, -1).trim();
+                if (content.startsWith('"') && content.endsWith('"')) {
+                    return `数组元素: ${content}`;
                 }
-                return `列表项: ${val}`;
+                if (content === 'true' || content === 'false') return `布尔值: ${content}`;
+                if (!isNaN(content)) return `数值: ${content}`;
+                return `值: ${content}`;
             }
             return '';
         }
+
         const key = kvMatch[1];
-        let value = kvMatch[2];
-        if (value.endsWith(',')) value = value.slice(0, -1);
+        const val = (kvMatch[2] || '').replace(/,$/, '').trim();
 
-        // 基于键名的通用说明
-        const path = currentPath() + '.' + key;
-        const parent = pathStack.length > 0 ? pathStack[pathStack.length-1] : '';
+        // 尝试精确匹配
+        if (manualComments[key] && !manualComments[key].startsWith('<span')) {
+            // 检查是否有更具体的上下文匹配
+        }
+        if (manualComments[key]) return manualComments[key];
 
-        // 重要路径映射（硬编码部分详细注释）
-        if (key === 'log') return '日志配置对象。';
-        if (key === 'level') return `日志等级: ${value}。可选: panic, fatal, error, warn, info, debug, trace。`;
-        if (key === 'timestamp') return '是否在日志中包含时间戳。';
-        if (key === 'dns') return 'DNS 解析核心配置。';
-        if (key === 'timeout') return `DNS 查询超时时间: ${value}。`;
-        if (key === 'servers') return 'DNS 服务器列表。';
-        if (key === 'tag') return `标签名: ${value}，用于在其他部分引用该服务器/规则集/出站等。`;
-        if (key === 'type') {
-            if (path.includes('servers')) return `DNS 服务器类型: ${value}。local=本地系统DNS；hosts=静态hosts；tls=DoT；quic=DNS over QUIC；https=DoH；fakeip=FakeIP。`;
-            if (path.includes('outbounds')) return `出站类型: ${value}。direct=直连；selector=选择器；urltest=自动测速；vless/vmess/trojan/ss等为协议节点；block=阻断。`;
-            if (path.includes('transport')) return `传输类型: ${value}。ws=WebSocket；grpc=gRPC；httpupgrade=HTTP Upgrade等。`;
-            if (path.includes('rule_set')) return `规则集格式: ${value}。remote=远程下载；local=本地文件；inline=内联。`;
-            return `类型: ${value}。`;
-        }
-        if (key === 'predefined') return '静态 hosts 解析表，将域名直接映射到指定 IP。';
-        if (key === 'detour') return `出口路由: ${value}，指定该 DNS 请求走哪个出站（如 DIRECT 或 PROXY）。`;
-        if (key === 'domain_resolver') return `用于解析当前服务器域名的 DNS 标签: ${value}。`;
-        if (key === 'server') {
-            if (path.includes('dns')) return `DNS 服务器地址: ${value}。`;
-            if (path.includes('outbounds')) return `节点服务器地址: ${value}。`;
-            return `服务器: ${value}。`;
-        }
-        if (key === 'server_port') return `端口: ${value}。`;
-        if (key === 'uuid') return `VLESS/VMess 用户 ID (UUID): ${value}。`;
-        if (key === 'tls') return 'TLS 加密配置。';
-        if (key === 'enabled' && (parent === 'tls' || path.includes('tls'))) return '是否启用 TLS 加密。';
-        if (key === 'server_name') return `TLS SNI 域名: ${value}。`;
-        if (key === 'utls') return 'uTLS 指纹伪装配置，模拟浏览器 TLS 握手特征。';
-        if (key === 'fingerprint') return `伪造的 TLS 指纹: ${value}。一般为 chrome/firefox/ios/random 等。`;
-        if (key === 'transport') return '传输层配置。';
-        if (key === 'path') return `WebSocket/gRPC 路径: ${value}。`;
-        if (key === 'headers') return 'HTTP 请求头。';
-        if (key === 'Host') return `Host 头部: ${value}，用于 CDN 转发。`;
-        if (key === 'max_early_data') return `最大早期数据大小: ${value}，用于 0-RTT WebSocket。`;
-        if (key === 'early_data_header_name') return '早期数据请求头名称，通常为 Sec-WebSocket-Protocol。';
-        if (key === 'packet_encoding') return `UDP 包编码方式: ${value}。xudp 为 Xray 风格，可提升 UDP 性能。`;
-        if (key === 'connect_timeout') return `连接超时: ${value}。`;
-        if (key === 'outbounds') {
-            if (path.includes('selector') || path.includes('urltest')) return '可选的出站列表。';
-            return '出站列表。';
-        }
-        if (key === 'default') return `默认出站: ${value}。`;
-        if (key === 'url') return `测速地址: ${value}。`;
-        if (key === 'interval') return `更新/测速间隔: ${value}。`;
-        if (key === 'tolerance') return `切换容差 (ms): ${value}。`;
-        if (key === 'idle_timeout') return `空闲超时: ${value}。`;
-        if (key === 'tcp_fast_open') return '是否启用 TCP Fast Open。';
-        if (key === 'tcp_keep_alive') return `TCP Keep Alive 间隔: ${value}。`;
-        if (key === 'tcp_keep_alive_interval') return `Keep Alive 探测间隔: ${value}。`;
-        if (key === 'udp_fragment') return '是否启用 UDP 分段，可降低 UDP 丢包。';
-        if (key === 'inet4_range') return `FakeIP IPv4 地址池: ${value}。`;
-        if (key === 'inet6_range') return `FakeIP IPv6 地址池: ${value}。`;
-        if (key === 'rules') {
-            if (path.includes('dns')) return 'DNS 分流规则列表（按顺序匹配）。';
-            if (path.includes('route')) return '路由规则列表（按顺序匹配）。';
-            return '规则列表。';
-        }
-        if (key === 'domain_suffix') return '域名后缀匹配列表。';
-        if (key === 'domain') return '完整域名匹配列表。';
-        if (key === 'domain_keyword') return '域名关键词匹配列表。';
-        if (key === 'domain_regex') return '域名正则表达式。';
-        if (key === 'query_type') return 'DNS 查询类型列表（如 A, AAAA, SVCB, HTTPS, PTR）。';
-        if (key === 'rule_set') return '引用的规则集标签列表。';
-        if (key === 'action') return `执行动作: ${value}。如 reject(拒绝), route(路由), sniff(嗅探), hijack-dns(劫持DNS), resolve(解析), respond(响应), predefined(预定义)。`;
-        if (key === 'rcode') return `DNS 返回码: ${value}。NOERROR 表示返回无错误响应。`;
-        if (key === 'invert') return '是否反转匹配结果（true=匹配不满足条件的查询）。';
-        if (key === 'rewrite_ttl') return `重写 DNS 记录的 TTL 为 ${value} 秒。`;
-        if (key === 'match_response') return '是否对 DNS 响应进行二次匹配（如匹配解析出的 IP）。';
-        if (key === 'final') return `最终兜底服务器/出站: ${value}。`;
-        if (key === 'reverse_mapping') return '是否启用 IP → 域名的反向映射。';
-        if (key === 'strategy') return `IP 策略: ${value}。prefer_ipv4 优先IPv4。`;
-        if (key === 'cache_capacity') return `DNS 缓存容量: ${value}。`;
-        if (key === 'optimistic') return '是否启用乐观缓存（过期后仍返回旧结果并异步更新）。';
-        if (key === 'ntp') return 'NTP 时间同步配置。';
-        if (key === 'http_clients') return 'HTTP 客户端配置（用于下载规则集等）。';
-        if (key === 'version') return 'HTTP 客户端版本。';
-        if (key === 'stream_receive_window') return '流接收窗口大小。';
-        if (key === 'connection_receive_window') return '连接接收窗口大小。';
-        if (key === 'inbounds') return '入站配置（定义流量如何进入 sing-box）。';
-        if (key === 'tun') return 'TUN 虚拟网卡入站。';
-        if (key === 'mtu') return `MTU 值: ${value}。`;
-        if (key === 'address') return `虚拟网卡 IP 地址: ${value}。`;
+        // 通用匹配
+        if (key === 'enabled') return val === 'true' ? '✅ 启用此功能。' : '❌ 禁用此功能。';
+        if (key === 'detour') return `流量出口: <code>${val}</code>。`;
+        if (key === 'domain_resolver') return `域名解析器: <code>${val}</code>。`;
+        if (key === 'server') return `服务器地址: <code>${val}</code>。`;
+        if (key === 'server_port') return `服务器端口: <code>${val}</code>。`;
+        if (key === 'tag') return `唯一标签: <code>${val}</code>，用于在其他配置项中引用此组件。`;
+        if (key === 'type') return `类型: <code>${val}</code>。`;
+        if (key === 'domain_suffix') return '域名后缀匹配列表。匹配以这些后缀结尾的所有域名。';
+        if (key === 'domain') return '完整域名匹配列表。精确匹配列表中的域名。';
+        if (key === 'domain_keyword') return '域名关键词匹配列表。匹配包含关键词的域名。';
+        if (key === 'domain_regex') return '域名正则表达式匹配。';
+        if (key === 'query_type') return 'DNS 查询类型匹配列表。如 A(IPv4)、AAAA(IPv6)、SVCB、HTTPS、PTR 等。';
+        if (key === 'rule_set') return '引用的规则集标签。可以是单个标签或标签列表。';
+        if (key === 'outbounds') return '可选的出站标签列表。在 UI 中会显示为可选项。';
+        if (key === 'default') return `默认值: <code>${val}</code>。`;
+        if (key === 'url') return `URL 地址: <code>${val}</code>。`;
+        if (key === 'path') return `路径: <code>${val}</code>。`;
+        if (key === 'interval') return `时间间隔: <code>${val}</code>。`;
+        if (key === 'action') return `执行动作: <code>${val}</code>。如 reject(拒绝)、route(路由)、sniff(嗅探)等。`;
+        if (key === 'mode') return `逻辑模式: <code>${val}</code>。and=所有条件同时满足；or=任一条件满足即可。`;
+        if (key === 'method') return `处理方法: <code>${val}</code>。drop=静默丢弃；reject=发送拒绝响应。`;
+        if (key === 'protocol') return '协议匹配列表。如 tcp、udp、dns、stun、quic 等。';
+        if (key === 'port') return '端口匹配。可以是单个端口或端口列表。';
+        if (key === 'network') return `网络类型: <code>${val}</code>。tcp 或 udp。`;
+        if (key === 'package_name') return '安卓应用包名匹配。用于按应用分流。';
+        if (key === 'uuid') return 'UUID 认证信息（节点连接凭证）。格式为 8-4-4-4-12 的十六进制字符串。';
+        if (key === 'password') return '密码字段。';
+        if (key === 'transport') return '传输层配置。定义数据的传输方式。';
+        if (key === 'tls') return 'TLS 加密配置。定义传输层安全加密参数。';
+        if (key === 'headers') return 'HTTP 请求头配置。用于自定义 HTTP 头部信息。';
+        if (key === 'Host') return `Host 请求头: <code>${val}</code>。用于 CDN 转发识别。`;
+        if (key === 'tcp_fast_open') return '是否启用 TCP Fast Open。可减少连接建立时间。';
+        if (key === 'tcp_keep_alive') return `TCP Keep Alive 间隔: <code>${val}</code>。`;
+        if (key === 'tcp_keep_alive_interval') return `Keep Alive 探测间隔: <code>${val}</code>。`;
+        if (key === 'udp_fragment') return '是否启用 UDP 分段。可降低 UDP 丢包率。';
+        if (key === 'packet_encoding') return `数据包编码方式: <code>${val}</code>。xudp 可提升 UDP 性能。`;
+        if (key === 'connect_timeout') return `连接超时时间: <code>${val}</code>。`;
+        if (key === 'max_early_data') return `最大早期数据大小: <code>${val}</code>。用于 0-RTT。`;
+        if (key === 'early_data_header_name') return '早期数据请求头名称。';
+        if (key === 'utls') return 'uTLS 指纹伪装配置。模拟浏览器 TLS 握手特征防止被识别。';
+        if (key === 'fingerprint') return `TLS 指纹类型: <code>${val}</code>。如 chrome、firefox、ios、random。`;
+        if (key === 'alpn') return 'ALPN 应用层协议协商列表。';
+        if (key === 'ech') return 'ECH (Encrypted Client Hello) 配置。加密 TLS 握手信息。';
+        if (key === 'reality') return 'REALITY 配置。一种新型 TLS 伪装协议。';
+        if (key === 'public_key') return 'REALITY 公钥。';
+        if (key === 'short_id') return 'REALITY 短 ID。';
+        if (key === 'flow') return 'VLESS 流控模式。如 xtls-rprx-vision。';
+        if (key === 'security') return `加密方式: <code>${val}</code>。`;
+        if (key === 'alter_id') return `额外 ID (VMess): <code>${val}</code>。现已不再使用，设为 0。`;
+        if (key === 'tolerance') return `切换容差 (ms): <code>${val}</code>。新节点必须比当前节点快此数值才会切换。`;
+        if (key === 'idle_timeout') return `空闲超时: <code>${val}</code>。超过此时间无流量后重置测速数据。`;
+        if (key === 'interrupt_exist_connections') return '切换时是否中断已有连接。false=不中断（推荐）。';
+        if (key === 'version') return `版本: <code>${val}</code>。`;
+        if (key === 'stream_receive_window') return `流接收窗口大小: <code>${val}</code>。0=使用默认值。`;
+        if (key === 'connection_receive_window') return `连接接收窗口大小: <code>${val}</code>。0=使用默认值。`;
+        if (key === 'mtu') return `MTU 值: <code>${val}</code>。`;
+        if (key === 'address') return `IP 地址: <code>${val}</code>。`;
         if (key === 'auto_route') return '是否自动设置系统路由。';
-        if (key === 'strict_route') return '是否严格路由（防止流量泄露）。';
-        if (key === 'stack') return `协议栈: ${value}。mixed 为混合模式，兼顾性能与兼容性。`;
-        if (key === 'mixed') return '混合代理入站（HTTP + SOCKS5）。';
-        if (key === 'listen') return `监听地址: ${value}。`;
-        if (key === 'listen_port') return `监听端口: ${value}。`;
-        if (key === 'route') return '路由配置块。';
-        if (key === 'clash_mode') return `Clash 模式: ${value}。`;
-        if (key === 'package_name') return '安卓应用包名匹配。';
-        if (key === 'protocol') return '协议匹配列表。';
-        if (key === 'network') return '网络类型 (tcp/udp)。';
-        if (key === 'port') return '端口匹配。';
-        if (key === 'ip_version') return 'IP 版本匹配 (4 或 6)。';
-        if (key === 'default_interface_address') return '默认接口地址匹配。';
-        if (key === 'ip_cidr') return 'IP CIDR 匹配。';
-        if (key === 'ip_is_private') return '匹配私有 IP 地址。';
-        if (key === 'method') return `拒绝方法: ${value}。drop 为静默丢弃。`;
-        if (key === 'udp_disable_domain_unmapping') return '是否禁止 UDP 域名反解析。';
+        if (key === 'strict_route') return '是否启用严格路由（防止流量泄露）。';
+        if (key === 'stack') return `协议栈类型: <code>${val}</code>。`;
+        if (key === 'listen') return `监听地址: <code>${val}</code>。`;
+        if (key === 'listen_port') return `监听端口: <code>${val}</code>。`;
+        if (key === 'inet4_range') return `IPv4 地址池: <code>${val}</code>。`;
+        if (key === 'inet6_range') return `IPv6 地址池: <code>${val}</code>。`;
+        if (key === 'rewrite_ttl') return `TTL 重写值: <code>${val}</code> 秒。`;
+        if (key === 'match_response') return '是否对 DNS 响应进行二次匹配。';
+        if (key === 'invert') return '是否反转匹配条件。true=匹配不满足条件的查询。';
+        if (key === 'rcode') return `DNS 返回码: <code>${val}</code>。`;
+        if (key === 'reverse_mapping') return '是否启用 IP 到域名的反向映射。';
+        if (key === 'strategy') return `IP 地址策略: <code>${val}</code>。`;
+        if (key === 'cache_capacity') return `缓存容量: <code>${val}</code> 条记录。`;
+        if (key === 'optimistic') return '是否启用乐观缓存。';
+        if (key === 'clash_mode') return `Clash 模式匹配: <code>${val}</code>。`;
+        if (key === 'outbound') return `目标出站: <code>${val}</code>。`;
+        if (key === 'ip_version') return `IP 版本: <code>${val}</code>。`;
+        if (key === 'default_interface_address') return `默认接口地址匹配: <code>${val}</code>。`;
+        if (key === 'ip_cidr') return `IP CIDR 匹配: <code>${val}</code>。`;
+        if (key === 'ip_is_private') return '是否匹配私有 IP 地址。';
+        if (key === 'udp_disable_domain_unmapping') return '是否禁用 UDP 域名反解析。';
         if (key === 'udp_connect') return 'UDP 是否使用 connect 模式。';
-        if (key === 'rule_set' && path.includes('route')) return '远程规则集定义。';
-        if (key === 'http_client') return 'HTTP 客户端标签。';
-        if (key === 'update_interval') return `更新间隔: ${value}。`;
+        if (key === 'http_client') return `下载使用的 HTTP 客户端标签: <code>${val}</code>。`;
+        if (key === 'update_interval') return `规则集更新间隔: <code>${val}</code>。`;
         if (key === 'auto_detect_interface') return '是否自动检测网络接口。';
-        if (key === 'default_domain_resolver') return `默认域名解析器: ${value}。`;
-        if (key === 'experimental') return '实验性功能配置。';
-        if (key === 'cache_file') return '缓存文件配置。';
+        if (key === 'default_domain_resolver') return `路由默认域名解析器: <code>${val}</code>。`;
         if (key === 'store_fakeip') return '是否持久化 FakeIP 映射。';
         if (key === 'store_dns') return '是否持久化 DNS 缓存。';
-        if (key === 'clash_api') return 'Clash API 面板配置。';
-        if (key === 'external_controller') return `API 监听地址: ${value}。`;
-        if (key === 'external_ui') return 'Web 面板目录。';
-        if (key === 'external_ui_download_url') return '面板下载地址。';
-        if (key === 'external_ui_download_detour') return '下载面板时使用的出站。';
-        if (key === 'secret') return 'API 访问密钥（请修改为你的自定义密钥）。';
-        if (key === 'default_mode') return `默认模式: ${value}。rule=规则模式。`;
-        if (key === 'debug') return '调试/性能优化配置。';
-        if (key === 'gc_percent') return `GC 百分比: ${value}。控制垃圾回收触发阈值。`;
-        if (key === 'memory_limit') return `内存限制: ${value}。`;
+        if (key === 'cache_id') return `缓存标识符: <code>${val}</code>。`;
+        if (key === 'external_controller') return `API 监听地址: <code>${val}</code>。`;
+        if (key === 'external_ui') return `Web UI 目录: <code>${val}</code>。`;
+        if (key === 'external_ui_download_url') return `Web UI 下载地址: <code>${val}</code>。`;
+        if (key === 'external_ui_download_detour') return `下载 Web UI 使用的出站: <code>${val}</code>。`;
+        if (key === 'secret') return 'API 访问密钥。';
+        if (key === 'default_mode') return `面板默认模式: <code>${val}</code>。`;
+        if (key === 'gc_percent') return `GC 触发百分比: <code>${val}</code>。`;
+        if (key === 'memory_limit') return `内存限制: <code>${val}</code>。`;
 
-        // 默认注释
-        return `配置项: ${key} = ${value}`;
+        return `配置项: <code>${key}</code> = <code>${val}</code>。`;
     }
 
-    // ---------- 遍历配置行并生成注释，同时更新路径栈 ----------
+    // ---------- 渲染表格 ----------
+    const comments = [];
     for (let i = 0; i < configLines.length; i++) {
-        const line = configLines[i];
-        const trimmed = line.trim();
-
-        // 更新路径栈
-        if (trimmed === '{' || trimmed.endsWith('{')) {
-            // 对象开始，将上一个键压入路径
-            if (lastKey) {
-                pathStack.push(lastKey);
-            }
-        } else if (trimmed === '}' || trimmed.startsWith('}')) {
-            // 对象结束，弹出最后一个键
-            pathStack.pop();
-        } else if (trimmed === '[' || trimmed.endsWith('[')) {
-            // 数组开始
-            if (lastKey) pathStack.push(lastKey);
-        } else if (trimmed === ']' || trimmed.startsWith(']')) {
-            pathStack.pop();
-        } else {
-            const kvMatch = trimmed.match(/^"([^"]+)"\s*:\s*/);
-            if (kvMatch) {
-                lastKey = kvMatch[1];
-            }
-        }
-
-        let comment = generateComment(line, i);
-        if (!comment && trimmed !== '' ) {
-            comment = '配置行。';
-        }
-        comments.push(comment || '');
+        comments.push(getCommentForLine(configLines[i], i));
     }
 
-    // 渲染表格
     const tbody = document.getElementById('table-body');
     let html = '';
     for (let i = 0; i < configLines.length; i++) {
         html += '<tr>';
-        html += '<td class="line-num">' + (i+1) + '</td>';
-        html += '<td class="code-cell">' + configLines[i].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') + '</td>';
-        html += '<td class="comment-cell">' + comments[i] + '</td>';
+        html += '<td class="line-num">' + (i + 1) + '</td>';
+        html += '<td class="code-cell">' + configLines[i].replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') + '</td>';
+        html += '<td class="comment-cell">' + (comments[i] || '&nbsp;') + '</td>';
         html += '</tr>';
     }
     tbody.innerHTML = html;
@@ -1806,13 +802,14 @@
         const q = this.value.trim().toLowerCase();
         let match = 0;
         rows.forEach(r => {
-            if (!q) { r.classList.remove('row-hidden'); match++; }
-            else {
+            if (!q) { r.classList.remove('row-hidden');
+                match++; } else {
                 const code = r.querySelector('.code-cell').textContent.toLowerCase();
                 const comment = r.querySelector('.comment-cell').textContent.toLowerCase();
                 const lineNum = r.querySelector('.line-num').textContent.trim();
                 if (lineNum === q || code.includes(q) || comment.includes(q)) {
-                    r.classList.remove('row-hidden'); match++;
+                    r.classList.remove('row-hidden');
+                    match++;
                 } else {
                     r.classList.add('row-hidden');
                 }
@@ -1824,8 +821,9 @@
     // 主题切换
     const themeBtns = document.querySelectorAll('.theme-btn');
     const body = document.body;
+
     function setTheme(t) {
-        body.classList.remove('light','dark');
+        body.classList.remove('light', 'dark');
         if (t === 'light') body.classList.add('light');
         else if (t === 'dark') body.classList.add('dark');
         localStorage.setItem('theme', t);
